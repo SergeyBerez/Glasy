@@ -1,0 +1,39 @@
+/* стили для кнопок  */
+.banner-ads--button {
+  text-align: center;
+
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  color: #ffffff;
+  outline: none;
+  border: none;
+}
+button {
+  outline: none;
+}
+.button {
+  text-align: center;
+  outline: none;
+  border: none;
+  margin: 0 auto;
+  font-weight: bold;
+  text-transform: lowercase;
+  box-shadow: 0px 2px 2px #ac1000;
+  text-shadow: 0px 2px 5px #ac1000;
+  background: linear-gradient(to top, #e74a35, #f26843);
+}
+/* стиль для кнопки хедера */
+.button--header {
+  padding: 15px 40px;
+  max-width: 280px;
+  line-height: 4.4rem;
+  margin-right: 40%;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 3.2rem;
+  border-radius: 40px;
+  color: #ffffff;
+  outline: none;
+}
+

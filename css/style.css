@@ -1,0 +1,144 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  background-color: ;
+  font-family: 'roboto', sans-serif;
+  font-size: 1.6rem;
+  /* line-height: 2.4rem; */
+  color: #ebe1e1;
+  text-transform: uppercase;
+}
+div {
+  box-sizing: border-box;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+.text--firstLetter::first-letter {
+  text-transform: uppercase;
+}
+
+.outline--flex {
+  outline: 2px solid blue;
+}
+/* ставим абсоюлт что ты хедер наложился на салйдер */
+.wrap {
+  position: absolute;
+
+  /* z-index: 1; */
+  /* max-width: 1000px; */
+  border: 5px solid rgb(255, 7, 7);
+}
+.w-100 {
+  /* border: 1px solid rgb(231, 12, 12); */
+}
+
+/* подложка див в нем вложенный див со слайдерами js */
+.features-slider {
+  max-width: 1400px;
+  min-height: 4000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* .slider {
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+} */
+.indication-input {
+  display: none;
+}
+.slides {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background: #849d8f;
+  background-image: url(/img/Group1aaa.png);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-position: 0 100px;
+  background-size: 100%;
+  transition: all 0.8s;
+}
+/* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
+/* передвигаем блок в ценрт относительно wrapper */
+.controls {
+  /* position: absolute; */
+  /* top: 30%;
+  left: 5%; */
+  /* z-index: 2; */
+}
+/*делаем точки серые делаем элементы блочными */
+.features-slider label {
+  cursor: pointer;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 25px 12px 0 16px;
+  position: relative;
+  width: ;
+  transition: background ease-in-out 0.5s;
+
+  border-radius: 50%;
+}
+/* добавляем к лейблам псевдоелементы  и ставим круги к лейблам */
+.features-slider label:after {
+  border: 2px solid #ddd;
+  content: ' ';
+  display: block;
+  width: 25px;
+  height: 25px;
+  left: -5px;
+  position: absolute;
+  top: -5px;
+  border-radius: 50%;
+}
+/* Пришло время научить слайдер переключать слайды по нажатию на определённую радио кнопку : */
+
+.features-slider label:hover {
+  background: #ddd;
+}
+#slide1:checked ~ .controls label:nth-of-type(1),
+#slide2:checked ~ .controls label:nth-of-type(2),
+#slide3:checked ~ .controls label:nth-of-type(3) {
+  background: #ddd;
+}
+.modal-login {
+  display: none;
+}
+.modal-find {
+  display: none;
+}
+.form {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  text-align: left;
+  margin-top: 50px;
+  width: 200px;
+  background: rgba(128, 128, 128, 0.178);
+  border-radius: 10px;
+}
+label {
+  color: rgb(235, 229, 229);
+  font-size: 20px;
+}
+input:hover {
+  background: burlywood;
+}
+input::placeholder {
+  color: rgb(255, 136, 0);
+}
+[type='submit'] {
+  width: 70px;
+}
+[type='submit']:active {
+  background: yellowgreen;
+}
