@@ -24,28 +24,10 @@ body {
   margin: 0 auto;
   position: relative;
 }
-
-.text--firstLetter::first-letter {
-  text-transform: uppercase;
-}
-.outline--flex {
-  outline: 2px solid blue;
-}
-/* ставим абсоюлт что ты хедер наложился на салйдер */
-.wrap {
-  border: 7px solid #000;
-  position: relative;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-.indication-input {
-  display: none;
-}
-/* подложка див в нем вложенный див со слайдерами js */
+/* подложка див conteiner в нем вложенный див со слайдерами js */
 .slides {
-  height: 100%;
   position: absolute;
+  height: 100%;
   width: 100%;
   background: #849d8f;
   background-image: url(/img/Group1aaa.png);
@@ -55,34 +37,63 @@ body {
   background-size: 100%;
   transition: all 0.8s;
 }
+/* выравниваем наш контент */
+.wrap {
+  border: 7px solid #000;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.text--firstLetter::first-letter {
+  text-transform: uppercase;
+}
+.outline--flex {
+  outline: 2px solid blue;
+}
+
+.indication-button {
+  padding-top: 40px;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #000;
+  /* padding-top: auto; */
+  flex-basis: 90%;
+  /* margin-right: auto; */
+  /* justify-content: space-between; */
+}
+.indication-input {
+  display: none;
+}
 /* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
 /* передвигаем блок в ценрт относительно wrapper */
 .controls {
-  /* position: absolute; */
-  /* top: 30%;
-  left: 5%; */
-  /* z-index: 2; */
+  /* flex-basis: 50%;
+  width: 500px; */
+  border: 1px solid #000;
 }
 /*делаем точки серые делаем элементы блочными */
 .indication-label {
-  cursor: pointer;
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: 25px 12px 0 16px;
   position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 25px 15px 0 16px;
+  cursor: pointer;
   transition: background ease-in-out 0.5s;
   border-radius: 50%;
 }
 /* добавляем к лейблам псевдоелементы  и ставим круги к лейблам */
 .indication-label:after {
-  border: 2px solid #ddd;
-  content: ' ';
+  position: absolute;
   display: block;
+  border: 3px solid #ddd;
+  content: ' ';
   width: 25px;
   height: 25px;
   left: -5px;
-  position: absolute;
   top: -5px;
   border-radius: 50%;
 }

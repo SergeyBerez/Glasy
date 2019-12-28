@@ -25,15 +25,15 @@ button {
 }
 /* стиль для кнопки хедера */
 .button--header {
+  margin: 0 auto;
   padding: 15px 40px;
-  max-width: 280px;
+
   line-height: 4.4rem;
-  margin-right: 40%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   text-align: center;
   font-size: 3.2rem;
   border-radius: 40px;
   color: #ffffff;
   outline: none;
+  border: 1px solid #000;
 }
-
