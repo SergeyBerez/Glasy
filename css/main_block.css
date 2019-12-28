@@ -318,7 +318,7 @@ img {
 .nav-cotial-icon {
   display: flex;
 
-  flex-basis: 30%;
+  /* flex-basis: 30%; */
 }
 .footer-img-icon {
   margin: 10px;
@@ -329,6 +329,6 @@ img {
 
   margin-left: auto;
   display: flex;
-  flex-basis: 60%;
+  /* flex-basis: 60%; */
   justify-content: flex-end;
 }
