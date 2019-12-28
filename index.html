@@ -22,11 +22,12 @@
     <title>glacy</title>
   </head>
   <body>
-   
     <!--    ПОДЛОЖКА ГЛАВНАЯ САЙТА СО СЛАЙДЕРАМИ  -->
-    <div class="features-slider">
-      <header class="header">
-        <div class="wrap">
+    <div class="conteiner">
+      <!-- див со слайдером -->
+      <div class="slides"></div>
+      <div class="wrap">
+        <header class="header">
           <div class="header-flex outline--flex">
             <a class="main-logo " href="#">
               <img src="img/logo.svg" width="154px" alt="logo" />
@@ -107,187 +108,185 @@
                 data-type="Group3ddd.png"
               />
               <div class="controls">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
+                <label class="indication-label" for="slide1"></label>
+                <label class="indication-label" for="slide2"></label>
+                <label class="indication-label" for="slide3"></label>
               </div>
             </div>
             <button class="button button--header text--firstLetter ">
               давайте&nbsp;оба!
             </button>
           </div>
-        </div>
-      </header>
+        </header>
+        <main class="main">
+          <!-- секция 1  два баннера -->
+          <section class="banner-ads outline--flex">
+            <div class="banner-ads_item banner-ads_item--mal ">
+              <h2 class="banner-ads_h2 text--firstLetter">малинка даром!</h2>
+              <p class="text--firstLetter">
+                При покупке 2 кг любого мороженного .добавим в ваш зазак банку
+                малиновго варенья бесплатно
+              </p>
 
-      <!-- див со слайдером -->
-      <div class="slides"></div>
+              <button class="button banner-ads--button text--firstLetter">
+                хочу варенье!
+              </button>
+            </div>
+            <div class="banner-ads_item banner-ads_item--ckco">
+              <h2 class="banner-ads_h2 text--firstLetter">
+                Шоколадки даром!
+              </h2>
+              <p class="text--firstLetter">
+                При покупке 2 кг пломбира, добавим в ваш заказ упаковку
+                вкуснейшей шоколадной присыпки совершенно бесплатно.
+              </p>
+              <button class="button banner-ads--button text--firstLetter">
+                хочу шоколадки!
+              </button>
+            </div>
+          </section>
+          <!-- секция  2  =======4 мороженого-->
 
-      <main class="main">
-        <div class="wrap">
-          <div class="container_margin">
-            <!-- секция 1  два баннера -->
-            <section class="banner-ads outline--flex">
-              <div class="banner-ads_item banner-ads_item--mal ">
-                <h2 class="banner-ads_h2 text--firstLetter">малинка даром!</h2>
-                <p class="text--firstLetter">
-                  При покупке 2 кг любого мороженного .добавим в ваш зазак банку
-                  малиновго варенья бесплатно
+          <section class="banner-foto outline--flex">
+            <div class="banner-foto_item banner-foto_vanil">
+              <img src="img/1ice.png" alt="" />
+
+              <p class="banner-foto_p text--firstLetter">
+                Сливочное с апельсиновым джемом и цитрусовой стружкой
+              </p>
+            </div>
+
+            <div class="banner-foto_item banner-foto_choco">
+              <img src="img/icechoco.png" alt="" />
+
+              <p class="banner-foto_p text--firstLetter">
+                Сливочно-кофейное с кусочками шоколада
+              </p>
+            </div>
+
+            <div class="banner-foto_item banner-foto_strawberry">
+              <img src="img/3ice.png" alt="" />
+
+              <p class="banner-foto_p text--firstLetter">
+                Сливочно-клубничное с присыпкой из белого шоколада
+              </p>
+            </div>
+
+            <div class="banner-foto_item banner-foto_caramel">
+              <img src="img/4ice.png" alt="" />
+
+              <p class="banner-foto_p text--firstLetter">
+                Сливочное крем-брюле с карамельной подливкой
+              </p>
+            </div>
+          </section>
+          <!-- секция  3 вафля-->
+          <section class="description outline--flex">
+            <div class="description-bg">
+              <h2 class="description_h2 text--firstLetter">
+                Магазин Глэйси — это онлайн- и офлайн-магазин по продаже
+                мороженого собственного производства на развес
+              </h2>
+              <div class="description_item">
+                <p class="description_p description_p--1 text--firstLetter">
+                  Все наше мороженое изготавливается на собственном
+                  производстве, с использованием современного оборудования и
+                  проверенных временем технологий.
                 </p>
 
-                <button class="button banner-ads--button text--firstLetter">
-                  хочу варенье!
-                </button>
-              </div>
-              <div class="banner-ads_item banner-ads_item--ckco">
-                <h2 class="banner-ads_h2 text--firstLetter">
-                  Шоколадки даром!
-                </h2>
-                <p class="text--firstLetter">
-                  При покупке 2 кг пломбира, добавим в ваш заказ упаковку
-                  вкуснейшей шоколадной присыпки совершенно бесплатно.
-                </p>
-                <button class="button banner-ads--button text--firstLetter">
-                  хочу шоколадки!
-                </button>
-              </div>
-            </section>
-            <!-- секция  2  =======4 мороженого-->
-
-            <section class="banner-foto outline--flex">
-              <div class="banner-foto_item banner-foto_vanil">
-                <img src="img/1ice.png" alt="" />
-
-                <p class="banner-foto_p text--firstLetter">
-                  Сливочное с апельсиновым джемом и цитрусовой стружкой
+                <p class="description_p description_p--2 text--firstLetter">
+                  Для приготовления мороженого используются настоящие сливки и
+                  молоко высочайшего качества. Все дополнительные ингредиенты и
+                  добавки произведены из натурального, экологически чистого
+                  сырья.
                 </p>
               </div>
+              <div class="description_item">
+                <p class="description_p description_p--3 text--firstLetter">
+                  Закупка ингредиентов производится только у проверенных
+                  фермерских хозяйств и компаний, с которыми нас связывает
+                  долговременное сотрудничество.
+                </p>
 
-              <div class="banner-foto_item banner-foto_choco">
-                <img src="img/icechoco.png" alt="" />
-
-                <p class="banner-foto_p text--firstLetter">
-                  Сливочно-кофейное с кусочками шоколада
+                <p class="description_p  description_p--4 text--firstLetter">
+                  Доставка нашего мороженого до заказчиков осуществляется в
+                  специальном термопаке, который не дает мороженому растаять в
+                  пути и позволяет сохранить превосходный вкус.
                 </p>
               </div>
-
-              <div class="banner-foto_item banner-foto_strawberry">
-                <img src="img/3ice.png" alt="" />
-
-                <p class="banner-foto_p text--firstLetter">
-                  Сливочно-клубничное с присыпкой из белого шоколада
+            </div>
+          </section>
+          <!-- секция4 новости  -->
+          <section class="news outline--flex">
+            <div class="mews-item">
+              <h3 class="mews-item_h3 description_p text--firstLetter">
+                новое в нашем блоке
+              </h3>
+              <a class="mews-item-a" href=""
+                >10 способов сервировки фруктовых щербетов к столу</a
+              >
+            </div>
+            <div class="new-posaman">
+              <div class="new-posaman-bg">
+                <p class="description_p text--firstLetter">
+                  Подпишитесь на нашу сладкую рассылку и будете всегда в курсе
+                  всего самого вкусного, что у нас происходит. Обещаем не
+                  спамить и не слать всякой ненужной ерунды.
                 </p>
-              </div>
-
-              <div class="banner-foto_item banner-foto_caramel">
-                <img src="img/4ice.png" alt="" />
-
-                <p class="banner-foto_p text--firstLetter">
-                  Сливочное крем-брюле с карамельной подливкой
-                </p>
-              </div>
-            </section>
-            <!-- секция  3 вафля-->
-            <section class="description outline--flex">
-              <div class="description-bg">
-                <h2 class="description_h2 text--firstLetter">
-                  Магазин Глэйси — это онлайн- и офлайн-магазин по продаже
-                  мороженого собственного производства на развес
-                </h2>
-                <div class="description_item">
-                  <p class="description_p description_p--1 text--firstLetter">
-                    Все наше мороженое изготавливается на собственном
-                    производстве, с использованием современного оборудования и
-                    проверенных временем технологий.
-                  </p>
-
-                  <p class="description_p description_p--2 text--firstLetter">
-                    Для приготовления мороженого используются настоящие сливки и
-                    молоко высочайшего качества. Все дополнительные ингредиенты
-                    и добавки произведены из натурального, экологически чистого
-                    сырья.
-                  </p>
-                </div>
-                <div class="description_item">
-                  <p class="description_p description_p--3 text--firstLetter">
-                    Закупка ингредиентов производится только у проверенных
-                    фермерских хозяйств и компаний, с которыми нас связывает
-                    долговременное сотрудничество.
-                  </p>
-
-                  <p class="description_p  description_p--4 text--firstLetter">
-                    Доставка нашего мороженого до заказчиков осуществляется в
-                    специальном термопаке, который не дает мороженому растаять в
-                    пути и позволяет сохранить превосходный вкус.
-                  </p>
-                </div>
-              </div>
-            </section>
-            <!-- секция4 новости  -->
-            <section class="news outline--flex">
-              <div class="mews-item">
-                <h3 class="mews-item_h3 description_p text--firstLetter">
-                  новое в нашем блоке
-                </h3>
-                <a class="mews-item-a" href=""
-                  >10 способов сервировки фруктовых щербетов к столу</a
-                >
-              </div>
-              <div class="new-posaman">
-                <div class="new-posaman-bg">
-                  <p class="description_p text--firstLetter">
-                    Подпишитесь на нашу сладкую рассылку и будете всегда в курсе
-                    всего самого вкусного, что у нас происходит. Обещаем не
-                    спамить и не слать всякой ненужной ерунды.
-                  </p>
-                  <form class="new-form">
-                    <input
-                      class="new-form_input"
-                      type="email"
-                      name="name"
-                      placeholder="электронная почта"
-                    />
-                    <button class="button banner-ads--button text--firstLetter">
-                      отправить
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </section>
-            <!-- секция карта 5 -->
-            <section>
-              <div class="map outline--flex">
-                <iframe
-                  class="map_iframe"
-                  frameborder="0"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d511638.1407822065!2d29.528910839122116!3d59.939003525846935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46916b9a84027d6d%3A0x7a38a94dd6393e9e!2z0KTQuNC90YHQutC40Lkg0LfQsNC7Lg!5e0!3m2!1sru!2sua!4v1577524227963!5m2!1sru!2sua"
-                ></iframe>
-                <form class="map_form">
-                  <div class="work-info">
-                   <p>Адрес главного офиса и офлайн-магазина:</p> 
-                     <span>ул. Большая Конюшенная 19/8, Санкт-Петербург</span> <p> с 10 до 22 ежедневно</p>
-                     
-                   
-                    <span>8 812 450-25-25</span>
-                  </div>
+                <form class="new-form">
+                  <input
+                    class="new-form_input"
+                    type="email"
+                    name="name"
+                    placeholder="электронная почта"
+                  />
                   <button class="button banner-ads--button text--firstLetter">
-                    форма&nbsp;обратной&nbsp;связи
+                    отправить
                   </button>
                 </form>
               </div>
-            </section>
-          </div>
-        </div>
-      </main>
-      <footer class="footer">
-         <div class="wrap">
-        <div class="nav-cotial-icon">
+            </div>
+          </section>
+          <!-- секция карта 5 -->
+          <section>
+            <div class="map outline--flex">
+              <iframe
+                class="map_iframe"
+                frameborder="0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d511638.1407822065!2d29.528910839122116!3d59.939003525846935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46916b9a84027d6d%3A0x7a38a94dd6393e9e!2z0KTQuNC90YHQutC40Lkg0LfQsNC7Lg!5e0!3m2!1sru!2sua!4v1577524227963!5m2!1sru!2sua"
+              ></iframe>
+              <form class="map_form">
+                <div class="work-info">
+                  <p>Адрес главного офиса и офлайн-магазина:</p>
+                  <span>ул. Большая Конюшенная 19/8, Санкт-Петербург</span>
+                  <p>с 10 до 22 ежедневно</p>
 
-          <div class="img-icon">dfdffffffffffffffffffffff<img src="" alt=""></div>
-          <div class="img-icon">dsssssssssssssssssssssss<img src="" alt=""></div>
-          <div class="img-icon">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quaerat sunt at nemo sit ad cumque sapiente, laudantium dignissimos tempore iure quis rerum mollitia officia incidunt harum. Ipsam, ab quia?<img src="" alt=""></div>
-        </div>
-        </div>
-      </footer>
+                  <span>8 812 450-25-25</span>
+                </div>
+                <button class="button banner-ads--button text--firstLetter">
+                  форма&nbsp;обратной&nbsp;связи
+                </button>
+              </form>
+            </div>
+          </section>
+        </main>
+        <footer class="footer">
+          <div class="nav-cotial-icon">
+            <div class="img-icon">
+              dfdffffffffffffffffffffff<img src="" alt="" />
+            </div>
+            <div class="img-icon">
+              dsssssssssssssssssssssss<img src="" alt="" />
+            </div>
+            <div class="img-icon">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+              quaerat sunt at nemo sit ad cumque sapiente, laudantium
+              dignissimos tempore iure quis rerum mollitia officia incidunt
+              harum. Ipsam, ab quia?<img src="" alt="" />
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
     <!--     КОНЕЦ   ПОДЛОЖКА ГЛАВНАЯ САЙТА СО СЛАЙДЕРАМИ  -->
     <script src="js/main.js"></script>

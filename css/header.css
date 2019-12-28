@@ -1,9 +1,5 @@
 .header {
-  /* position: absolute;
-  z-index: 1; */
   position: relative;
-  margin: 0 auto;
-  max-width: 1200px;
   top: 0;
   left: 0;
   z-index: 2;
@@ -129,4 +125,5 @@ ul.drop li a:hover {
 }
 
 .indication-button {
+  /* display: none; */
 }

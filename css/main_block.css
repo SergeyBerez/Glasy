@@ -1,10 +1,8 @@
 /* стили для главного блока */
 .main {
-  padding-top: 100%;
+  /* padding-top: 100%; */
   position: relative;
   z-index: 1;
-  margin: 0 auto;
-  max-width: 1200px;
 
   /* margin-top: 900px; */
 }
@@ -13,12 +11,10 @@
 .banner-foto,
 .description,
 .news,
-.map
-.nav-cotial-icon {
-  max-width: 1200px;
+.map .nav-cotial-icon {
+  /* max-width: 1200px; */
   display: flex;
   flex-wrap: wrap;
-
   /* flex-direction: row; */
   justify-content: space-around;
 }
@@ -307,4 +303,11 @@ img {
   border-radius: 10px;
   text-align: center;
   background: white;
+}
+.footer {
+  position: relative;
+  margin-top: 1600px;
+  margin: 0 auto;
+  max-width: 1200px;
+  z-index: 1;
 }

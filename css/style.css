@@ -1,17 +1,6 @@
 html {
   font-size: 62.5%;
 }
-body {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  background-color: ;
-  font-family: 'roboto', sans-serif;
-  font-size: 1.6rem;
-  /* line-height: 2.4rem; */
-  color: #ebe1e1;
-  text-transform: uppercase;
-}
 div {
   box-sizing: border-box;
 }
@@ -20,41 +9,40 @@ li {
   margin: 0;
   padding: 0;
 }
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  background-color: ;
+  font-family: 'roboto', sans-serif;
+  font-size: 1.6rem;
+  color: #ebe1e1;
+  text-transform: uppercase;
+}
+.conteiner {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
 .text--firstLetter::first-letter {
   text-transform: uppercase;
 }
-
 .outline--flex {
   outline: 2px solid blue;
 }
 /* ставим абсоюлт что ты хедер наложился на салйдер */
 .wrap {
-  position: absolute;
-
-  /* z-index: 1; */
-  /* max-width: 1000px; */
-  border: 5px solid rgb(255, 7, 7);
-}
-.w-100 {
-  /* border: 1px solid rgb(231, 12, 12); */
-}
-
-/* подложка див в нем вложенный див со слайдерами js */
-.features-slider {
-  max-width: 1400px;
-  min-height: 4000px;
-  margin: 0 auto;
+  border: 7px solid #000;
   position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-/* .slider {
-  height: 100%;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-} */
 .indication-input {
   display: none;
 }
+/* подложка див в нем вложенный див со слайдерами js */
 .slides {
   height: 100%;
   position: absolute;
@@ -76,20 +64,18 @@ li {
   /* z-index: 2; */
 }
 /*делаем точки серые делаем элементы блочными */
-.features-slider label {
+.indication-label {
   cursor: pointer;
   display: inline-block;
   width: 15px;
   height: 15px;
   margin: 25px 12px 0 16px;
   position: relative;
-  width: ;
   transition: background ease-in-out 0.5s;
-
   border-radius: 50%;
 }
 /* добавляем к лейблам псевдоелементы  и ставим круги к лейблам */
-.features-slider label:after {
+.indication-label:after {
   border: 2px solid #ddd;
   content: ' ';
   display: block;
@@ -101,13 +87,12 @@ li {
   border-radius: 50%;
 }
 /* Пришло время научить слайдер переключать слайды по нажатию на определённую радио кнопку : */
-
-.features-slider label:hover {
+.indication-label:hover {
   background: #ddd;
 }
-#slide1:checked ~ .controls label:nth-of-type(1),
-#slide2:checked ~ .controls label:nth-of-type(2),
-#slide3:checked ~ .controls label:nth-of-type(3) {
+#slide1:checked ~ .controls .indication-label:nth-of-type(1),
+#slide2:checked ~ .controls .indication-label:nth-of-type(2),
+#slide3:checked ~ .controls .indication-label:nth-of-type(3) {
   background: #ddd;
 }
 .modal-login {
