@@ -75,6 +75,7 @@ body {
 /* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
 /* передвигаем блок в ценрт относительно wrapper */
 .controls {
+  margin: 10px;
   /* flex-basis: 50%;
   width: 500px; */
 }
@@ -84,7 +85,7 @@ body {
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin: 25px 15px 0 16px;
+  margin: 25px 15px 0 20px;
   cursor: pointer;
   transition: background ease-in-out 0.5s;
   border-radius: 50%;

@@ -4,7 +4,6 @@ button {
   position: relative;
   outline: transparent;
   transition: 0.5s;
-  box-shadow: 4px 5px 4px 1px #ac1000;
 }
 button:hover {
   cursor: pointer;
@@ -35,6 +34,7 @@ button:active {
   font-size: 3.2rem;
   border-radius: 40px;
   color: #ffffff;
+  box-shadow: 4px 5px 4px 1px #ac1000;
 
   /* border: 1px solid #000; */
 }

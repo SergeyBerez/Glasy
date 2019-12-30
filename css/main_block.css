@@ -12,6 +12,7 @@
 .map {
   /* max-width: 1200px; */
   margin-top: 20px;
+  /* padding: 5px; */
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row; */
@@ -310,7 +311,7 @@ img {
   min-width: 200px;
 } */
 .map {
-  padding: 20px;
+  padding: 10px;
   position: relative;
 }
 .map::before {
@@ -335,7 +336,10 @@ img {
   min-height: 500px;
 }
 .map_form {
-  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 300px;
   height: 50%;
   margin: auto;
   padding: 0px 10px;
@@ -344,9 +348,16 @@ img {
   left: auto;
   bottom: 0;
   right: 30px;
-  text-align: right;
+  text-align: center;
   background: white;
   border-radius: 10px;
+}
+.map_info {
+  flex-basis: 100%;
+  text-align: left;
+  font-size: 1.4rem;
+  color: rgb(83, 79, 79);
+  font-weight: bold;
 }
 .footer {
   min-height: 100px;
