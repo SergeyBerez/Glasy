@@ -3,15 +3,15 @@
   /* padding-top: 100%; */
   /* position: relative; */
   /* z-index: 1; */
-
   /* margin-top: 900px; */
 }
 .banner-ads,
 .banner-foto,
 .description,
 .news,
-.map .nav-cotial-icon {
+.map {
   /* max-width: 1200px; */
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row; */
@@ -25,18 +25,8 @@
   font-size: 1.8rem;
   text-transform: lowercase;
 }
-/* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 5px;
-  margin: 10px;
-  max-width: 560px;
-  min-height: 160px;
-  border-radius: 15px;
-  background-image: url('../img/fon_str.png');
- 
-  background-size: 100%; */
-.banner-ads_item--mal {
+
+.banner-ads_item:nth-child(1) {
   padding: 10px;
   margin: 10px;
   max-width: 560px;
@@ -46,7 +36,8 @@
   /* background-repeat: no-repeat; */
   background-size: cover;
 }
-.banner-ads_item--ckco {
+
+.banner-ads_item:nth-child(2) {
   padding: 10px;
   margin: 10px;
   max-width: 560px;
@@ -56,10 +47,15 @@
   /* background-repeat: no-repeat; */
   background-image: url('../img/banner-shcko.png');
 }
+
 .banner-ads_h2 {
   margin: 0px;
   text-transform: lowercase;
   font-size: 3.5rem;
+  font-weight: bold;
+}
+.banner-ads_p {
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -238,10 +234,48 @@ img {
 }
 .mews-item-a {
   text-align: left;
-
-  /* max-width: 300px; */
+  max-width: 300px;
+  padding-right: 200px;
   font-size: 2rem;
   color: #323232;
+  position: relative;
+}
+.mews-item-a:before {
+  position: absolute;
+  opacity: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #323232;
+  transition: 0.9s;
+}
+.mews-item-a:hover:before {
+  opacity: 1;
+  display: block;
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #323232;
+}
+.mews-item-a:after {
+  position: absolute;
+  /* left: 100%; */
+  display: block;
+
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #323232;
+  transition: 0.9s;
+}
+
+.mews-item-a:hover:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #323232;
 }
 .new-posaman {
   display: flex;
@@ -261,21 +295,22 @@ img {
     blue 30px
   );
 }
+.new-form {
+  text-align: center;
+  padding-bottom: 10px;
+}
 .new-posaman-bg {
   border-radius: 15px;
   background: white;
 }
 
-/* секция 5 */
-.new-form {
-  text-align: center;
-  padding-bottom: 10px;
-}
+/* секция 5  картка*/
+
 /* .new-form_input {
   min-width: 200px;
 } */
 .map {
-  padding: 10px;
+  padding: 20px;
   position: relative;
 }
 .map::before {
@@ -300,14 +335,18 @@ img {
   min-height: 500px;
 }
 .map_form {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  padding: 0px 10px;
   position: absolute;
-  left: 50vw;
-  top: 30%;
-  max-width: 300px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+  top: 0;
+  left: auto;
+  bottom: 0;
+  right: 30px;
+  text-align: right;
   background: white;
+  border-radius: 10px;
 }
 .footer {
   min-height: 100px;
