@@ -67,8 +67,14 @@
   margin: 10px;
   text-align: center;
   position: relative;
+  border-radius: 10px;
+  transition: 0.5s;
 
   /* word-break: break-all; */
+}
+.banner-foto_item:hover {
+  background: #9bafa3;
+  cursor: pointer;
 }
 img {
   display: block;
@@ -302,14 +308,21 @@ img {
 }
 .new-posaman-bg {
   border-radius: 15px;
-  background: white;
+  background: #f8f7f4;
+}
+.new-form_input {
+  outline: transparent;
+  border-radius: 5px;
+  height: 40px;
+  min-width: 200px;
+}
+.new-form_input::placeholder {
+  font-size: 1.6rem;
+  color: #999999;
 }
 
 /* секция 5  картка*/
 
-/* .new-form_input {
-  min-width: 200px;
-} */
 .map {
   padding: 10px;
   position: relative;

@@ -18,11 +18,12 @@
 /* главное меню  */
 .header-nav {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   list-style-type: none;
+  white-space: nowrap;
 }
 
-.header-nav {
+.header-nav li {
   position: relative;
   line-height: 32px;
 }
@@ -58,7 +59,7 @@
   background-color: rgb(247, 246, 243);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 15px 15px #2828288e;
+  box-shadow: 0px 15px 20px #0707079a;
 }
 ul.drop li {
   width: 100%;
@@ -71,7 +72,7 @@ ul.drop li a {
   font-weight: normal;
 }
 ul.drop li:first-child {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #282828;
   font-weight: Bold;
   color: #282828;
   text-align: center;
@@ -80,7 +81,7 @@ ul.drop li:first-child {
 ul.drop li a:hover {
   color: #282828;
   border-radius: 5px;
-  background: rgba(212, 94, 193, 0.63);
+  background: #fbded7;
 }
 
 /* правое меню пользователя */
@@ -90,19 +91,45 @@ ul.drop li a:hover {
   position: relative;
   margin-left: auto;
   list-style-type: none;
+  display: flex;
 }
 .nav-user li {
-  display: inline-block;
+  margin: 5px;
+  text-align: center;
 }
 .nav-user li a {
   transition: box-shadow 0.5s ease;
   display: block;
+
+  /* text-align: right; */
   border-radius: 25px;
-  background-color: #282828;
-  box-shadow: 2px 2px 2px rgba(63, 63, 63, 0.739);
+  line-height: 30px;
+
+  background-color: #a2b7ab;
+  /* box-shadow: 2px  color: red; */
 }
 .nav-user li a:hover {
   box-shadow: 0px 0px 0px rgba(63, 63, 63, 0.739);
+}
+
+.nav-user_img{
+  padding-top: 5px;
+  /* display: inline-block; */
+  padding-right: 10px;
+  /* line-height: 20px; */
+  /* float: left; */
+  fill: red;
+  width: 20px;
+  height: 20px;
+}
+li .nav-user_a {
+  padding-top: 0;
+  padding-right: 0;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #a2b7ab;
 }
 .work-info {
   padding-top: 20px;
@@ -117,9 +144,29 @@ span {
   font-size: 2.2rem;
   font-weight: bold;
 }
+.modal-login {
+  /* z-index: 2; */
+  position: absolute;
+  top: 60px;
+  left: auto;
+  bottom: auto;
+  right: 0;
+  margin: auto;
+  display: none;
+}
+.modal-find {
+  position: absolute;
+  top: 0;
+  left: auto;
+  bottom: auto;
+  right: 250px;
+  margin: auto;
+  display: none;
+}
 
 .header-title {
   /* border: 1px solid #000; */
+
   display: block;
   padding-top: 40%;
   margin: 0 auto;

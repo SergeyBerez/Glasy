@@ -39,36 +39,71 @@
                   <li><a href="#">Мелони</a></li>
                 </ul>
               </li>
-              <li><a href="#">доставка&nbsp;и&nbsp;&nbsp;оплата</a></li>
-              <li><a href="#">о&nbsp;Компании</a></li>
+              <li><a href="#">доставка и оплата</a></li>
+              <li><a href="#">о Компании</a></li>
             </ul>
             <ul class="nav-user">
               <div class="modal-find">
-                <form>
-                  <input type="text" placeholder="что ищем" />
+                <form class="">
+                  <input
+                    class="new-form_input"
+                    type="text"
+                    placeholder="что ищем"
+                  />
                 </form>
-                <div class="modal-login">
-                  <form class="form">
-                    <input type="text" id="name" placeholder="name" />
-
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="password"
-                    />
-                    <input type="submit" value="log in" />
-                  </form>
-                </div>
               </div>
+              <div class="modal-login">
+                <form class="new-form">
+                  <input
+                    class="new-form_input"
+                    type="text"
+                    id="name"
+                    placeholder="name"
+                  />
+
+                  <input
+                    class="new-form_input"
+                    type="password"
+                    id="password"
+                    placeholder="password"
+                  />
+                  <input type="submit" value="log in" />
+                </form>
+              </div>
+
               <li>
-                <a href="#"><img src="img/Group 1.png" alt=""/></a>
+                <a class="nav-user_a" href="#">
+                  <svg
+                    class="nav-user_img "
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <use xlink:href="./img/Лупа.svg#Layer_2"></use>
+                  </svg>
+                </a>
               </li>
 
               <li>
-                <a href="#"><img src="img/Group 2.png" alt=""/></a>
+                <a href="#">
+                  <svg
+                    class="nav-user_img "
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <use xlink:href="./img/Вход.svg#find"></use></svg
+                  >вход</a
+                >
               </li>
               <li>
-                <a href="#"><img src="img/Group 3.png" alt=""/></a>
+                <a href="#">
+                  <svg
+                    class="nav-user_img "
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <use xlink:href="./img/Корзина2.svg#curt"></use></svg
+                  >пусто</a
+                >
               </li>
             </ul>
             <div class="work-info">
@@ -78,7 +113,7 @@
             <h1 class="header-title ">
               Крем-брюле и пломбир с малиновым джемом
             </h1>
-          
+
             <!-- кнопки для слайдера -->
             <div class="indication-button">
               <input
@@ -132,7 +167,7 @@
               <h2 class="banner-ads_h2 ">
                 Шоколадки даром!
               </h2>
-              <p class="banner-ads_p" >
+              <p class="banner-ads_p">
                 При покупке 2 кг пломбира, добавим в ваш заказ упаковку
                 вкуснейшей шоколадной присыпки совершенно бесплатно.
               </p>
@@ -216,7 +251,7 @@
           <section class="news outline--flex">
             <div class="mews-item">
               <h3 class="mews-item_h3 description_p">
-                новое в нашем блоке 
+                новое в нашем блоке
               </h3>
               <a class="mews-item-a" href=""
                 >10 способов сервировки фруктовых щербетов к столу</a
@@ -233,7 +268,7 @@
                   <input
                     class="new-form_input"
                     type="email"
-                    name="name"
+                    name="email"
                     placeholder="электронная почта"
                   />
                   <button class="button banner-ads--button">
@@ -253,8 +288,12 @@
               ></iframe>
               <form class="map_form">
                 <div class="map_info">
-                  <adress>Адрес главного офиса и офлайн-магазина:
-                  <span>ул. Большая Конюшенная 19/8, Санкт-Петербург</span></adress>
+                  <adress
+                    >Адрес главного офиса и офлайн-магазина:
+                    <span
+                      >ул. Большая Конюшенная 19/8, Санкт-Петербург</span
+                    ></adress
+                  >
                   <p>с 10 до 22 ежедневно</p>
 
                   <span>8 812 450-25-25</span>
