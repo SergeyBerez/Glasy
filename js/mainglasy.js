@@ -10,7 +10,7 @@ for (let i = 0; i < radio.length; i++) {
   radio[i].addEventListener('click', function(e) {
     console.log(this.dataset.type);
     if (e.target.dataset.type) {
-      slider.style.backgroundImage = `url(../img/${e.target.dataset.type})`;
+      slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
       slider.style.backgroundColor = e.target.dataset.color;
     }
     // if (this.id == 'slide2') {
