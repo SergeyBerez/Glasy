@@ -1,6 +1,7 @@
 html {
   font-size: 62.5%;
 }
+
 div {
   box-sizing: border-box;
 }
@@ -75,7 +76,8 @@ body {
 /* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
 /* передвигаем блок в ценрт относительно wrapper */
 .controls {
-  margin: 10px;
+  /* margin-right: auto; */
+  margin: 20px;
   /* flex-basis: 50%;
   width: 500px; */
 }
@@ -120,24 +122,35 @@ body {
   border-radius: 10px;
 }
 /* ===================медиа запросы  =======*/
-@media all and (max-width: 600px) {
+@media all and (max-width: 430px) {
   html {
     font-size: 52.5%;
+  }
+  .main-logo {
+    padding-top: 10px;
+    margin: 0 auto;
+    padding-right: 50px;
+    flex-basis: 100%;
   }
   .header-nav {
     flex-direction: column;
     flex-basis: 50%;
-
+    font-size: 20px;
+    width: 200px;
     align-items: flex-start;
     margin-right: auto;
+    top: 100px;
+    left: 0;
+    position: absolute;
+    display: none;
   }
 
   .nav-user {
-    padding-top: 40%;
+    padding-top: 20px;
   }
 
-  h1.header-title {
-    padding-top: 10%;
+  .header-title {
+    padding-top: 40%;
     margin: 0 auto;
     flex-basis: 100%;
     max-width: 670px;
@@ -152,5 +165,23 @@ body {
   }
   .indication-button {
     padding-top: 0px;
+
+    flex-basis: 100%;
+  }
+  .header_menu-icon {
+    display: block;
+  }
+  .button--header {
+    font-size: 2rem;
+    padding: 5px;
+    flex-basis: 40%;
+    margin: 0 auto;
+  }
+  .controls {
+    flex-basis: 60%;
+    margin-right: auto;
+  }
+  .nav-user li {
+    margin: 0px;
   }
 }
