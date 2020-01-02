@@ -49,3 +49,17 @@ function changebackground() {
 setInterval(function() {
   changebackground();
 }, 2500);
+
+let headerMenuIcon = document.querySelector('.header_menu-icon');
+let headerNav = document.querySelector('.header-nav');
+let closemenu = document.querySelector('.close-menu-button--js');
+
+headerMenuIcon.addEventListener('click', function(e) {
+  this.style.display = 'none';
+  headerNav.style.display = 'block';
+});
+closemenu.addEventListener('click', function(e) {
+  headerNav.style.display = 'none';
+  headerMenuIcon.style.display = 'block';
+  console.log(1);
+});

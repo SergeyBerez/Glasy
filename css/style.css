@@ -126,8 +126,12 @@ body {
   html {
     font-size: 52.5%;
   }
+  .header-flex {
+    padding: 10px;
+  }
   .main-logo {
     padding-top: 10px;
+    padding-bottom: 30px;
     margin: 0 auto;
     padding-right: 50px;
     flex-basis: 100%;
@@ -143,10 +147,18 @@ body {
     left: 0;
     position: absolute;
     display: none;
-  }
 
+    background-color: #ffffff49;
+    border-radius: 0px;
+  }
+  .header-nav li a:hover {
+    color: #282828;
+    background-color: transparent;
+    border-bottom: 1px solid #282828;
+    border-radius: 0px;
+  }
   .nav-user {
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
 
   .header-title {
@@ -165,11 +177,12 @@ body {
   }
   .indication-button {
     padding-top: 0px;
-
-    flex-basis: 100%;
+    margin: 0 auto;
   }
   .header_menu-icon {
     display: block;
+    cursor: pointer;
+    /* margin-right: 2px; */
   }
   .button--header {
     font-size: 2rem;
@@ -178,10 +191,14 @@ body {
     margin: 0 auto;
   }
   .controls {
-    flex-basis: 60%;
-    margin-right: auto;
+    flex-basis: 100%;
+    margin: 10px;
   }
   .nav-user li {
     margin: 0px;
+  }
+  .close-menu-button--js {
+    display: block;
+    cursor: pointer;
   }
 }
