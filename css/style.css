@@ -119,3 +119,32 @@ body {
   background: rgba(128, 128, 128, 0.178);
   border-radius: 10px;
 }
+/* ===================медиа запросы  =======*/
+@media all and (max-width: 600px) {
+  html {
+  font-size: 42.5%;
+}
+  .header-nav {
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+
+  .nav-user {
+    padding-top: 200px;
+  }
+
+  h1.header-title {
+    padding-top: 20%;
+    margin: 0 auto;
+    flex-basis: 100%;
+    max-width: 670px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: lowercase;
+    color: #ffffff;
+  }
+  .work-info {
+    display: none;
+  }
+}
