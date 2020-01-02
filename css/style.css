@@ -122,19 +122,22 @@ body {
 /* ===================медиа запросы  =======*/
 @media all and (max-width: 600px) {
   html {
-  font-size: 42.5%;
-}
+    font-size: 52.5%;
+  }
   .header-nav {
     flex-direction: column;
-    flex-basis: 100%;
+    flex-basis: 50%;
+
+    align-items: flex-start;
+    margin-right: auto;
   }
 
   .nav-user {
-    padding-top: 200px;
+    padding-top: 40%;
   }
 
   h1.header-title {
-    padding-top: 20%;
+    padding-top: 10%;
     margin: 0 auto;
     flex-basis: 100%;
     max-width: 670px;
@@ -146,5 +149,8 @@ body {
   }
   .work-info {
     display: none;
+  }
+  .indication-button {
+    padding-top: 0px;
   }
 }

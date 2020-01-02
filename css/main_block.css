@@ -9,9 +9,10 @@
 .banner-foto,
 .description,
 .news,
-.map {
+.map,
+.footer {
   /* max-width: 1200px; */
-  margin-top: 20px;
+  margin-top: 40px;
   /* padding: 5px; */
   display: flex;
   flex-wrap: wrap;
@@ -24,14 +25,13 @@
   flex-wrap: wrap;
   align-items: center;
   font-size: 1.8rem;
-  text-transform: lowercase;
 }
 
 .banner-ads_item:nth-child(1) {
   padding: 10px;
   margin: 10px;
   max-width: 560px;
-  min-height: 200px;
+  min-height: 150px;
   border-radius: 15px;
   background-image: url('../img/banner-mal.png');
   /* background-repeat: no-repeat; */
@@ -42,7 +42,7 @@
   padding: 10px;
   margin: 10px;
   max-width: 560px;
-  min-height: 200px;
+  min-height: 150px;
   border-radius: 15px;
   background-size: cover;
   /* background-repeat: no-repeat; */
@@ -230,11 +230,10 @@ img {
   padding: 5px;
   margin: 10px;
   max-width: 560px;
-  min-height: 160px;
+  min-height: 150px;
   border-radius: 15px;
   background-image: url('../img/fon_str.png');
-  /* background-repeat: no-repeat; */
-  background-size: 100%;
+  background-size: cover;
 }
 .mews-item_h3 {
   width: 100%;
