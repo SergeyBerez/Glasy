@@ -60,7 +60,7 @@ headerMenuIcon.addEventListener('click', function(e) {
   headerNav.style.left = '0px';
 });
 closemenu.addEventListener('click', function(e) {
-  headerNav.style.left = '-200px';
+  headerNav.style.left = '-240px';
   headerMenuIcon.style.opacity = '1';
 
   console.log(1);
