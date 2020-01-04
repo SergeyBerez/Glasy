@@ -200,7 +200,7 @@ body {
     margin: 20px;
   }
   .nav-user li {
-    /* margin: 5px; */
+    margin: 0px;
   }
   .close-menu-button--js {
     display: block;
