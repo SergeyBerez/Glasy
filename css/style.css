@@ -148,7 +148,7 @@ body {
     align-items: flex-start;
     margin-right: auto;
     top: 140px;
-    left: -200px;
+    left: -240px;
     position: absolute;
     background-color: #ffffff49;
     border-radius: 5px;
@@ -200,7 +200,7 @@ body {
     margin: 20px;
   }
   .nav-user li {
-    margin: 5px;
+    /* margin: 5px; */
   }
   .close-menu-button--js {
     display: block;
