@@ -314,7 +314,7 @@ img {
   outline: transparent;
   border-radius: 5px;
   height: 40px;
-  min-width: 200px;
+  min-width: 300px;
 }
 .new-form_input::placeholder {
   font-size: 1.6rem;

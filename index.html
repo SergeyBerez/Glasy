@@ -11,7 +11,7 @@
 
     <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
     <script src="https://use.fontawesome.com/b5f68561f1.js"></script>
-    
+
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main_block.css" />
     <link rel="stylesheet" href="css/buttons.css" />
@@ -27,16 +27,19 @@
       <div class="wrap">
         <header class="header">
           <div class="header-flex outline--flex">
-            <a class="main-logo " href="#">
-              <img src="./img/Logo.png" alt="logo" />
-            </a>
+            <div class="main-logo " href="#">
+              <img src="./img/Logo.svg" alt="logo" />
+            </div>
             <!-- иконка скрытого меню -->
             <div class="header_menu-icon">
               <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
             </div>
 
             <ul class="header-nav">
-              <i class="fa fa-times close-menu-button--js" aria-hidden="true"></i>
+              <i
+                class="fa fa-times close-menu-button--js"
+                aria-hidden="true"
+              ></i>
               <li>
                 <a href="#">каталог</a>
                 <ul class="drop ">
@@ -61,7 +64,7 @@
                 </form>
               </div>
               <div class="modal-login">
-                <form class="new-form">
+                <form class="new-form-header">
                   <input
                     class="new-form_input"
                     type="text"
@@ -75,11 +78,12 @@
                     id="password"
                     placeholder="password"
                   />
-                  <input type="submit" value="log in" />
+                  <button class="button banner-ads--button" type="submit"
+                 >sign in</button>
                 </form>
               </div>
 
-              <li>
+              <li class="nav-user_find">
                 <a class="nav-user_a" href="#">
                   <svg
                     class="nav-user_img "
@@ -91,7 +95,7 @@
                 </a>
               </li>
 
-              <li>
+              <li class="nav-user_enter">
                 <a href="#">
                   <svg
                     class="nav-user_img "

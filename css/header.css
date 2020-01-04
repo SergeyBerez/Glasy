@@ -12,14 +12,13 @@
 }
 
 .main-logo {
-  display: block;
-
   flex-basis: 100%;
-  max-width: 160px;
+  max-width: 300px;
+  /* display: block;
+ flex-basis: 100%;
+  max-width: 160px; */
 }
 .header_menu-icon {
-  flex-basis: 50%;
-  margin-right: auto;
   display: none;
 }
 /* главное меню  */
@@ -180,25 +179,36 @@ span {
   font-weight: bold;
 }
 .modal-login {
-  /* z-index: 2; */
+  background: rgba(230, 227, 227, 0.835);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 2;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: auto;
   bottom: auto;
-  right: 0;
+  right: auto;
   margin: auto;
   display: none;
 }
 .modal-find {
+  background: rgba(230, 227, 227, 0.835);
+  border-radius: 5px;
+  padding: 5px;
   position: absolute;
-  top: 0;
+  top: -20px;
   left: auto;
   bottom: auto;
-  right: 250px;
+  right: 200px;
   margin: auto;
   display: none;
 }
-
+.new-form-header {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: flex-end; */
+}
 .header-title {
   /* border: 1px solid #000; */
 

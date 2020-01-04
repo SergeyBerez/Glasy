@@ -55,11 +55,43 @@ let headerNav = document.querySelector('.header-nav');
 let closemenu = document.querySelector('.close-menu-button--js');
 
 headerMenuIcon.addEventListener('click', function(e) {
-  this.style.display = 'none';
-  headerNav.style.display = 'block';
+  this.style.opacity = '0';
+  headerNav.style.display = 'flex';
+  headerNav.style.left = '0px';
 });
 closemenu.addEventListener('click', function(e) {
-  headerNav.style.display = 'none';
-  headerMenuIcon.style.display = 'block';
+  headerNav.style.left = '-200px';
+  headerMenuIcon.style.opacity = '1';
+
   console.log(1);
 });
+window.addEventListener('resize', function(e) {
+  headerNav.style.display = '';
+  headerMenuIcon.style.display = '';
+});
+let find = document.querySelector('.nav-user_find');
+let enter = document.querySelector('.nav-user_enter');
+let modalFind = document.querySelector('.modal-find');
+let modalLogin = document.querySelector('.modal-login');
+find.addEventListener('click', function(e) {
+  console.log(e.target);
+  if (modalFind.style.display == 'block') {
+    modalFind.style.display = 'none';
+  } else {
+    modalFind.style.display = 'block';
+  }
+});
+enter.addEventListener('click', function(e) {
+  if (modalLogin.style.display == 'block') {
+    modalLogin.style.display = 'none';
+  } else {
+    modalLogin.style.display = 'block';
+  }
+});
+// $('.header_menu-icon').click(function(e) {
+//   $('.header-nav').fadeToggle(300);
+
+//   if (headerNav.style.display == 'block') {
+//     headerNav.style.display = '';
+//   }
+// });
