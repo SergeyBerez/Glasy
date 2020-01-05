@@ -18,7 +18,7 @@ for (let i = 0; i < radio.length; i++) {
   });
 }
 
-let i = 0;
+let j = 0;
 function changebackground() {
   let arrImg = [
     'url(./img/Group1aaa.png)',
@@ -26,12 +26,12 @@ function changebackground() {
     'url(./img/Group3ddd.png)',
   ];
   let arrColor = ['#849d8f', '#8996a6', '#9d8b84'];
-  slider.style.backgroundImage = arrImg[i];
-  slider.style.backgroundColor = arrColor[i];
-  radio[i].checked = true;
-  i++;
-  if (i >= arrImg.length) {
-    i = 0;
+  slider.style.backgroundImage = arrImg[j];
+  slider.style.backgroundColor = arrColor[j];
+  radio[j].checked = true;
+  j++;
+  if (j >= arrImg.length) {
+    j = 0;
   }
   // setInterval(function() {
   //   console.log(radio[i].dataset.type);
