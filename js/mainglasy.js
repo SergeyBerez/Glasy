@@ -95,3 +95,23 @@ enter.addEventListener('click', function(e) {
 //     headerNav.style.display = '';
 //   }
 // });
+
+console.log(document.forms);
+
+document.forms[2].addEventListener('submit', function(e) {
+  e.preventDefault();
+  let form = new FormData(this);
+  let obj = {};
+  for (let [key, value] of form) {
+    obj = [key, value];
+  }
+  console.log(obj);
+  axios
+    .post('telegram.php', obj)
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
