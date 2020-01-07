@@ -48,7 +48,7 @@ function changebackground() {
 
 setInterval(function() {
   changebackground();
-}, 2500);
+}, 3000);
 
 let headerMenuIcon = document.querySelector('.header_menu-icon');
 let headerNav = document.querySelector('.header-nav');
@@ -60,7 +60,7 @@ headerMenuIcon.addEventListener('click', function(e) {
   headerNav.style.left = '0px';
 });
 closemenu.addEventListener('click', function(e) {
-  headerNav.style.left = '-240px';
+  headerNav.style.left = '-490px';
   headerMenuIcon.style.opacity = '1';
 
   console.log(1);
@@ -81,11 +81,19 @@ find.addEventListener('click', function(e) {
     modalFind.style.display = 'block';
   }
 });
-enter.addEventListener('click', function(e) {
-  if (modalLogin.style.display == 'block') {
+document.addEventListener('click', function(e) {
+  if (!(e.target.tagName == 'INPUT' || e.target.tagName == 'FORM')) {
     modalLogin.style.display = 'none';
-  } else {
-    modalLogin.style.display = 'block';
+  }
+
+  if (e.target.classList.contains('nav-user_enter')) {
+    if (modalLogin.style.display == 'none') {
+      console.log(1);
+      modalLogin.style.display = 'block';
+    } else {
+      console.log(2);
+      modalLogin.style.display = 'none';
+    }
   }
 });
 // $('.header_menu-icon').click(function(e) {
@@ -98,7 +106,7 @@ enter.addEventListener('click', function(e) {
 
 console.log(document.forms);
 
-document.forms[2].addEventListener('submit', function(e) {
+document.forms[1].addEventListener('submit', function(e) {
   e.preventDefault();
   let form = new FormData(this);
   let obj = {};
@@ -107,7 +115,7 @@ document.forms[2].addEventListener('submit', function(e) {
   }
   console.log(obj);
   axios
-    .post('telegram.php', obj)
+    .post('telegram.php', form)
     .then(function(response) {
       console.log(response);
     })

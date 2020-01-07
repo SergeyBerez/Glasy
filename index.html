@@ -37,7 +37,7 @@
 
             <ul class="header-nav">
               <i
-                class="fa fa-times close-menu-button--js"
+                class="fa fa-times fa-lg close-menu-button--js"
                 aria-hidden="true"
               ></i>
               <li>
@@ -54,6 +54,7 @@
               <li><a href="#">о Компании</a></li>
             </ul>
             <ul class="nav-user">
+              <!-- два модальных окна скрытых две формы находятся в лишках -->
               <div class="modal-find">
                 <form class="">
                   <input
@@ -64,25 +65,27 @@
                 </form>
               </div>
               <div  class="modal-login">
-                <form method="GET" class="new-form-header">
+                <form  class="new-form-header">
                   <input
                     class="new-form_input"
                     type="text"
-                    id="name"
+                    
+                    name="user_name"
                     placeholder="name"
                   />
 
                   <input
                     class="new-form_input"
-                    type="password"
-                    id="password"
-                    placeholder="password"
+                    type="tel"
+                   
+                    name="user_phone"
+                    placeholder="tel"
                   />
                   <button class="button banner-ads--button" 
                  >sign in</button>
                 </form>
               </div>
-
+<!-- наше меню юзера  -->
               <li class="nav-user_find">
                 <a class="nav-user_a" href="#">
                   <svg
@@ -95,8 +98,8 @@
                 </a>
               </li>
 
-              <li class="nav-user_enter">
-                <a href="#">
+              <li >
+                <a href="#"  class="nav-user_enter">
                   <svg
                     class="nav-user_img "
                     xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +184,7 @@
             </div>
             <div class="banner-ads_item ">
               <h2 class="banner-ads_h2 ">
-                Шоколадки даром!
+                <!-- Шоколадки даром!gfghghhghg -->
               </h2>
               <p class="banner-ads_p">
                 При покупке 2 кг пломбира, добавим в ваш заказ упаковку
