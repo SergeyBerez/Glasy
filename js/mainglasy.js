@@ -128,13 +128,21 @@ for (let i = 0; i < document.forms.length; i++) {
           .post('telegram.php', obj)
           .then(function(response) {
             console.log(response);
-            modalLogin.style.display = 'none';
-            
+            document.forms[i].style.color = 'black';
+            document.forms[i].textContent = 'ваша заявка принята';
+            deleteModalForm(document.forms[i]);
           })
           .catch(function(error) {
-            console.log('ваша заявка не принята');
+            console.log(error);
           });
       }
+    }
+    function deleteModalForm(node) {
+      setTimeout(function() {
+        node.style.display = 'none';
+      }, 2000);
+
+      // body
     }
     // document.forms[i].elements.value = 'aaaaa';
     //}
