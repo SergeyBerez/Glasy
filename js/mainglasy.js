@@ -108,47 +108,57 @@ document.addEventListener('click', function(e) {
 //   }
 // });
 
+// общая форма отправки данных
+
 for (let i = 0; i < document.forms.length; i++) {
   document.forms[i].addEventListener('submit', function(e) {
     e.preventDefault();
-
+    // нужно передавать именно как обьект на сервере json форму не могут обработать
     let form = new FormData(this);
     let obj = {};
     for (let [name, value] of form) {
       obj[name] = value;
     }
+
+    let count = document.forms[i].elements.length;
+    let counter = 0;
     for (let j = 0; j < document.forms[i].elements.length; j++) {
-      if (document.forms[i].elements[j].value == '') {
+      if (
+        document.forms[i].elements[j].value == '' &&
+        document.forms[i].elements[j].tagName == 'INPUT'
+      ) {
         document.forms[i].elements[j].classList.add('error');
         document.forms[i].elements[j].placeholder = 'заполните поле';
       } else {
         document.forms[i].elements[j].classList.remove('error');
+        counter++;
+      }
 
+      if (counter == count) {
+        document.forms[i].elements[j].classList.remove('error');
         axios
-          .post('telegram.php', obj)
+          .post(
+            'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
+            obj,
+          )
           .then(function(response) {
-            console.log(response);
+            let data = response.data;
+
             document.forms[i].style.color = 'black';
-            document.forms[i].textContent = 'ваша заявка принята';
+            document.forms[i].innerHTML += `<p>ваша заявка принята</p>`;
             deleteModalForm(document.forms[i]);
+            document.forms[i].reset();
           })
           .catch(function(error) {
             console.log(error);
           });
       }
     }
-    function deleteModalForm(node) {
-      setTimeout(function() {
-        node.style.display = 'none';
-      }, 2000);
-
-      // body
-    }
-    // document.forms[i].elements.value = 'aaaaa';
-    //}
-    //console.log(obj);
-    // if (obj.value == '') {
-    //   console.log('заполните поля ');
-    // }
   });
+}
+function deleteModalForm(node) {
+  setTimeout(function() {
+    node.reset();
+    node.lastElementChild.remove();
+  }, 2000);
 }
