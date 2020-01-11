@@ -160,7 +160,7 @@ body {
   }
   .header-nav li a {
     font-size: 3rem;
-   
+
     border-radius: 0px;
   }
   .header-nav li a:hover {
@@ -252,7 +252,7 @@ body {
     /* display: none; */
   }
   .new-form_input {
-    margin: 5px;
+    margin: 5px auto;
     outline: transparent;
     border-radius: 5px;
     height: 20px;
