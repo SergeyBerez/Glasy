@@ -68,13 +68,29 @@
   margin: 10px;
   text-align: center;
   position: relative;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   transition: 0.5s;
 
   /* word-break: break-all; */
 }
+.fa-3x {
+  display: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  margin: auto;
+  top: 100%;
+  transition: 0.5s;
+}
 .banner-foto_item:hover {
   background: #9bafa3;
+  /* cursor: pointer; */
+}
+.banner-foto_item:hover .fa-3x {
+  display: block;
+  background: #9bafa3;
+  width: 100%;
   cursor: pointer;
 }
 img {

@@ -19,6 +19,7 @@
 
     <title>glacy</title>
   </head>
+
   <body>
     <!--    ПОДЛОЖКА ГЛАВНАЯ САЙТА СО СЛАЙДЕРАМИ  -->
     <div class="conteiner">
@@ -57,36 +58,44 @@
               <!-- два модальных окна скрытых две формы находятся в лишках -->
               <div class="modal-find">
                 <form class="">
+                  <span>find</span>
                   <input
                     class="new-form_input"
-                     name="find"
+                    name="find"
                     type="text"
                     placeholder="что ищем"
                   />
                 </form>
               </div>
-              <div  class="modal-login">
-                <form  class="new-form-header">
+              <div class="modal-login">
+                <form class="new-form-header">
+                  <span>Name</span>
                   <input
                     class="new-form_input"
                     type="text"
-                    
                     name="user_name"
                     placeholder="name"
                   />
-
+                  <span>phone</span>
                   <input
-                    class="new-form_input"
+                    class=" new-form_input"
                     type="tel"
-                   
                     name="user_phone"
                     placeholder="tel"
                   />
-                  <button class="button banner-ads--button" value="sign in"
-                 >sign in</button>
+                  <span>email</span>
+                  <input
+                    class="new-form_input"
+                    type="email"
+                    name="email"
+                    placeholder="электронная почта"
+                  />
+                  <button class="button banner-ads--button" value="sign in">
+                    sign in
+                  </button>
                 </form>
               </div>
-<!-- наше меню юзера  -->
+              <!-- наше меню юзера  -->
               <li class="nav-user_find">
                 <a class="nav-user_a" href="#">
                   <svg
@@ -99,8 +108,8 @@
                 </a>
               </li>
 
-              <li >
-                <a href="#"  class="nav-user_enter">
+              <li>
+                <a href="#" class="nav-user_enter">
                   <svg
                     class="nav-user_img "
                     xmlns="http://www.w3.org/2000/svg"
@@ -205,6 +214,7 @@
               <p class="banner-foto_p">
                 Сливочное с апельсиновым джемом и цитрусовой стружкой
               </p>
+              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
             <div class="banner-foto_item banner-foto_choco">
@@ -213,6 +223,7 @@
               <p class="banner-foto_p">
                 Сливочно-кофейное с кусочками шоколада
               </p>
+              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
             <div class="banner-foto_item banner-foto_strawberry">
@@ -221,6 +232,7 @@
               <p class="banner-foto_p">
                 Сливочно-клубничное с присыпкой из белого шоколада
               </p>
+              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
             <div class="banner-foto_item banner-foto_caramel">
@@ -229,6 +241,7 @@
               <p class="banner-foto_p">
                 Сливочное крем-брюле с карамельной подливкой
               </p>
+              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
           </section>
           <!-- секция  3 вафля-->
@@ -318,12 +331,12 @@
 
                   <span>8 812 450-25-25</span>
                 </div>
-                 <input
-                    class="new-form_input"
-                    type="tel"
-                    name="tel"
-                    placeholder="phone"
-                  />
+                <input
+                  class="new-form_input"
+                  type="tel"
+                  name="tel"
+                  placeholder="phone"
+                />
                 <button class="button banner-ads--button">
                   форма&nbsp;обратной&nbsp;связи
                 </button>
@@ -360,12 +373,13 @@
     </div>
     <!--     КОНЕЦ   ПОДЛОЖКА ГЛАВНАЯ САЙТА СО СЛАЙДЕРАМИ  -->
     <!-- <script src="js/main.js"></script> -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
-    <script src="js/mainglasy.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/axios.js"></script>
   </body>
 </html>
