@@ -180,15 +180,15 @@ span {
   font-weight: bold;
 }
 .modal-login {
-  background: rgba(230, 227, 227, 0.835);
+  /* background: rgba(230, 227, 227, 0.835); */
   border-radius: 5px;
   padding: 10px;
   z-index: 2;
   position: absolute;
-  top: 70px;
+  top: 40px;
   left: auto;
   bottom: auto;
-  right: auto;
+  right: 170px;
   margin: auto;
   display: none;
 }
@@ -207,8 +207,33 @@ span {
 .new-form-header {
   display: flex;
   flex-direction: column;
+  background: rgba(230, 227, 227, 0.835);
+  border-radius: 5px;
+  padding: 5px;
+  /* position: absolute; */
+  /* top: -20px;
+  left: auto;
+  bottom: auto;
+  right: 100px;
+  margin: auto; */
+  color: rgb(83, 79, 79);
+
   /* align-items: center; */
   /* justify-content: flex-end; */
+}
+.cart-div {
+  display: flex;
+  background: rgba(230, 227, 227, 0.835);
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  bottom: auto;
+  right: auto;
+  margin: auto;
+  color: rgb(83, 79, 79);
+  display: none;
 }
 .header-title {
   /* border: 1px solid #000; */

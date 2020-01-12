@@ -1,5 +1,5 @@
 let find = document.querySelector('.nav-user_find');
-let enter = document.querySelector('.nav-user_enter');
+let enter = document.querySelector('.nav-user_enter--js');
 let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
 
@@ -8,26 +8,40 @@ document.addEventListener('click', function(e) {
   if (!(e.target.tagName == 'INPUT' || e.target.tagName == 'FORM')) {
     modalFind.style.display = 'none';
   }
-  if (e.target.classList.contains('nav-user_img--js')) {
+  if (e.target.classList.contains('nav-user_find--js')) {
     if (modalFind.style.display == 'none') {
       modalFind.style.display = 'block';
     }
   }
 });
 document.addEventListener('click', function(e) {
-  if (
-    !(
-      e.target.tagName == 'INPUT' ||
-      e.target.tagName == 'FORM' ||
-      e.target.tagName == 'BUTTON'
-    )
-  ) {
-    modalLogin.style.display = 'none';
-  }
-
-  if (e.target.classList.contains('nav-user_enter')) {
-    if (modalLogin.style.display == 'none') {
+  console.log(e.target);
+  // if (
+  //   !(
+  //     e.target.tagName == 'INPUT' ||
+  //     e.target.tagName == 'FORM' ||
+  //     e.target.tagName == 'BUTTON'
+  //   )
+  // ) {
+  //   modalLogin.style.display = 'none';
+  // }
+  let eTargetLink = e.target.classList.contains('nav-user_enter--js');
+  let enterLink = document.querySelectorAll('.nav-user_img');
+  if (eTargetLink) {
+    if (modalLogin.style.display == 'block') {
+      modalLogin.style.display = 'none';
+      enter.style.backgroundImage = '';
+      enter.style.backgroundPosition = '';
+      enter.style.backgroundSize = '';
+      enterLink[1].style.opacity = 1;
+      eTargetLink.style.backgroundImage = ' url(../img/for_curt.png)';
+    } else {
       modalLogin.style.display = 'block';
+      enter.style.backgroundImage = 'url(../img/close_but.png)';
+      enter.style.backgroundRepeat = 'no-repeat';
+      enter.style.backgroundPosition = '20%,50%';
+      enter.style.backgroundSize = '20px';
+      enterLink[1].style.opacity = 0;
     }
   }
 });

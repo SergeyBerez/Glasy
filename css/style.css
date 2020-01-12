@@ -122,6 +122,9 @@ body {
   background: rgba(128, 128, 128, 0.178);
   border-radius: 10px;
 }
+.cart_display--js {
+  display: flex;
+}
 /* ===================медиа запросы  =======*/
 @media all and (max-width: 540px) {
   html {
@@ -261,11 +264,27 @@ body {
   .modal-login {
     z-index: 2;
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: auto;
+    bottom: auto;
+    right: 100px;
+    margin: auto;
+    /* display: none; */
+  }
+  .cart-div {
+    display: flex;
+    background: rgba(230, 227, 227, 0.835);
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    top: 50px;
+    left: 100px;
     bottom: auto;
     right: auto;
     margin: auto;
-    /* display: none; */
+    display: none;
+  }
+  .cart_display--js {
+    display: flex;
   }
 }
