@@ -35,10 +35,10 @@ document.addEventListener('click', function(e) {
       enter.style.backgroundPosition = '';
       enter.style.backgroundSize = '';
       svgIcon[1].style.opacity = 1;
-      enter.style.backgroundImage = 'url(../img/for_curt.png)';
+      enter.style.backgroundImage = 'url(./img/for_curt.png)';
     } else {
       modalLogin.style.display = 'block';
-      enter.style.backgroundImage = 'url(../img/close_but.png)';
+      enter.style.backgroundImage = 'url(./img/close_but.png)';
 
       enter.style.backgroundRepeat = 'no-repeat';
       enter.style.backgroundPosition = '20%,50%';
