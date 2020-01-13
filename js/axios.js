@@ -26,22 +26,24 @@ document.addEventListener('click', function(e) {
   //   modalLogin.style.display = 'none';
   // }
   let eTargetLink = e.target.classList.contains('nav-user_enter--js');
-  let enterLink = document.querySelectorAll('.nav-user_img');
+  let svgIcon = document.querySelectorAll('.nav-user_img');
+  console.log(eTargetLink);
   if (eTargetLink) {
     if (modalLogin.style.display == 'block') {
       modalLogin.style.display = 'none';
       enter.style.backgroundImage = '';
       enter.style.backgroundPosition = '';
       enter.style.backgroundSize = '';
-      enterLink[1].style.opacity = 1;
-      eTargetLink.style.backgroundImage = ' url(../img/for_curt.png)';
+      svgIcon[1].style.opacity = 1;
+      enter.style.backgroundImage = 'url(../img/for_curt.png)';
     } else {
       modalLogin.style.display = 'block';
       enter.style.backgroundImage = 'url(../img/close_but.png)';
+
       enter.style.backgroundRepeat = 'no-repeat';
       enter.style.backgroundPosition = '20%,50%';
       enter.style.backgroundSize = '20px';
-      enterLink[1].style.opacity = 0;
+      svgIcon[1].style.opacity = 0;
     }
   }
 });
