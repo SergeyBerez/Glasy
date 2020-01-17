@@ -291,4 +291,7 @@ body {
   .cart_display--js {
     display: flex;
   }
+  .nav-user li a {
+    padding: 0;
+  }
 }
