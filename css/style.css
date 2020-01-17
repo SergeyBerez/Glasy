@@ -61,6 +61,9 @@ body {
 
 .indication-button {
   padding-top: 40px;
+  max-width: 1000px;
+  border: 1px solid #000;
+  justify-content: space-around;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
@@ -77,7 +80,7 @@ body {
 /* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
 /* передвигаем блок в ценрт относительно wrapper */
 .controls {
-  /* margin-right: auto; */
+  margin-right: auto;
   margin: 20px;
   /* flex-basis: 50%;
   width: 500px; */

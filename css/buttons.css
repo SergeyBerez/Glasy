@@ -27,7 +27,7 @@ button:active {
 }
 /* стиль для кнопки хедера */
 .button--header {
-  margin: 0 auto;
+  /* margin-right: auto; */
   padding: 15px 40px;
   line-height: 4.4rem;
   /* margin-top: 20px; */

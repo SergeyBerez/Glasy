@@ -4,6 +4,7 @@
   left: 0; */
   /* z-index: 1; */
 }
+
 .header-flex {
   display: flex;
   flex-wrap: wrap;
@@ -18,9 +19,11 @@
  flex-basis: 100%;
   max-width: 160px; */
 }
+
 .header_menu-icon {
   display: none;
 }
+
 /* главное меню  */
 .header-nav {
   display: flex;
@@ -35,6 +38,7 @@
   position: relative;
   line-height: 32px;
 }
+
 .header-nav li a {
   transition: background-color 0.5s ease;
   font-weight: Bold;
@@ -46,14 +50,17 @@
   cursor: pointer;
   border-radius: 15px;
 }
+
 .header-nav li a:hover {
   color: #282828;
   background-color: rgb(247, 246, 243);
 }
+
 /* скрытое выпадающее меню */
 .header-nav li:hover .drop {
   display: block;
 }
+
 .header-nav .drop {
   margin: 0;
   padding: 0;
@@ -69,9 +76,11 @@
   overflow: hidden;
   box-shadow: 0px 15px 20px #0707079a;
 }
+
 ul.drop li {
   width: 100%;
 }
+
 ul.drop li a {
   display: block;
   color: inherit;
@@ -79,6 +88,7 @@ ul.drop li a {
   color: #282828;
   font-weight: normal;
 }
+
 ul.drop li:first-child {
   border-bottom: 1px solid #282828;
   font-weight: Bold;
@@ -86,11 +96,13 @@ ul.drop li:first-child {
   text-align: center;
   font-size: 16px;
 }
+
 ul.drop li a:hover {
   color: #282828;
   border-radius: 5px;
   background: #fbded7;
 }
+
 .fa-times {
   position: absolute;
   margin: auto;
@@ -100,10 +112,12 @@ ul.drop li a:hover {
   right: 0;
   color: #282828;
 }
+
 .close-menu-button--js {
   display: none;
   /* z-index: 1; */
 }
+
 /* правое меню пользователя */
 
 .nav-user {
@@ -111,20 +125,23 @@ ul.drop li a:hover {
   max-width: 270px;
   flex-basis: 50%;
   justify-content: flex-end;
+
   /* margin: 0 auto; */
   position: relative;
   margin-left: auto;
   list-style-type: none;
 }
+
 .nav-user li {
   margin-left: auto;
   margin: 5px;
   text-align: center;
 }
+
 .nav-user li a {
   transition: box-shadow 0.5s ease;
   display: block;
-
+  padding: 0 10px;
   text-align: center;
   border-radius: 25px;
   line-height: 30px;
@@ -138,17 +155,17 @@ ul.drop li a:hover {
 
 .nav-user a:hover {
   color: #282828;
-
   background-color: #f8f7f4;
 }
+
 .nav-user a:hover .nav-user_img {
   fill: #282828;
 }
+
 .nav-user_img {
-  padding: 5px;
   color: rgb(83, 79, 79);
   vertical-align: middle;
-  display: inline;
+  /* display: inline; */
   border-radius: 25%;
   fill: rgb(83, 79, 79);
   width: 20px;
@@ -165,6 +182,7 @@ ul.drop li a:hover {
   border-radius: 50%;
   background-image: url('../img/for_lupa.png');
 }
+
 .work-info {
   padding-top: 20px;
   flex-basis: 100%;
@@ -174,11 +192,13 @@ ul.drop li a:hover {
   color: rgb(83, 79, 79);
   font-weight: bold;
 }
+
 span {
   color: rgb(83, 79, 79);
   font-size: 2.2rem;
   font-weight: bold;
 }
+
 .modal-login {
   /* background: rgba(230, 227, 227, 0.835); */
   border-radius: 5px;
@@ -192,6 +212,7 @@ span {
   margin: auto;
   display: none;
 }
+
 .modal-find {
   background: rgba(230, 227, 227, 0.835);
   border-radius: 5px;
@@ -204,6 +225,7 @@ span {
   margin: auto;
   display: none;
 }
+
 .new-form-header {
   display: flex;
   flex-direction: column;
@@ -221,6 +243,7 @@ span {
   /* align-items: center; */
   /* justify-content: flex-end; */
 }
+
 .cart-div {
   display: flex;
   background: rgba(230, 227, 227, 0.835);
@@ -235,6 +258,7 @@ span {
   color: rgb(83, 79, 79);
   display: none;
 }
+
 .header-title {
   /* border: 1px solid #000; */
 

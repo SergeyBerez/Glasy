@@ -14,17 +14,9 @@ document.addEventListener('click', function(e) {
     }
   }
 });
+// меням иконку на лишках  иконка входа
 document.addEventListener('click', function(e) {
   console.log(e.target);
-  // if (
-  //   !(
-  //     e.target.tagName == 'INPUT' ||
-  //     e.target.tagName == 'FORM' ||
-  //     e.target.tagName == 'BUTTON'
-  //   )
-  // ) {
-  //   modalLogin.style.display = 'none';
-  // }
   let eTargetLink = e.target.classList.contains('nav-user_enter--js');
   let svgIcon = document.querySelectorAll('.nav-user_img');
   console.log(eTargetLink);
@@ -77,10 +69,10 @@ for (let i = 0; i < document.forms.length; i++) {
       }
 
       if (counter == count) {
-        //document.forms[i].elements[j].classList.remove('error');
+      // 'https://my-json-server.typicode.com/SergeyBerez/server/myPost'
         axios
           .post(
-            'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
+            '../telegram.php',
             obj,
           )
           .then(function(response) {
