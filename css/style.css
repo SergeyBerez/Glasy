@@ -62,7 +62,7 @@ body {
 .indication-button {
   padding-top: 40px;
   max-width: 1000px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   justify-content: space-around;
   margin-right: auto;
   display: flex;
@@ -236,7 +236,8 @@ body {
   }
   /* стили для правого меню  навигаци модальных окон */
   .nav-user {
-    margin-left: auto;
+    justify-content: space-around;
+    /* margin-left: auto; */
     flex-basis: 50%;
   }
 

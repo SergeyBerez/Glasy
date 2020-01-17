@@ -134,7 +134,7 @@ ul.drop li a:hover {
 
 .nav-user li {
   margin-left: auto;
-  margin: 5px;
+  /* margin-right: 10px; */
   text-align: center;
 }
 
