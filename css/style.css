@@ -5,17 +5,20 @@ html {
 div {
   box-sizing: border-box;
 }
+
 ul,
 li {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
   display: block;
   color: inherit;
 }
+
 body {
   box-sizing: border-box;
   margin: 0px;
@@ -25,14 +28,17 @@ body {
   font-size: 1.6rem;
   color: #ebe1e1;
 }
+
 *::first-letter {
   text-transform: uppercase;
 }
+
 .conteiner {
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
 }
+
 /* подложка див conteiner в нем вложенный див со слайдерами js */
 .slides {
   /* padding-top: 50px; */
@@ -47,6 +53,7 @@ body {
   background-size: 100%;
   transition: all 0.8s;
 }
+
 /* выравниваем наш контент */
 .wrap {
   /* border: 7px solid #000; */
@@ -60,6 +67,7 @@ body {
 }
 
 .indication-button {
+  transform: translateX(200%);
   padding-top: 40px;
   max-width: 1000px;
   /* border: 1px solid #000; */
@@ -68,23 +76,31 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
+  transition: 0.9s;
   /* padding-top: auto; */
   flex-basis: 90%;
   /* margin-right: auto; */
   /* justify-content: space-between; */
 }
+
+.animaton-h1 {
+  transform: translateX(1%);
+}
+
 .indication-input {
   display: none;
 }
+
 /* Так как радио-кнопки скрыты и нужны нам как переключатели, оформляем подготовленные лейблы: */
 /* передвигаем блок в ценрт относительно wrapper */
 .controls {
   margin-right: auto;
   margin: 20px;
+
   /* flex-basis: 50%;
   width: 500px; */
 }
+
 /*делаем точки серые делаем элементы блочными */
 .indication-label {
   position: relative;
@@ -96,6 +112,7 @@ body {
   transition: background ease-in-out 0.5s;
   border-radius: 50%;
 }
+
 /* добавляем к лейблам псевдоелементы  и ставим круги к лейблам */
 .indication-label:after {
   position: absolute;
@@ -108,10 +125,12 @@ body {
   top: -5px;
   border-radius: 50%;
 }
+
 /* Пришло время научить слайдер переключать слайды по нажатию на определённую радио кнопку : */
 .indication-label:hover {
   background: #ddd;
 }
+
 #slide1:checked ~ .controls .indication-label:nth-of-type(1),
 #slide2:checked ~ .controls .indication-label:nth-of-type(2),
 #slide3:checked ~ .controls .indication-label:nth-of-type(3) {
@@ -125,10 +144,16 @@ body {
   background: rgba(128, 128, 128, 0.178);
   border-radius: 10px;
 }
+
 .cart_display--js {
   display: flex;
 }
+
 /* ===================медиа запросы  =======*/
+
+@media screen(max-width:700px) {
+}
+
 @media all and (max-width: 540px) {
   html {
     font-size: 52.5%;
@@ -139,6 +164,7 @@ body {
     max-width: 300px;
     flex-basis: 100%;
   }
+
   .header_menu-icon {
     flex-basis: 40%;
     margin-right: auto;
@@ -146,6 +172,7 @@ body {
     cursor: pointer;
     transition: 0.9s;
   }
+
   .header-nav {
     /* display: none; */
     position: fixed;
@@ -164,15 +191,18 @@ body {
     z-index: 2;
     overflow: hidden;
   }
+
   .header-nav li a {
     font-size: 3rem;
 
     border-radius: 0px;
   }
+
   .header-nav li a:hover {
     color: #282828;
     background-color: transparent;
   }
+
   .header-nav li::before {
     position: absolute;
     display: block;
@@ -184,9 +214,11 @@ body {
     transition: 0.9s;
     transform: translateX(-100%);
   }
+
   .header-nav li:hover::before {
     transform: translateX(1%);
   }
+
   .header-nav li::after {
     position: absolute;
     display: block;
@@ -198,15 +230,18 @@ body {
     transition: 0.9s;
     transform: translateX(100%);
   }
+
   .header-nav li:hover::after {
     transform: translateX(1%);
   }
+
   .close-menu-button--js {
     display: block;
     cursor: pointer;
     z-index: 2;
     padding: 10px;
   }
+
   /* заголовок  */
   .header-title {
     padding-top: 70%;
@@ -219,6 +254,7 @@ body {
     text-transform: lowercase;
     color: #ffffff;
   }
+
   .indication-button {
     padding-top: 20px;
     margin: 0 auto;
@@ -230,10 +266,12 @@ body {
     flex-basis: 40%;
     margin: 0 auto;
   }
+
   .controls {
     flex-basis: 100%;
     margin: 20px;
   }
+
   /* стили для правого меню  навигаци модальных окон */
   .nav-user {
     justify-content: space-around;
@@ -258,6 +296,7 @@ body {
     margin: auto;
     /* display: none; */
   }
+
   .new-form_input {
     margin: 5px auto;
     outline: transparent;
@@ -265,16 +304,25 @@ body {
     height: 20px;
     min-width: 200px;
   }
+
   .modal-login {
-    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: rgba(128, 128, 128, 0.616);
+    /* z-index: 2;
     position: absolute;
     top: 40px;
     left: auto;
     bottom: auto;
     right: 100px;
-    margin: auto;
+    margin: auto; */
     /* display: none; */
   }
+
   .cart-div {
     display: flex;
     background: rgba(230, 227, 227, 0.835);
@@ -288,9 +336,11 @@ body {
     margin: auto;
     display: none;
   }
+
   .cart_display--js {
     display: flex;
   }
+
   .nav-user li a {
     padding: 0;
   }

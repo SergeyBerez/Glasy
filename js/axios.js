@@ -1,7 +1,8 @@
 let find = document.querySelector('.nav-user_find');
-let enter = document.querySelector('.nav-user_enter--js');
+let enterbtn = document.querySelector('.nav-user_enter--js');
 let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
+let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 
 // меняем событие на модальных оканах показываем и скрываем
 document.addEventListener('click', function(e) {
@@ -14,29 +15,25 @@ document.addEventListener('click', function(e) {
     }
   }
 });
-// меням иконку на лишках  иконка входа
-document.addEventListener('click', function(e) {
+// меням иконку на лишках  иконка входа и отбражаем наше модальное окно
+// входа
+enterbtn.addEventListener('click', function(e) {
   console.log(e.target);
-  let eTargetLink = e.target.classList.contains('nav-user_enter--js');
-  let svgIcon = document.querySelectorAll('.nav-user_img');
-  console.log(eTargetLink);
-  if (eTargetLink) {
-    if (modalLogin.style.display == 'block') {
-      modalLogin.style.display = 'none';
-      enter.style.backgroundImage = '';
-      enter.style.backgroundPosition = '';
-      enter.style.backgroundSize = '';
-      svgIcon[1].style.opacity = 1;
-      enter.style.backgroundImage = 'url(./img/for_curt.png)';
-    } else {
-      modalLogin.style.display = 'block';
-      enter.style.backgroundImage = 'url(./img/close_but.png)';
 
-      enter.style.backgroundRepeat = 'no-repeat';
-      enter.style.backgroundPosition = '20%,50%';
-      enter.style.backgroundSize = '20px';
-      svgIcon[1].style.opacity = 0;
-    }
+  if (modalLogin.style.display == 'block') {
+    modalLogin.style.display = 'none';
+  } else {
+    modalLogin.style.display = 'block';
+  }
+});
+
+modalLogin.addEventListener('click', function(e) {
+  if (
+    e.target.classList.contains('close-menu-button--js') ||
+    e.target.className == 'modal-login'
+  ) {
+    modalLogin.style.display = 'none';
+    console.log(2222);
   }
 });
 
@@ -69,12 +66,9 @@ for (let i = 0; i < document.forms.length; i++) {
       }
 
       if (counter == count) {
-      // 'https://my-json-server.typicode.com/SergeyBerez/server/myPost'
+        // 'https://my-json-server.typicode.com/SergeyBerez/server/myPost'
         axios
-          .post(
-            '../telegram.php',
-            obj,
-          )
+          .post('../telegram.php', obj)
           .then(function(response) {
             //let data = Object.values(response.data);
             console.log(response.data);
@@ -86,7 +80,13 @@ for (let i = 0; i < document.forms.length; i++) {
             document.forms[i].reset();
           })
           .catch(function(error) {
-            console.log(error);
+            //console.log(error);
+
+            document.forms[
+              i
+            ].innerHTML += `<p><br>произошла ошибка сервер не отвечает</p>`;
+            deleteModalForm(document.forms[i]);
+            document.forms[i].reset();
           });
       }
     }

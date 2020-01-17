@@ -61,7 +61,7 @@ headerMenuIcon.addEventListener('click', function(e) {
   headerNav.style.left = '0px';
 });
 closemenu.addEventListener('click', function(e) {
-  headerNav.style.left = '-490px';
+  headerNav.style.left = '-500px';
   headerMenuIcon.style.opacity = '1';
 });
 window.addEventListener('resize', function(e) {
@@ -125,3 +125,32 @@ btnUserCart.addEventListener('click', function(e) {
   console.log(1);
   cartDiv.classList.toggle('cart_display--js');
 });
+
+// анимацию на h1
+const h1 = document.querySelector('.header-title');
+const indicationButton = document.querySelector('.indication-button');
+
+window.addEventListener('scroll', function(e) {
+  if (window.pageYOffset > 200) {
+    h1.classList.add('animaton-h1');
+  } else {
+    h1.classList.remove('animaton-h1');
+  }
+  if (window.pageYOffset > 350) {
+    indicationButton.classList.add('animaton-h1');
+  } else {
+    indicationButton.classList.remove('animaton-h1');
+  }
+
+  console.log(window.pageYOffset);
+});
+
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + window.pageYOffset,
+    left: box.left + window.pageXOffset,
+  };
+}
+console.log(getCoords(indicationButton));
