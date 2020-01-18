@@ -1,5 +1,5 @@
 let find = document.querySelector('.nav-user_find');
-let enterbtn = document.querySelector('.nav-user_enter--js');
+let btnEnter = document.querySelector('.nav-user_enter--js');
 let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
@@ -9,15 +9,16 @@ document.addEventListener('click', function(e) {
   if (!(e.target.tagName == 'INPUT' || e.target.tagName == 'FORM')) {
     modalFind.style.display = 'none';
   }
+  if (e.target.classList.contains('close-modalLogin--js')) {
+    modalFind.style.display = 'none';
+  }
   if (e.target.classList.contains('nav-user_find--js')) {
-    if (modalFind.style.display == 'none') {
-      modalFind.style.display = 'block';
-    }
+    modalFind.style.display = 'block';
   }
 });
-// меням иконку на лишках  иконка входа и отбражаем наше модальное окно
+//  отбражаем наше модальное окно
 // входа
-enterbtn.addEventListener('click', function(e) {
+btnEnter.addEventListener('click', function(e) {
   console.log(e.target);
 
   if (modalLogin.style.display == 'block') {
@@ -29,11 +30,10 @@ enterbtn.addEventListener('click', function(e) {
 
 modalLogin.addEventListener('click', function(e) {
   if (
-    e.target.classList.contains('close-menu-button--js') ||
+    e.target.classList.contains('close-modalLogin--js') ||
     e.target.className == 'modal-login'
   ) {
     modalLogin.style.display = 'none';
-    console.log(2222);
   }
 });
 

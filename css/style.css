@@ -322,7 +322,15 @@ body {
     margin: auto; */
     /* display: none; */
   }
-
+  .new-form-header {
+    z-index: 2;
+    position: absolute;
+    top: 40px;
+    left: auto;
+    bottom: auto;
+    right: 100px;
+    margin: auto;
+  }
   .cart-div {
     display: flex;
     background: rgba(230, 227, 227, 0.835);

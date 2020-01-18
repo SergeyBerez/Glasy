@@ -119,6 +119,13 @@ ul.drop li a:hover {
   /* z-index: 1; */
 }
 
+.close-modalLogin--js {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+  padding: 10px;
+}
+
 /* правое меню пользователя */
 
 .nav-user {
@@ -241,12 +248,7 @@ span {
   background: rgba(230, 227, 227, 0.835);
   border-radius: 5px;
   padding: 5px;
-
   color: rgb(83, 79, 79);
-
-  /* align-items: center; */
-  /* justify-content: flex-end; */
-
   border-radius: 5px;
   padding: 10px;
   z-index: 1001;
@@ -256,7 +258,6 @@ span {
   bottom: auto;
   right: 170px;
   margin: auto;
-  /* display: none; */
 }
 
 .cart-div {
@@ -290,7 +291,6 @@ span {
   transform: translateX(-200%);
   transition: 0.9s;
 }
-
 
 @keyframes fade-in {
   0% {
