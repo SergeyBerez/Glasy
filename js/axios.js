@@ -112,7 +112,7 @@ let goodsWrap = document.getElementsByClassName('goods-wrap');
 
 function getGoods(callbackHadler, callbackFilter) {
   axios
-    .get('../request/db.json')
+    .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
     .then(({ data }) => callbackFilter(data))
     .then(data => callbackHadler(data));
 }

@@ -281,12 +281,13 @@ span {
 
 .cart-div {
   display: flex;
+  max-width: 300px;
   background: rgba(230, 227, 227, 0.835);
   border-radius: 5px;
   padding: 5px;
   position: absolute;
   top: 50px;
-  left: 100px;
+  left:  auto;
   bottom: auto;
   right: auto;
   margin: auto;
