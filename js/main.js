@@ -133,12 +133,12 @@ const indicationButton = document.querySelector('.indication-button');
 window.addEventListener('scroll', function(e) {
   if (window.pageYOffset > 200) {
     h1.classList.add('animaton-h1');
-  } else {
+  } else if (window.pageYOffset < 50) {
     h1.classList.remove('animaton-h1');
   }
-  if (window.pageYOffset > 350) {
+  if (window.pageYOffset > 300) {
     indicationButton.classList.add('animaton-h1');
-  } else {
+  } else if (window.pageYOffset < 50) {
     indicationButton.classList.remove('animaton-h1');
   }
 

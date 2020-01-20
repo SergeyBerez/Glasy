@@ -67,7 +67,7 @@ body {
 }
 
 .indication-button {
-  transform: translateX(200%);
+  transform: translateX(-200%);
   padding-top: 40px;
   max-width: 1000px;
   /* border: 1px solid #000; */

@@ -329,12 +329,15 @@ span {
   min-width: 200px;
   margin-top: 30px;
   background-color: grey;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px grey;
 }
 
 .goods {
   display: flex;
   flex-direction: column;
   min-height: 350px;
+  
 
   justify-content: space-between;
   align-items: center;
