@@ -135,7 +135,7 @@ function createCart(title, name, photo, price) {
                 <p> ${name}</p>
                
                  <img  class="goods-img" src="${photo}"  alt="">
-                  <p> ${price}</p><span>грн</span>
+                  <p><span> ${price} грн</span></p>
                 </div>`;
   return div;
 }

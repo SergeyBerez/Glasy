@@ -285,6 +285,7 @@ body {
 
   .nav-user li {
     margin: 0px;
+   
   }
 
   .modal-find {
@@ -306,7 +307,7 @@ body {
     min-width: 100px;
   }
 
-  .modal-login {
+  /* .modal-login {
     position: fixed;
     top: 0;
     left: 0;
@@ -314,15 +315,8 @@ body {
     height: 100%;
     z-index: 1000;
     background: rgba(128, 128, 128, 0.616);
-    /* z-index: 2;
-    position: absolute;
-    top: 40px;
-    left: auto;
-    bottom: auto;
-    right: 100px;
-    margin: auto; */
-    /* display: none; */
-  }
+    
+  } */
   .new-form-header {
     z-index: 2;
     position: absolute;
@@ -351,8 +345,8 @@ body {
     display: flex;
   }
 
-  .nav-user li a {
-    padding: 0;
+  .nav-user li {
+    padding: 5px;
   }
 }
 /* спиннер  */
