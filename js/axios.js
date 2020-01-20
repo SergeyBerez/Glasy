@@ -110,7 +110,12 @@ let wrap = document.querySelector('.wrap-goods');
 let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
 
+const loading = () => {
+  wrap.innerHTML = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+};
+
 function getGoods(callbackHadler, callbackFilter) {
+  loading();
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
     .then(({ data }) => callbackFilter(data))
@@ -136,7 +141,7 @@ function createCart(title, name, photo, price) {
 }
 
 function renderCard(arr) {
-  // wrap.textContent = '';
+  wrap.textContent = '';
   arr.forEach(({ title, name, photo, price }) => {
     wrap.append(createCart(title, name, photo, price));
   });
@@ -145,11 +150,5 @@ getGoods(renderCard, randomSort);
 
 getGoodsbtn.addEventListener('click', function(e) {
   wrap.classList.toggle('display');
-  // if (wrap.style.display == 'flex') {
-  //   wrap.style.height = '200px';
-  // } else {
-  //   wrap.style.opacity = 1;
-
-  // }
 });
 //wrap.append(renderCard('aaa', 'sss', 'фото'));
