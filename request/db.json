@@ -1,0 +1,79 @@
+[
+  {
+    "id": 111,
+    "title": "Fruit",
+    "name": "Apple",
+    "price": 20,
+
+    "completed": false,
+    "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/apple-512.png"
+  },
+  {
+    "id": 2,
+    "title": "Fruit",
+    "name": "Banana",
+    "price": 25,
+    "completed": false,
+    "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/banana-512.png"
+  },
+  {
+    "id": 3,
+    "title": "Fruit",
+    "name": "grape",
+    "price": 74,
+    "completed": false,
+    "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/grape-512.png"
+  },
+  {
+    "id": 131,
+    "title": "Fruit",
+    "name": "pineapple",
+    "price": 78,
+    "completed": false,
+    "photo": "https://cdn0.iconfinder.com/data/icons/fruits-29/338/fruit_pineapple-512.png"
+  },
+  {
+    "id": 5,
+    "title": "Fruit",
+    "name": "watermellon",
+    "price": 60,
+    "completed": false,
+    "photo": "https://cdn0.iconfinder.com/data/icons/fruits-29/300/fruit_watermellon-512.png"
+  },
+  {
+    "id": 6,
+    "title": "Fruit",
+    "name": "plum",
+    "price": 30,
+
+    "completed": false,
+    "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/plum-512.png"
+  },
+  {
+    "id": 7,
+    "title": "Fruit",
+    "name": "Cherry",
+    "price": 48,
+
+    "completed": false,
+    "photo": "https://cdn0.iconfinder.com/data/icons/fruits-29/262/fruit_cherry-512.png"
+  },
+  {
+    "id": 8,
+    "title": "Fruit",
+    "name": "strawberry",
+    "price": 230,
+
+    "completed": false,
+    "photo": "https://cdn0.iconfinder.com/data/icons/fruits-29/310/fruit_strawberry-512.png"
+  },
+  {
+    "id": 9,
+    "title": "Fruit",
+    "name": "Avocado",
+    "price": 260,
+
+    "completed": false,
+    "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/avocado-512.png"
+  }
+]

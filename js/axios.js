@@ -1,41 +1,45 @@
-let find = document.querySelector('.nav-user_find');
+let btnFind = document.querySelector('.nav-user_a');
 let btnEnter = document.querySelector('.nav-user_enter--js');
 let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 
 // меняем событие на модальных оканах показываем и скрываем
+
 document.addEventListener('click', function(e) {
-  if (!(e.target.tagName == 'INPUT' || e.target.tagName == 'FORM')) {
+  console.log(e.target);
+  if (
+    !(
+      e.target.tagName == 'INPUT' ||
+      e.target.tagName == 'FORM' ||
+      e.target.classList.contains('fa-search')
+    )
+  ) {
     modalFind.style.display = 'none';
   }
-  if (e.target.classList.contains('close-modalLogin--js')) {
-    modalFind.style.display = 'none';
-  }
-  if (e.target.classList.contains('nav-user_find--js')) {
+
+  if (
+    e.target.classList.contains('nav-user_find--js') ||
+    e.target.classList.contains('nav-user_a')
+  ) {
     modalFind.style.display = 'block';
   }
 });
 //  отбражаем наше модальное окно
 // входа
-btnEnter.addEventListener('click', function(e) {
-  console.log(e.target);
-
-  if (modalLogin.style.display == 'block') {
-    modalLogin.style.display = 'none';
-  } else {
-    modalLogin.style.display = 'block';
-  }
-});
-
-modalLogin.addEventListener('click', function(e) {
+const openModalLogin = e => {
+  modalLogin.style.display = 'block';
+};
+const closeMofalLogin = e => {
   if (
     e.target.classList.contains('close-modalLogin--js') ||
     e.target.className == 'modal-login'
   ) {
     modalLogin.style.display = 'none';
   }
-});
+};
+btnEnter.addEventListener('click', openModalLogin);
+modalLogin.addEventListener('click', closeMofalLogin);
 
 // общая форма отправки данных
 
@@ -100,3 +104,52 @@ function deleteModalForm(node) {
     modalLogin.style.display = 'none';
   }, 3000);
 }
+
+// рисуем карты
+let wrap = document.querySelector('.wrap-goods');
+let getGoodsbtn = document.querySelector('.button--header');
+let goodsWrap = document.getElementsByClassName('goods-wrap');
+
+function getGoods(callbackHadler, callbackFilter) {
+  axios
+    .get('../request/db.json')
+    .then(({ data }) => callbackFilter(data))
+    .then(data => callbackHadler(data));
+}
+
+function randomSort(arr) {
+  let arrey = arr.filter(item => item.price > 10);
+  return arrey.sort((a, b) => a.id - b.id);
+  //return arr.sort((a, b) => b.id - a.id);
+}
+function createCart(title, name, photo, price) {
+  const div = document.createElement('div');
+  div.className = 'goods-wrap';
+  div.innerHTML = `<div class="goods">
+                <h2> ${title} </h2 >
+                <p> ${name}</p>
+               
+                 <img  class="goods-img" src="${photo}"  alt="">
+                  <p> ${price}</p><span>грн</span>
+                </div>`;
+  return div;
+}
+
+function renderCard(arr) {
+  // wrap.textContent = '';
+  arr.forEach(({ title, name, photo, price }) => {
+    wrap.append(createCart(title, name, photo, price));
+  });
+}
+getGoods(renderCard, randomSort);
+
+getGoodsbtn.addEventListener('click', function(e) {
+  wrap.classList.toggle('display');
+  // if (wrap.style.display == 'flex') {
+  //   wrap.style.height = '200px';
+  // } else {
+  //   wrap.style.opacity = 1;
+
+  // }
+});
+//wrap.append(renderCard('aaa', 'sss', 'фото'));

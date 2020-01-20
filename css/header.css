@@ -105,6 +105,8 @@ ul.drop li a:hover {
 }
 
 .fa-times {
+  /* width: 10px;
+  height: 10px; */
   position: absolute;
   margin: auto;
   left: auto;
@@ -122,7 +124,7 @@ ul.drop li a:hover {
 .close-modalLogin--js {
   display: block;
   cursor: pointer;
-  z-index: 2;
+  /* z-index: 2; */
   padding: 10px;
 }
 
@@ -239,9 +241,26 @@ span {
   bottom: auto;
   right: 200px;
   margin: auto;
+
   display: none;
 }
+.form-header-search {
+  width: 370px;
+}
+.fa-search {
+  /* position: absolute;
+  margin: auto;
+  left: auto;
+  top: auto;
+  bottom: 0;
+  right: 0; */
+  color: #282828;
+}
+.box-search-icon {
+  display: inline-block;
 
+  cursor: pointer;
+}
 .new-form-header {
   display: flex;
   flex-direction: column;
@@ -292,6 +311,36 @@ span {
   transition: 0.9s;
 }
 
+/* стили для карточек  */
+.wrap-goods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.display {
+  display: none;
+}
+.goods-wrap {
+  width: calc(100% / 4 - 10px);
+  margin: 5px;
+  min-width: 200px;
+  margin-top: 30px;
+  background-color: grey;
+}
+
+.goods {
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  /* text-align: center; */
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.goods-img {
+  max-width: 100px;
+}
 @keyframes fade-in {
   0% {
     opacity: 0.1;
