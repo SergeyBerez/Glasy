@@ -308,7 +308,7 @@ opacity:1;
     top: 30px;
     left: auto;
     bottom: auto;
-    right: auto;
+    right: 10px;
     margin: auto;
     max-width: 220px;
     /* display: none; */
