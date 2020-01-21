@@ -61,7 +61,7 @@ headerMenuIcon.addEventListener('click', function(e) {
   headerNav.style.left = '0px';
 });
 closemenu.addEventListener('click', function(e) {
-  headerNav.style.left = '-500px';
+  headerNav.style.left = '-580px';
   headerMenuIcon.style.opacity = '1';
 });
 window.addEventListener('resize', function(e) {
