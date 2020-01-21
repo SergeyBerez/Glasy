@@ -5,27 +5,16 @@ let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 
 // меняем событие на модальных оканах показываем и скрываем
-
-btnFind.addEventListener('click', function(e) {
-  // let g = this.closest('div').querySelector('.modal-find');
-
-  // if (
-  //   !(
-  //     e.target.tagName == 'INPUT' ||
-  //     e.target.tagName == 'FORM' ||
-  //     e.target.classList.contains('fa-search')
-  //   )
-  // ) {
-  //   modalFind.style.display = 'none';
-  // }
-
-  if (
-    e.target.classList.contains('nav-user_find--js') ||
-    e.target.classList.contains('nav-user_a')
-  ) {
-    modalFind.style.display = 'block';
-  } else {
+modalFind.addEventListener('click', function(e) {
+  if (e.target.classList.contains('close-modalLogin--js')) {
     modalFind.style.display = 'none';
+  }
+});
+btnFind.addEventListener('click', function(e) {
+  if (modalFind.style.display == 'block') {
+    modalFind.style.display = 'none';
+  } else {
+    modalFind.style.display = 'block';
   }
 });
 //  отбражаем наше модальное окно

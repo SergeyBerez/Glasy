@@ -1,25 +1,18 @@
 let slider = document.querySelector('.slides');
 
+// -----------меняем при нажатии цвет и картинки на радио кнопки
 let radio = document.querySelectorAll('[type="radio"]');
-
 for (let i = 0; i < radio.length; i++) {
   radio[i].addEventListener('click', function(e) {
-    console.log(this.dataset.type);
+    console.log(e.target.dataset.color);
     if (e.target.dataset.type) {
       slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
       slider.style.backgroundColor = e.target.dataset.color;
     }
-    // if (this.id == 'slide2') {
-    //   slider.style.backgroundImage = arrImg[1];
-    // }
-    // if (this.id == 'slide3') {
-    //   slider.style.backgroundImage = arrImg[2];
-    // }
   });
 }
-
+// ----------меняем фон и картинки  делаем переключение авто
 let j = 0;
-
 function changebackground() {
   let arrImg = [
     'url(./img/Group1aaa.png)',
@@ -34,23 +27,12 @@ function changebackground() {
   if (j >= arrImg.length) {
     j = 0;
   }
-  // setInterval(function() {
-  //   console.log(radio[i].dataset.type);
-  //   slider.style.backgroundImage = arrImg[i];
-  //   slider.style.backgroundColor = arrColor[i];
-  //   radio[i].checked = true;
-  //   i++;
-  //   if (i >= arrImg.length) {
-  //     i = 0;
-  //   }
-
-  // }, 2500);
 }
 
 setInterval(function() {
   changebackground();
 }, 3000);
-
+// -------------работем с меню скрытым
 let headerMenuIcon = document.querySelector('.header_menu-icon');
 let headerNav = document.querySelector('.header-nav');
 let closemenu = document.querySelector('.close-menu-button--js');
@@ -69,14 +51,7 @@ window.addEventListener('resize', function(e) {
   headerMenuIcon.style.display = '';
 });
 
-// $('.header_menu-icon').click(function(e) {
-//   $('.header-nav').fadeToggle(300);
-
-//   if (headerNav.style.display == 'block') {
-//     headerNav.style.display = '';
-//   }
-// });
-
+//----------работаем с товаром добавляем , кнокапи добавляем товар в козину
 let bntcarts = document.querySelectorAll('.fa-cart-plus');
 for (let i = 0; i < bntcarts.length; i++) {
   bntcarts[i].addEventListener('click', addtoCart);
@@ -119,31 +94,40 @@ for (let i = 0; i < arrProducts.length; i++) {
   arrProducts[i].dataset.id = i + 100;
   //добавляем айди дивам-товарам
 }
+
+// -------------корзина показываем и скрываем ее
 let btnUserCart = document.querySelector('.nav-user_cart');
 let cartDiv = document.querySelector('.cart-div');
 btnUserCart.addEventListener('click', function(e) {
-  console.log(1);
-  cartDiv.classList.toggle('cart_display--js');
-});
-
-// анимацию на h1
-const h1 = document.querySelector('.header-title');
-const indicationButton = document.querySelector('.indication-button');
-
-window.addEventListener('scroll', function(e) {
-  if (window.pageYOffset > 20) {
-    h1.classList.add('animaton-h1');
-  } else if (window.pageYOffset < 10) {
-    h1.classList.remove('animaton-h1');
+  if (cartDiv.style.display == 'flex') {
+    cartDiv.style.display = 'none';
+  } else {
+    cartDiv.style.display = 'flex';
   }
-  if (window.pageYOffset > 20) {
-    indicationButton.classList.add('animaton-h1');
-  } else if (window.pageYOffset < 10) {
-    indicationButton.classList.remove('animaton-h1');
-  }
-
-  console.log(window.pageYOffset);
 });
+cartDiv.addEventListener('click', function(e) {
+  if (e.target.classList.contains('close-modalLogin--js')) {
+    cartDiv.style.display = 'none';
+  }
+});
+// -----------подвешиваем событие на прокрутку окна анимацию на h1
+// const h1 = document.querySelector('.header-title');
+// const indicationButton = document.querySelector('.indication-button');
+
+// window.addEventListener('scroll', function(e) {
+//   if (window.pageYOffset > 20) {
+//     h1.classList.add('animaton-h1');
+//   } else if (window.pageYOffset < 10) {
+//     h1.classList.remove('animaton-h1');
+//   }
+//   if (window.pageYOffset > 20) {
+//     indicationButton.classList.add('animaton-h1');
+//   } else if (window.pageYOffset < 10) {
+//     indicationButton.classList.remove('animaton-h1');
+//   }
+
+//   console.log(window.pageYOffset);
+// });
 
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
@@ -153,4 +137,32 @@ function getCoords(elem) {
     left: box.left + window.pageXOffset,
   };
 }
-console.log(getCoords(indicationButton));
+//console.log(getCoords(indicationButton));
+
+const faders = document.querySelectorAll('.fade-in');
+console.log(faders);
+
+const appearOptions = {
+  threshod: 1,
+  rootMargin: '0px 0px -400px 0px',
+};
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll,
+) {
+  entries.forEach(entry => {
+    // console.log(entry.isIntersecting);
+    console.log(entry);
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add('appear');
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
