@@ -143,8 +143,8 @@ const faders = document.querySelectorAll('.fade-in');
 console.log(faders);
 
 const appearOptions = {
-  threshod: 1,
-  rootMargin: '0px 0px -400px 0px',
+  threshod: 0,
+  rootMargin: '0px 0px -200px 0px',
 };
 const appearOnScroll = new IntersectionObserver(function(
   entries,
