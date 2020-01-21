@@ -190,7 +190,7 @@ img {
 .description-bg {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 50px;
+  padding: 0 60px;
   max-width: 1150px;
   justify-content: space-around;
   background: url('../img/Background_fawel.png');
@@ -229,6 +229,7 @@ img {
 }
 
 .description_p--2::before {
+
   position: absolute;
   display: block;
   width: 50px;
