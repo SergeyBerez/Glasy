@@ -48,8 +48,8 @@ body {
   background: #849d8f;
   background-image: url(../img/Group1aaa.png);
   background-repeat: no-repeat;
-  /* background-size: cover; */
-  background-position: 0 8%;
+  background-size: cover;
+  /* background-position: 0 8%; */
   background-size: 100%;
   transition: all 0.8s;
 }
@@ -244,7 +244,7 @@ body {
 
   /* заголовок  */
   .header-title {
-    padding-top: 70%;
+    padding-top: 20%;
     margin: 0 auto;
     flex-basis: 100%;
     max-width: 670px;

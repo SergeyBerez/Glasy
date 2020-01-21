@@ -131,14 +131,14 @@ const h1 = document.querySelector('.header-title');
 const indicationButton = document.querySelector('.indication-button');
 
 window.addEventListener('scroll', function(e) {
-  if (window.pageYOffset > 200) {
+  if (window.pageYOffset > 20) {
     h1.classList.add('animaton-h1');
-  } else if (window.pageYOffset < 50) {
+  } else if (window.pageYOffset < 10) {
     h1.classList.remove('animaton-h1');
   }
-  if (window.pageYOffset > 300) {
+  if (window.pageYOffset > 20) {
     indicationButton.classList.add('animaton-h1');
-  } else if (window.pageYOffset < 50) {
+  } else if (window.pageYOffset < 10) {
     indicationButton.classList.remove('animaton-h1');
   }
 
