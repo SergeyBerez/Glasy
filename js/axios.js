@@ -3,24 +3,35 @@ let btnEnter = document.querySelector('.nav-user_enter--js');
 let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
-
+let formSearch = document.querySelector('.form-header-search');
+console.log(formSearch);
+document.addEventListener('click', function(e) {
+  console.log(e.target);
+});
 // меняем событие на модальных оканах показываем и скрываем
 modalFind.addEventListener('click', function(e) {
+  console.log(11111);
   if (e.target.classList.contains('close-modalLogin--js')) {
-    modalFind.style.display = 'none';
+    modalFind.classList.toggle('animate-modal-search');
   }
 });
 btnFind.addEventListener('click', function(e) {
-  if (modalFind.style.display == 'block') {
-    modalFind.style.display = 'none';
-  } else {
-    modalFind.style.display = 'block';
-  }
+  e.preventDefault();
+  
+  modalFind.classList.toggle('animate-modal-search');
+  // if (modalFind.style.display == 'block') {
+  //   modalFind.style.display = 'none';
+  // } else {
+  //   modalFind.style.display = 'block';
+  //   modalFind.classList.add('animate-modal-search');
+  // }
 });
 //  отбражаем наше модальное окно
 // входа
 const openModalLogin = e => {
-  modalLogin.style.display = 'block';
+  e.preventDefault();
+  console.log(111111111);
+  modalLogin.classList.toggle('animate-modal-search');
 };
 const closeMofalLogin = e => {
   // console.log(e.target);
@@ -28,7 +39,7 @@ const closeMofalLogin = e => {
     e.target.classList.contains('close-modalLogin--js') ||
     e.target.className == 'modal-login'
   ) {
-    modalLogin.style.display = 'none';
+    modalLogin.classList.toggle('animate-modal-search');
   }
 };
 btnEnter.addEventListener('click', openModalLogin);

@@ -98,36 +98,40 @@ for (let i = 0; i < arrProducts.length; i++) {
 // -------------корзина показываем и скрываем ее
 let btnUserCart = document.querySelector('.nav-user_cart');
 let cartDiv = document.querySelector('.cart-div');
-btnUserCart.addEventListener('click', function(e) {
-  if (cartDiv.style.display == 'flex') {
-    cartDiv.style.display = 'none';
-  } else {
-    cartDiv.style.display = 'flex';
-  }
+btnUserCart.addEventListener('click', function (e) {
+   e.preventDefault();
+  cartDiv.classList.toggle('animate-modal-search');
+ 
 });
 cartDiv.addEventListener('click', function(e) {
+ 
   if (e.target.classList.contains('close-modalLogin--js')) {
-    cartDiv.style.display = 'none';
+     cartDiv.classList.toggle('animate-modal-search');
+ 
   }
 });
 // -----------подвешиваем событие на прокрутку окна анимацию на h1
 // const h1 = document.querySelector('.header-title');
 // const indicationButton = document.querySelector('.indication-button');
+const footer = document.querySelector('.footer');
+window.addEventListener('scroll', function(e) {
+  if (window.pageYOffset > 2600) {
+    footer.classList.add('animaton-footer');
+    console.log(1111);
+  }
+  // if (window.pageYOffset > 20) {
+  //   h1.classList.add('animaton-h1');
+  // } else if (window.pageYOffset < 10) {
+  //   h1.classList.remove('animaton-h1');
+  // }
+  // if (window.pageYOffset > 20) {
+  //   indicationButton.classList.add('animaton-h1');
+  // } else if (window.pageYOffset < 10) {
+  //   indicationButton.classList.remove('animaton-h1');
+  // }
 
-// window.addEventListener('scroll', function(e) {
-//   if (window.pageYOffset > 20) {
-//     h1.classList.add('animaton-h1');
-//   } else if (window.pageYOffset < 10) {
-//     h1.classList.remove('animaton-h1');
-//   }
-//   if (window.pageYOffset > 20) {
-//     indicationButton.classList.add('animaton-h1');
-//   } else if (window.pageYOffset < 10) {
-//     indicationButton.classList.remove('animaton-h1');
-//   }
-
-//   console.log(window.pageYOffset);
-// });
+  console.log(window.pageYOffset);
+});
 
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();

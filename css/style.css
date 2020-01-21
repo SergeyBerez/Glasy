@@ -84,7 +84,7 @@ padding-top: 40px;
 }
 .fade-in{
   opacity: 0;
-  transition: opacity,transform  0.9s;
+  transition: opacity,transform  0.9s ease-out;
 
 }
 .fade-in_left{
@@ -93,18 +93,15 @@ padding-top: 40px;
 .fade-in_right{
    transform: translateX(100%);
 }
-.appear{
+.fade-in.appear{
 transform: translateX(0);
 opacity:1;
 }
-/* .header-title.appear,
-.indication-button.appear {
-transform: translateX(0)
-} */
 
-/* .animaton-h1 {
-  transform: translateX(1%);
-} */
+
+ .footer.animaton-footer {
+ animation: show-from-bottom 0.9s linear;
+} 
 
 .indication-input {
   display: none;
@@ -264,7 +261,8 @@ transform: translateX(0)
 
   /* заголовок  */
   .header-title {
-    padding-top: 20%;
+    padding-top: 50%;
+    z-index: 1;
     margin: 0 auto;
     flex-basis: 100%;
     max-width: 670px;
@@ -309,22 +307,36 @@ transform: translateX(0)
   padding: 0px;
 }
   .work-info {
-    /* display: none; */
+    display: none;
   }
 
   
 
   .modal-find {
     position: absolute;
-    top: 30px;
+    top: 0px;
     left: auto;
     bottom: auto;
     right: 10px;
     margin: auto;
     max-width: 220px;
+   
     /* display: none; */
   }
-
+.modal-login {
+ border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 0px;
+  left: auto;
+  bottom: auto;
+  right: 20px;
+  margin: auto;
+  /* transform: translateX(100%);
+  transition: 0.9s;
+  opacity: 1; */
+  
+}
   .new-form_input {
     margin: 5px auto;
     outline: transparent;
@@ -335,13 +347,13 @@ transform: translateX(0)
 
 
   .new-form-header {
-    z-index: 2;
-    position: absolute;
-    top: 170px;
+    
+    /* position: absolute; */
+    /* top: 170px;
     left: auto;
     bottom: auto;
     right: 20px;
-    margin: auto;
+    margin: auto; */
   }
   .cart-div {
     display: flex;
@@ -351,12 +363,12 @@ transform: translateX(0)
     border-radius: 5px;
     padding: 5px;
     position: absolute;
-    top: 50px;
+    top: 0px;
     left: auto;
     bottom: auto;
     right: 20px;
     margin: auto;
-    display: none;
+   
   }
 
   /* .cart_display--js {

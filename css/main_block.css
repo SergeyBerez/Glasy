@@ -67,6 +67,7 @@
 .banner-foto_item {
   min-width: 160px;
   width: 20%;
+  padding: 10px;
   margin: 30px 10px 10px 10px;
   text-align: center;
   position: relative;
@@ -79,23 +80,27 @@
 
 .fa-3x {
   display: none;
+
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: absolute;
+  width: 100%;
   margin: auto;
   top: 100%;
-  transition: 0.5s;
+  right: auto;
+  left: 0px;
+  bottom: auto;
+  background: transparent;
+  transition: background 0.5s;
 }
 
 .banner-foto_item:hover {
   background: #9bafa3;
-  /* cursor: pointer; */
 }
 
 .banner-foto_item:hover .fa-3x {
   display: block;
   background: #9bafa3;
-  width: 100%;
   cursor: pointer;
 }
 
@@ -331,13 +336,15 @@ img {
   max-width: 560px;
 
   border-radius: 15px;
-  background: repeating-linear-gradient(-45deg,
-      red,
-      red 10px,
-      white 10px,
-      white 20px,
-      blue 20px,
-      blue 30px);
+  background: repeating-linear-gradient(
+    -45deg,
+    red,
+    red 10px,
+    white 10px,
+    white 20px,
+    blue 20px,
+    blue 30px
+  );
 }
 
 .new-form {
@@ -423,7 +430,16 @@ img {
   flex-wrap: wrap;
   align-items: center;
 }
-
+@keyframes show-from-bottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+     opacity: 1;
+  }
+}
 .nav-cotial-icon {
   display: flex;
 
