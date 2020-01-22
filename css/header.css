@@ -331,17 +331,24 @@ span {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  display: none;
+  /* display: none; */
+  height: 0px;
+  opacity: 0.2;
+  transition: 0.9s;
+  transform: scale(0);
 }
 
 .display {
-  display: flex;
+  height: 100%;
+  opacity: 1;
+  transition: 0.9s;
+  transform: scale(1);
 }
 
 .goods-wrap {
   width: calc(100% / 4 - 10px);
   margin: 5px;
-  min-width: 300px;
+  min-width: 250px;
   margin-top: 30px;
   background-color: grey;
   border-radius: 10px;
