@@ -310,6 +310,7 @@ body {
   .nav-user li a {
     background-image: url(../img/for_curt.png);
     padding: 0px;
+    padding: 0px 3px;
   }
 
   .work-info {
