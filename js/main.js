@@ -114,7 +114,7 @@ const footer = document.querySelector('.footer');
 window.addEventListener('scroll', function(e) {
   if (window.pageYOffset > 2600) {
     footer.classList.add('animaton-footer');
-    console.log(1111);
+   
   }
   // if (window.pageYOffset > 20) {
   //   h1.classList.add('animaton-h1');
