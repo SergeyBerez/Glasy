@@ -13,16 +13,17 @@
 }
 
 .main-logo {
-  animation: fade-in 1s linear;
+  animation: fade-in 1s ease-in;
   flex-basis: 100%;
   max-width: 300px;
   /* display: block;
  flex-basis: 100%;
   max-width: 160px; */
 }
+
 @keyframes fade-in {
   0% {
-    opacity: 0.1;
+    opacity: 0;
     transform: translateY(-100%);
   }
 
@@ -248,11 +249,12 @@ span {
   bottom: auto;
   right: auto;
   margin: auto;
-
+  z-index: 1000;
   transform: translateX(100%);
   transition: 0.9s;
   opacity: 0;
 }
+
 .cart-div {
   display: flex;
   flex-direction: column;
@@ -271,13 +273,16 @@ span {
   transition: 0.9s;
   opacity: 0;
 }
+
 .animate-modal-search {
   transform: translateX(0);
   opacity: 1;
 }
+
 .form-header-search {
   width: 370px;
 }
+
 .fa-search {
   /* position: absolute;
   margin: auto;
@@ -287,11 +292,13 @@ span {
   right: 0; */
   color: #282828;
 }
+
 .box-search-icon {
   display: inline-block;
 
   cursor: pointer;
 }
+
 .new-form-header {
   display: flex;
   flex-direction: column;
@@ -326,13 +333,15 @@ span {
   align-items: center;
   display: none;
 }
+
 .display {
   display: flex;
 }
+
 .goods-wrap {
   width: calc(100% / 4 - 10px);
   margin: 5px;
-  min-width: 200px;
+  min-width: 300px;
   margin-top: 30px;
   background-color: grey;
   border-radius: 10px;
@@ -343,7 +352,7 @@ span {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 330px;
+  min-height: 330px;
   padding: 5px;
   justify-content: space-between;
   align-items: center;

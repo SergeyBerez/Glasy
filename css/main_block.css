@@ -190,7 +190,7 @@ img {
 .description-bg {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 60px;
+  padding: 0 70px;
   max-width: 1150px;
   justify-content: space-around;
   background: url('../img/Background_fawel.png');

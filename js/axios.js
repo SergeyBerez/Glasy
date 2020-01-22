@@ -17,7 +17,7 @@ modalFind.addEventListener('click', function(e) {
 });
 btnFind.addEventListener('click', function(e) {
   e.preventDefault();
-  
+
   modalFind.classList.toggle('animate-modal-search');
   // if (modalFind.style.display == 'block') {
   //   modalFind.style.display = 'none';
@@ -30,7 +30,7 @@ btnFind.addEventListener('click', function(e) {
 // входа
 const openModalLogin = e => {
   e.preventDefault();
-  console.log(111111111);
+
   modalLogin.classList.toggle('animate-modal-search');
 };
 const closeMofalLogin = e => {
@@ -61,7 +61,7 @@ for (let i = 0; i < document.forms.length; i++) {
     const checkName = /^[a-zA-Z0-9_]+$/;
 
     for (let j = 0; j < document.forms[i].elements.length; j++) {
-      // console.log(checkName.test(document.forms[i].elements[j].value));
+      //console.log(checkName.test(document.forms[i].elements[j].value));
       if (
         document.forms[i].elements[j].value == '' &&
         document.forms[i].elements[j].tagName == 'INPUT'
@@ -76,7 +76,10 @@ for (let i = 0; i < document.forms.length; i++) {
       if (counter == count) {
         // 'https://my-json-server.typicode.com/SergeyBerez/server/myPost'
         axios
-          .post('../telegram.php', obj)
+          .post(
+            'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
+            obj,
+          )
           .then(function(response) {
             //let data = Object.values(response.data);
             console.log(response.data);
@@ -105,7 +108,7 @@ function deleteModalForm(node) {
   setTimeout(function() {
     node.reset();
     node.lastElementChild.remove();
-    modalLogin.style.display = 'none';
+    modalLogin.classList.toggle('animate-modal-search');
   }, 3000);
 }
 
@@ -140,6 +143,10 @@ function createCart(title, name, photo, price) {
                
                  <img  class="goods-img" src="${photo}"  alt="">
                   <p><span> ${price} грн</span></p>
+                  <div>
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                 <i class="fa fa-minus-circle" aria-hidden="true"></i></div>
                 </div>`;
   return div;
 }

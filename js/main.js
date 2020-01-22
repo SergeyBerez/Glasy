@@ -98,16 +98,13 @@ for (let i = 0; i < arrProducts.length; i++) {
 // -------------корзина показываем и скрываем ее
 let btnUserCart = document.querySelector('.nav-user_cart');
 let cartDiv = document.querySelector('.cart-div');
-btnUserCart.addEventListener('click', function (e) {
-   e.preventDefault();
+btnUserCart.addEventListener('click', function(e) {
+  e.preventDefault();
   cartDiv.classList.toggle('animate-modal-search');
- 
 });
 cartDiv.addEventListener('click', function(e) {
- 
   if (e.target.classList.contains('close-modalLogin--js')) {
-     cartDiv.classList.toggle('animate-modal-search');
- 
+    cartDiv.classList.toggle('animate-modal-search');
   }
 });
 // -----------подвешиваем событие на прокрутку окна анимацию на h1
@@ -144,7 +141,6 @@ function getCoords(elem) {
 //console.log(getCoords(indicationButton));
 
 const faders = document.querySelectorAll('.fade-in');
-console.log(faders);
 
 const appearOptions = {
   threshod: 0,
@@ -156,7 +152,7 @@ const appearOnScroll = new IntersectionObserver(function(
 ) {
   entries.forEach(entry => {
     // console.log(entry.isIntersecting);
-    console.log(entry);
+    //console.log(entry);
     if (!entry.isIntersecting) {
       return;
     } else {
