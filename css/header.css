@@ -234,7 +234,7 @@ span {
   right: auto;
   margin: auto;
   z-index: 1000;
-  transform: translateX(100%);
+  transform: translateX(150%);
   transition: 0.9s;
   opacity: 0;
 }
@@ -250,7 +250,7 @@ span {
   right: auto;
   margin: auto;
   z-index: 1000;
-  transform: translateX(100%);
+  transform: translateX(150%);
   transition: 0.9s;
   opacity: 0;
 }
@@ -269,7 +269,7 @@ span {
   right: auto;
   margin: auto;
   color: rgb(83, 79, 79);
-  transform: translateX(100%);
+  transform: translateX(150%);
   transition: 0.9s;
   opacity: 0;
 }
