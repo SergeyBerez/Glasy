@@ -4,10 +4,8 @@ let modalFind = document.querySelector('.modal-find');
 let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 let formSearch = document.querySelector('.form-header-search');
-console.log(formSearch);
-document.addEventListener('click', function(e) {
-  console.log(e.target);
-});
+
+
 // меняем событие на модальных оканах показываем и скрываем
 modalFind.addEventListener('click', function(e) {
   console.log(11111);
@@ -126,7 +124,8 @@ function getGoods(callbackHadler, callbackFilter) {
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
     .then(({ data }) => callbackFilter(data))
-    .then(data => callbackHadler(data));
+    .then(data => callbackHadler(data))
+    .catch(error => console.log(error));
 }
 
 function randomSort(arr) {
@@ -161,5 +160,6 @@ getGoods(renderCard, randomSort);
 
 getGoodsbtn.addEventListener('click', function(e) {
   wrap.classList.toggle('display');
+ 
 });
 //wrap.append(renderCard('aaa', 'sss', 'фото'));

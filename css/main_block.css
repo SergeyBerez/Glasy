@@ -74,6 +74,7 @@
   position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  /* transition: all 0.9s; */
   transition: 0.5s;
 
   /* word-break: break-all; */
@@ -81,7 +82,6 @@
 
 .fa-3x {
   display: none;
-
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: absolute;
@@ -91,17 +91,17 @@
   right: auto;
   left: 0px;
   bottom: auto;
-  background: transparent;
-  transition: background 0.5s;
+  transition: 0.5s;
 }
 
 .banner-foto_item:hover {
-  background: #9bafa3;
+  background: #9bafa383;
 }
 
 .banner-foto_item:hover .fa-3x {
   display: block;
-  background: #9bafa3;
+  background: #9bafa383;
+ /* transition: background 0.5s ease-in; */
   cursor: pointer;
 }
 
@@ -230,7 +230,6 @@ img {
 }
 
 .description_p--2::before {
-
   position: absolute;
   display: block;
   width: 50px;
@@ -439,7 +438,7 @@ img {
   }
   100% {
     transform: translateY(0);
-     opacity: 1;
+    opacity: 1;
   }
 }
 .nav-cotial-icon {

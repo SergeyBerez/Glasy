@@ -1,6 +1,6 @@
 'use strict';
 let slider = document.querySelector('.slides');
-console.log(slider);
+
 // -----------меняем при нажатии цвет и картинки на радио кнопки
 let radio = document.querySelectorAll('[type="radio"]');
 for (let i = 0; i < radio.length; i++) {
@@ -9,7 +9,7 @@ for (let i = 0; i < radio.length; i++) {
     console.log(e.target.dataset.color);
     if (e.target.dataset.type) {
       slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
-      slider.style.backgroundColor = e.target.dataset.color;
+      // slider.style.backgroundColor = e.target.dataset.color;
     }
   });
 }
@@ -22,24 +22,19 @@ function autoChangebackground() {
     'url(./img/Group2bbb.png)',
     'url(./img/Group3ddd.png)',
   ];
-  let arrColor = ['#849d8f', '#8996a6', '#9d8b84'];
+  // let arrColor = ['#849d8f', '#8996a6', '#9d8b84'];
   slider.style.backgroundImage = arrImg[j];
-  slider.style.backgroundColor = arrColor[j];
+  // slider.style.backgroundColor = arrColor[j];
   radio[j].checked = true;
   j++;
   if (j >= arrImg.length) {
     j = 0;
   }
 }
-// function auto() {
-//   console.log(1);
-//   autoChangebackground();
-// }
-// setInterval(auto, 3000);
 
 let autoPlay = setTimeout(function auto() {
   autoChangebackground();
-  autoPlay = setTimeout(auto, 3000);
+  setTimeout(auto, 3000);
 }, 2000);
 
 // -------------работем с меню скрытым
@@ -135,8 +130,6 @@ window.addEventListener('scroll', function(e) {
   // } else if (window.pageYOffset < 10) {
   //   indicationButton.classList.remove('animaton-h1');
   // }
-
-  console.log(window.pageYOffset);
 });
 
 function getCoords(elem) {
@@ -177,4 +170,4 @@ faders.forEach(fader => {
 });
 
 let btnSearch = document.querySelector('.fa-search');
-console.log(btnSearch);
+
