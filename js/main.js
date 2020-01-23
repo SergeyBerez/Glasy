@@ -1,9 +1,11 @@
+'use strict';
 let slider = document.querySelector('.slides');
-
+console.log(slider);
 // -----------меняем при нажатии цвет и картинки на радио кнопки
 let radio = document.querySelectorAll('[type="radio"]');
 for (let i = 0; i < radio.length; i++) {
   radio[i].addEventListener('click', function(e) {
+    clearTimeout(autoPlay);
     console.log(e.target.dataset.color);
     if (e.target.dataset.type) {
       slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
@@ -13,7 +15,8 @@ for (let i = 0; i < radio.length; i++) {
 }
 // ----------меняем фон и картинки  делаем переключение авто
 let j = 0;
-function changebackground() {
+
+function autoChangebackground() {
   let arrImg = [
     'url(./img/Group1aaa.png)',
     'url(./img/Group2bbb.png)',
@@ -28,10 +31,17 @@ function changebackground() {
     j = 0;
   }
 }
+// function auto() {
+//   console.log(1);
+//   autoChangebackground();
+// }
+// setInterval(auto, 3000);
 
-setInterval(function() {
-  changebackground();
-}, 3000);
+let autoPlay = setTimeout(function auto() {
+  autoChangebackground();
+  autoPlay = setTimeout(auto, 3000);
+}, 2000);
+
 // -------------работем с меню скрытым
 let headerMenuIcon = document.querySelector('.header_menu-icon');
 let headerNav = document.querySelector('.header-nav');
@@ -87,11 +97,11 @@ function showCart(el) {
 }
 
 //перебираем ноде лист как массив
-let products = document.querySelectorAll('.banner-foto_item');
-let arrProducts = [...products];
+let [...products] = document.querySelectorAll('.banner-foto_item');
+//let arrProducts = [...products];
 
-for (let i = 0; i < arrProducts.length; i++) {
-  arrProducts[i].dataset.id = i + 100;
+for (let i = 0; i < products.length; i++) {
+  products[i].dataset.id = i + 100;
   //добавляем айди дивам-товарам
 }
 
@@ -114,7 +124,6 @@ const footer = document.querySelector('.footer');
 window.addEventListener('scroll', function(e) {
   if (window.pageYOffset > 2600) {
     footer.classList.add('animaton-footer');
-   
   }
   // if (window.pageYOffset > 20) {
   //   h1.classList.add('animaton-h1');
@@ -166,3 +175,6 @@ appearOptions);
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
+
+let btnSearch = document.querySelector('.fa-search');
+console.log(btnSearch);
