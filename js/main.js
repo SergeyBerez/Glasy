@@ -34,7 +34,7 @@ function autoChangebackground() {
 
 let autoPlay = setTimeout(function auto() {
   autoChangebackground();
-  setTimeout(auto, 3000);
+  autoPlay = setTimeout(auto, 3000);
 }, 2000);
 
 // -------------работем с меню скрытым
@@ -170,4 +170,3 @@ faders.forEach(fader => {
 });
 
 let btnSearch = document.querySelector('.fa-search');
-
