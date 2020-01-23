@@ -192,11 +192,30 @@ body {
 
 /* ===================медиа запросы  =======*/
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1140px) {
   html,
   body {
     /* Убирает прокрутку по горизонтале, для мобильной версии */
     overflow-x: hidden;
+  }
+  .header-title {
+    padding-top: 20%;
+  }
+  .nav-user {
+    /* margin-bottom: 250px; */
+  }
+}
+@media screen and (max-width: 1000px) {
+  html,
+  body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+  }
+  .header-title {
+    padding-top: 0%;
+  }
+  .nav-user {
+    margin-bottom: 170px;
   }
 }
 
