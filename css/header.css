@@ -338,7 +338,7 @@ span {
   transform: scale(0);
 }
 
-.display {
+.show-cart {
   height: 100%;
   opacity: 1;
   transition: 0.9s;

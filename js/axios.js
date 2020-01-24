@@ -5,7 +5,6 @@ let modalLogin = document.querySelector('.modal-login');
 let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 let formSearch = document.querySelector('.form-header-search');
 
-
 // меняем событие на модальных оканах показываем и скрываем
 modalFind.addEventListener('click', function(e) {
   console.log(11111);
@@ -123,14 +122,20 @@ function getGoods(callbackHadler, callbackFilter) {
   loading();
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
-    .then(({ data }) => callbackFilter(data))
+    .then(({ data }) => {
+      console.log(data);
+      return callbackFilter(data);
+    })
     .then(data => callbackHadler(data))
     .catch(error => console.log(error));
 }
 
 function randomSort(arr) {
-  let arrey = arr.filter(item => item.price > 10);
-  return arrey.sort((a, b) => a.id - b.id);
+  return arr
+    .sort((obja, objb) => obja.price - objb.price)
+    .filter(obj => obj.price > 20);
+
+  //.sort((a, b) => a.id - b.id);
   //return arr.sort((a, b) => b.id - a.id);
 }
 function createCart(title, name, photo, price) {
@@ -159,7 +164,18 @@ function renderCard(arr) {
 getGoods(renderCard, randomSort);
 
 getGoodsbtn.addEventListener('click', function(e) {
-  wrap.classList.toggle('display');
- 
+  wrap.classList.toggle('show-cart');
 });
 //wrap.append(renderCard('aaa', 'sss', 'фото'));
+
+// обрабатываем поиск
+formSearch.addEventListener('click', function(e) {
+  let input = e.target.tagName == 'INPUT';
+  if (input) {
+    e.target.addEventListener('input', function(e) {
+      let inputvalue = this.value.trim();
+      if (inputvalue != '') {
+      }
+    });
+  }
+});
