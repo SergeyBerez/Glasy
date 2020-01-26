@@ -128,7 +128,7 @@ ul.drop li a:hover {
   color: #282828;
 }
 
-.close-menu-button--js {
+.fa.close-menu-button--js {
   cursor: pointer;
   display: none;
   /* z-index: 1; */
@@ -359,7 +359,7 @@ span {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: 330px;
+  min-height: 370px;
   padding: 5px;
   justify-content: space-between;
   align-items: center;
@@ -367,5 +367,8 @@ span {
 }
 
 .goods-img {
-  max-width: 120px;
+  max-width: 100px;
+}
+.cart-fa-icon{
+  margin-left: 5px;
 }

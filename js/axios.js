@@ -6,15 +6,23 @@ let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 let formSearch = document.querySelector('.form-header-search');
 
 // меняем событие на модальных оканах показываем и скрываем
-modalFind.addEventListener('click', function(e) {
-  console.log(11111);
-  if (e.target.classList.contains('close-modalLogin--js')) {
+modalFind.addEventListener('click', closeModalFind);
+// function (e) {
+//   if (e.target.classList.contains('close-modalLogin--js')) {
+//     modalFind.classList.toggle('animate-modal-search');
+//     document.removeEventListener('keyup', closeModalFind);
+//   }
+
+function closeModalFind(e) {
+  if (e.target.classList.contains('close-modalLogin--js') || e.keyCode == 27) {
     modalFind.classList.toggle('animate-modal-search');
+    document.removeEventListener('keyup', closeModalFind);
   }
-});
+}
+
 btnFind.addEventListener('click', function(e) {
   e.preventDefault();
-
+  document.addEventListener('keyup', closeModalFind);
   modalFind.classList.toggle('animate-modal-search');
   // if (modalFind.style.display == 'block') {
   //   modalFind.style.display = 'none';
@@ -81,9 +89,7 @@ for (let i = 0; i < document.forms.length; i++) {
             //let data = Object.values(response.data);
             console.log(response.data);
             document.forms[i].style.color = 'black';
-            document.forms[
-              i
-            ].innerHTML += `<p>${response.data['user_name']} <br>ваша заявка принята</p>`;
+            document.forms[i].innerHTML += `<p> <br>ваша заявка принята</p>`;
             deleteModalForm(document.forms[i]);
             document.forms[i].reset();
           })
@@ -142,40 +148,59 @@ function createCart(title, name, photo, price) {
   const div = document.createElement('div');
   div.className = 'goods-wrap';
   div.innerHTML = `<div class="goods">
-                <h2> ${title} </h2 >
-                <p> ${name}</p>
-               
-                 <img  class="goods-img" src="${photo}"  alt="">
-                  <p><span> ${price} грн</span></p>
-                  <div>
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                 <i class="fa fa-minus-circle" aria-hidden="true"></i></div>
-                </div>`;
+      <h2> ${title} </h2 >
+      <p class="name"> ${name}</p>
+      <img  class="goods-img" src="${photo}"  alt="">
+        <p><span> ${price} грн</span></p>
+        <div>
+        <i class="fa fa-shopping-cart cart-fa-icon" aria-hidden="true"></i>
+        <i class="fa fa-plus-circle cart-fa-icon" aria-hidden="true"></i>
+        <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
+        <div>
+      </div>`;
   return div;
 }
 
 function renderCard(arr) {
   wrap.textContent = '';
-  arr.forEach(({ title, name, photo, price }) => {
-    wrap.append(createCart(title, name, photo, price));
-  });
+  if (arr.length) {
+    arr.forEach(({ title, name, photo, price }) => {
+      wrap.append(createCart(title, name, photo, price));
+    });
+  } else {
+    wrap.textContent = '❌ такого товара нет';
+  }
 }
-getGoods(renderCard, randomSort);
 
 getGoodsbtn.addEventListener('click', function(e) {
   wrap.classList.toggle('show-cart');
+  getGoods(renderCard, randomSort);
 });
-//wrap.append(renderCard('aaa', 'sss', 'фото'));
 
-// обрабатываем поиск
 formSearch.addEventListener('click', function(e) {
   let input = e.target.tagName == 'INPUT';
+
   if (input) {
-    e.target.addEventListener('input', function(e) {
-      let inputvalue = this.value.trim();
+    e.target.addEventListener('click', function(e) {
+      let inputvalue = e.target.value.trim().toLowerCase();
+      console.log(inputvalue);
       if (inputvalue != '') {
+        const searchReg = new RegExp(inputvalue, 'i');
+        getGoods(renderCard, goods =>
+          goods.filter(item => searchReg.test(item.name)),
+        );
+        wrap.classList.toggle('show-cart');
+
+        // for (let i = 0; i < goods.length; i++) {
+        //   if (goods[i].innerText.indexOf(inputvalue) > -1) {
+        //     console.log('block');
+        //     goods[i].style.display = 'block';
+        //   } else {
+        //     goods[i].style.display = 'none';
+        //   }
+        // }
       }
+      this.value = '';
     });
   }
 });

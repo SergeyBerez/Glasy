@@ -1,7 +1,9 @@
 html {
   font-size: 62.5%;
 }
-
+strong{
+  font-size: 20px;
+}
 div {
   box-sizing: border-box;
 }
@@ -308,7 +310,7 @@ body {
     transform: translateX(1%);
   }
 
-  .close-menu-button--js {
+  .fa.close-menu-button--js {
     display: block;
     cursor: pointer;
     z-index: 2;
