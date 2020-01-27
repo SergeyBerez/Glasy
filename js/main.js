@@ -56,50 +56,6 @@ window.addEventListener('resize', function(e) {
   headerMenuIcon.style.display = '';
 });
 
-//----------работаем с товаром добавляем , кнокапи добавляем товар в козину
-let bntcarts = document.querySelectorAll('.fa-cart-plus');
-for (let i = 0; i < bntcarts.length; i++) {
-  bntcarts[i].addEventListener('click', addtoCart);
-}
-let cart = {}; //корзина
-//добавляем товар в обьект корзина
-function addtoCart() {
-  let id = this.closest('div').dataset.id;
-  if (cart[id] == undefined) {
-    cart[id] = 1; //если нет товара то ставим один
-  } else {
-    //cart[id] = cart[id] + 1;
-    //cart[id]++;
-    cart[id] += 1;
-    showCart(this);
-  }
-}
-
-function showCart(el) {
-  let out = '';
-  for (const key in cart) {
-    out += `<p>${key}-${cart[key]}</p> `;
-  }
-  let cartProduct = document.querySelector('.banner-foto');
-  let div = document.createElement('div');
-  div.innerHTML += out;
-  div.style.position = 'fixed';
-  div.style.left = 0;
-  div.style.top = '50%';
-
-  cartProduct.insertAdjacentElement('afterbegin', div);
-  console.log(div);
-}
-
-//перебираем ноде лист как массив
-let [...products] = document.querySelectorAll('.banner-foto_item');
-//let arrProducts = [...products];
-
-for (let i = 0; i < products.length; i++) {
-  products[i].dataset.id = i + 100;
-  //добавляем айди дивам-товарам
-}
-
 // -------------корзина показываем и скрываем ее
 let btnUserCart = document.querySelector('.nav-user_cart');
 let cartDiv = document.querySelector('.cart-div');
@@ -112,6 +68,53 @@ cartDiv.addEventListener('click', function(e) {
     cartDiv.classList.toggle('animate-modal-search');
   }
 });
+
+//----------работаем с товаром добавляем , кнокапи добавляем товар в козину
+let bntcarts = document.querySelectorAll('.fa-cart-plus');
+for (let i = 0; i < bntcarts.length; i++) {
+  bntcarts[i].addEventListener('click', addtoCart);
+}
+let cart = {}; //корзина
+//добавляем товар в обьект корзина
+function addtoCart() {
+  // console.log(cart);
+  console.log(this);
+  let id = this.closest('div').dataset.id;
+  if (cart[id] == undefined) {
+    cart[id] = 1; //если нет товара то ставим один
+  } else {
+    //cart[id] = cart[id] + 1;
+    //cart[id]++;
+    cart[id] += 1;
+    showCart();
+  }
+}
+
+function showCart() {
+  let out = '';
+  for (const key in cart) {
+    out += `<p>${key}-${cart[key]}</p> `;
+  }
+
+  let div = document.createElement('div');
+  div.innerHTML += out;
+  // div.style.position = 'fixed';
+  // div.style.left = 0;
+  // div.style.top = '50%';
+
+  cartDiv.insertAdjacentElement('afterbegin', div);
+  // console.log(div);
+}
+
+//перебираем ноде лист как массив
+let [...products] = document.querySelectorAll('.banner-foto_item');
+//let arrProducts = [...products];
+
+for (let i = 0; i < products.length; i++) {
+  products[i].dataset.id = i + 100;
+  //добавляем айди дивам-товарам
+}
+
 // -----------подвешиваем событие на прокрутку окна анимацию на h1
 // const h1 = document.querySelector('.header-title');
 // const indicationButton = document.querySelector('.indication-button');
@@ -143,15 +146,11 @@ function getCoords(elem) {
 //console.log(getCoords(indicationButton));
 
 const faders = document.querySelectorAll('.fade-in');
-
 const appearOptions = {
   threshod: 0,
   rootMargin: '0px 0px -200px 0px',
 };
-const appearOnScroll = new IntersectionObserver(function(
-  entries,
-  appearOnScroll,
-) {
+const drowElemetnts = (entries, appearOnScroll) => {
   entries.forEach(entry => {
     // console.log(entry.isIntersecting);
     //console.log(entry);
@@ -162,9 +161,8 @@ const appearOnScroll = new IntersectionObserver(function(
       appearOnScroll.unobserve(entry.target);
     }
   });
-},
-appearOptions);
-
+};
+const appearOnScroll = new IntersectionObserver(drowElemetnts, appearOptions);
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });

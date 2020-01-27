@@ -10,6 +10,7 @@ div {
 
 .fa {
   cursor: pointer;
+
   /* margin-left: 2px; */
 }
 
@@ -218,6 +219,9 @@ body {
   }
   .nav-user {
     margin-bottom: 170px;
+  }
+  .show-res {
+    font-size: 16px;
   }
 }
 
@@ -429,12 +433,12 @@ body {
     right: 20px;
     margin: auto;
   }
-  
 
   .goods {
     box-sizing: border-box;
     display: flex;
     min-width: 150px;
+    min-height: 350px;
     background-color: grey;
     flex-direction: column;
     min-height: 200px;
@@ -452,7 +456,9 @@ body {
   .goods-img {
     max-width: 50px;
   }
-
+  .show-res {
+    font-size: 10px;
+  }
   /* .cart_display--js {
     display: flex;
   } */

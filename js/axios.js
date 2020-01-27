@@ -142,9 +142,9 @@ function createCart(title, name, photo, price, id) {
       <h2> ${title} </h2 >
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
-        <p><span> ${price} грн</span></p>
-        <div>
-        <i class="fa fa-shopping-cart cart-fa-icon" aria-hidden="true" data-id = "${id}";></i>
+        <p><span > ${price} грн</span></p>
+        <div> <span class ="show-res"></span>
+        <i class="fa fa-shopping-cart cart-fa-icon fa-lg" aria-hidden="true" data-id = "${price}" ;></i>
         <i class="fa fa-plus-circle cart-fa-icon" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
@@ -185,15 +185,26 @@ formSearch.addEventListener('click', function(e) {
   });
 });
 
-const arrGoods = [];
+const arrGoods = {};
 
-const addToCart = id => {
-  arrGoods.push(id);
+const addToCart = (e, id) => {
+  const spanRes = e.target.parentNode.querySelector('.show-res');
+  if (e.target.classList.contains('fa-shopping-cart')) {
+    const spanRes = e.target.parentNode.querySelector('.show-res');
+  }
+  if (arrGoods[id] == undefined) {
+    arrGoods[id] = 1;
+    spanRes.innerText = `итого ${arrGoods[id]}*${id} = ${arrGoods[id] * id} `;
+  } else {
+    arrGoods[id]++;
+    spanRes.innerText = `итого ${arrGoods[id]}*${id} = ${arrGoods[id] * id} `;
+  }
+
   console.log(arrGoods);
 };
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
     console.log(e.target.dataset.id);
-    addToCart(e.target.dataset.id);
+    addToCart(e, e.target.dataset.id);
   }
 });

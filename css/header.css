@@ -334,7 +334,7 @@ span {
   /* display: none; */
   height: 0px;
   opacity: 0.2;
-  transition: 1.2s ;
+  transition: 1.2s;
   transform: scale(0) translateY(-100%);
 }
 
@@ -347,6 +347,7 @@ span {
 
 .goods {
   box-sizing: border-box;
+  position: relative;
   display: flex;
   flex-direction: column;
   width: calc(100% / 4 - 10px);
@@ -358,9 +359,12 @@ span {
   background-color: grey;
   border-radius: 10px;
   box-shadow: 2px 2px 5px grey;
+  transition: 0.5s;
+  text-align: center;
 }
 
 .goods-img {
+  border: transparent;
   max-width: 100px;
 }
 .cart-fa-icon {
@@ -370,4 +374,15 @@ span {
 }
 .cart-fa-icon:hover {
   color: rgb(14, 14, 41);
+}
+.show-res {
+  
+  top: 87%;
+  left: 30px;
+  right: auto;
+  bottom: auto;
+  margin: auto;
+  position: absolute;
+
+  /* width: 100%; */
 }
