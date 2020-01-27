@@ -13,6 +13,7 @@
 .news,
 .map,
 .footer {
+ 
   /* max-width: 1200px; */
   margin-top: 40px;
   /* padding: 5px; */
@@ -101,7 +102,7 @@
 .banner-foto_item:hover .fa-3x {
   display: block;
   background: #9bafa383;
- /* transition: background 0.5s ease-in; */
+  /* transition: background 0.5s ease-in; */
   cursor: pointer;
 }
 

@@ -137,8 +137,8 @@ function randomSort(arr) {
 // функция создаем карты динамически  и добавляем из в дом
 function createCart(title, name, photo, price, id) {
   const div = document.createElement('div');
-   div.className = 'goods-wrap';
-  div.innerHTML = `<div class="goods">
+  div.className = 'goods';
+  div.innerHTML = `
       <h2> ${title} </h2 >
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
@@ -147,8 +147,7 @@ function createCart(title, name, photo, price, id) {
         <i class="fa fa-shopping-cart cart-fa-icon" aria-hidden="true" data-id = "${id}";></i>
         <i class="fa fa-plus-circle cart-fa-icon" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
-        <div>
-      </div>`;
+        <div>`;
   return div;
 }
 // функция добавление  карт на странице
@@ -180,7 +179,7 @@ formSearch.addEventListener('click', function(e) {
       getGoods(renderCard, goods =>
         goods.filter(item => searchReg.test(item.name)),
       );
-      wrapGoods.classList.add('show-cart');//show goods after sort return true
+      wrapGoods.classList.add('show-cart'); //show goods after sort return true
     }
     input.value = '';
   });
