@@ -144,8 +144,8 @@ function createCart(title, name, photo, price, id) {
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
         <div> <span class ="show-res"></span>
-        <i class="fa fa-shopping-cart cart-fa-icon fa-lg" aria-hidden="true" data-id = "${price}" ;></i>
-        <i class="fa fa-plus-circle cart-fa-icon" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart cart-fa-icon fa-lg" aria-hidden="true"  data-id ="${id}";></i>
+        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
   return div;
@@ -184,27 +184,55 @@ formSearch.addEventListener('click', function(e) {
     input.value = '';
   });
 });
-
-const arrGoods = {};
-
-const addToCart = (e, id) => {
-  const spanRes = e.target.parentNode.querySelector('.show-res');
-  if (e.target.classList.contains('fa-shopping-cart')) {
-    const spanRes = e.target.parentNode.querySelector('.show-res');
-  }
-  if (arrGoods[id] == undefined) {
-    arrGoods[id] = 1;
-    spanRes.innerText = `итого ${arrGoods[id]}*${id} = ${arrGoods[id] * id} `;
+const counterCart = document.querySelector('.counter');
+const objGoods = {};
+const arrGoods = [];
+console.log(counterCart);
+const chekCount = () => {
+  if (arrGoods.length > 0) {
+    counterCart.innerText = arrGoods.length;
+    counterCart.style.paddingLeft = '5px';
   } else {
-    arrGoods[id]++;
-    spanRes.innerText = `итого ${arrGoods[id]}*${id} = ${arrGoods[id] * id} `;
+    counterCart.innerText = 'пусто';
   }
 
+  //console.log(Object.keys(objGoods).length);
+};
+const wishList = e => {
+  let id = e.target.dataset.price;
+
+  const spanRes = e.target.parentNode.querySelector('.show-res');
+  if (objGoods[id] == undefined) {
+    objGoods[id] = 1;
+    spanRes.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[id] *
+      id}грн `;
+  } else {
+    objGoods[id]++;
+    spanRes.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[id] *
+      id}грн `;
+  }
+  // chekCount();
+};
+
+const addToCart = e => {
+  let id = e.target.dataset.id;
+  // console.log(e.target.previousElementSibling);
+  if (arrGoods.includes(id)) {
+    e.target.classList.remove('acive-fa-plus--js');
+    arrGoods.splice(arrGoods.indexOf(id), 1);
+  } else {
+    arrGoods.push(id);
+    e.target.classList.add('acive-fa-plus--js');
+  }
+  chekCount();
   console.log(arrGoods);
 };
+//======= наша общая функция добавления товара пара обработчиков
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
-    console.log(e.target.dataset.id);
-    addToCart(e, e.target.dataset.id);
+    addToCart(e);
+  }
+  if (e.target.classList.contains('fa-plus-circle')) {
+    wishList(e);
   }
 });

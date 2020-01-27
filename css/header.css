@@ -219,7 +219,8 @@ ul.drop li a:hover {
 
 span {
   color: rgb(83, 79, 79);
-  font-size: 2.2rem;
+  font-size: 1.6rem;
+  padding-left: 5px;
   font-weight: bold;
 }
 
@@ -334,15 +335,15 @@ span {
   /* display: none; */
   height: 0px;
   opacity: 0.2;
-  transition: 1.2s;
-  transform: scale(0) translateY(-100%);
+  transition: 1.5s;
+  transform: scale(0);
 }
 
 .show-cart {
   height: 100%;
   opacity: 1;
   /* transition: 0.9s ease-in; */
-  transform: scale(1) translateY(0%);
+  transform: scale(1);
 }
 
 .goods {
@@ -352,7 +353,7 @@ span {
   flex-direction: column;
   width: calc(100% / 4 - 10px);
   min-width: 200px;
-  min-height: 350px;
+  min-height: 370px;
   margin: 5px;
   justify-content: space-between;
   align-items: center;
@@ -368,6 +369,7 @@ span {
   max-width: 100px;
 }
 .cart-fa-icon {
+  margin-top: 20px;
   margin-left: 5px;
   padding-bottom: 5px;
   transition: color 0.5s;
@@ -376,13 +378,14 @@ span {
   color: rgb(14, 14, 41);
 }
 .show-res {
-  
-  top: 87%;
+  font-size: 18px;
+  top: 85%;
   left: 30px;
   right: auto;
   bottom: auto;
   margin: auto;
   position: absolute;
-
-  /* width: 100%; */
+}
+.acive-fa-plus--js {
+  color: red;
 }
