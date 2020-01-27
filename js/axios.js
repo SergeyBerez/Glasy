@@ -6,40 +6,29 @@ let closeMmodalLogin = document.querySelector('.close-modalLogin--js');
 let formSearch = document.querySelector('.form-header-search');
 
 // меняем событие на модальных оканах показываем и скрываем
-modalFind.addEventListener('click', closeModalFind);
-// function (e) {
-//   if (e.target.classList.contains('close-modalLogin--js')) {
-//     modalFind.classList.toggle('animate-modal-search');
-//     document.removeEventListener('keyup', closeModalFind);
-//   }
 
-function closeModalFind(e) {
+//---------- модальное окно поиска
+const closeModalFind = e => {
   if (e.target.classList.contains('close-modalLogin--js') || e.keyCode == 27) {
-    modalFind.classList.toggle('animate-modal-search');
     document.removeEventListener('keyup', closeModalFind);
+    modalFind.classList.toggle('animate-modal-search');
   }
-}
+};
 
 btnFind.addEventListener('click', function(e) {
   e.preventDefault();
   document.addEventListener('keyup', closeModalFind);
   modalFind.classList.toggle('animate-modal-search');
-  // if (modalFind.style.display == 'block') {
-  //   modalFind.style.display = 'none';
-  // } else {
-  //   modalFind.style.display = 'block';
-  //   modalFind.classList.add('animate-modal-search');
-  // }
 });
-//  отбражаем наше модальное окно
-// входа
+
+modalFind.addEventListener('click', closeModalFind);
+
+// --------модальное окно регистрации
 const openModalLogin = e => {
   e.preventDefault();
-
   modalLogin.classList.toggle('animate-modal-search');
 };
 const closeMofalLogin = e => {
-  // console.log(e.target);
   if (
     e.target.classList.contains('close-modalLogin--js') ||
     e.target.className == 'modal-login'
@@ -50,7 +39,7 @@ const closeMofalLogin = e => {
 btnEnter.addEventListener('click', openModalLogin);
 modalLogin.addEventListener('click', closeMofalLogin);
 
-// общая форма отправки данных
+//===================== работаем с формамами общая форма отправки данных
 
 for (let i = 0; i < document.forms.length; i++) {
   document.forms[i].addEventListener('submit', function(e) {
@@ -85,7 +74,7 @@ for (let i = 0; i < document.forms.length; i++) {
             'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
             obj,
           )
-          .then(function(response) {
+          .then(response => {
             //let data = Object.values(response.data);
             console.log(response.data);
             document.forms[i].style.color = 'black';
@@ -93,7 +82,7 @@ for (let i = 0; i < document.forms.length; i++) {
             deleteModalForm(document.forms[i]);
             document.forms[i].reset();
           })
-          .catch(function(error) {
+          .catch(error => {
             //console.log(error);
 
             document.forms[
@@ -115,13 +104,13 @@ function deleteModalForm(node) {
   }, 3000);
 }
 
-// рисуем карты
-let wrap = document.querySelector('.wrap-goods');
+//====================работаем с товаром  рисуем карты=============
+let wrapGoods = document.querySelector('.wrap-goods');
 let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
 
 const loading = () => {
-  wrap.innerHTML = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+  wrapGoods.innerHTML = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 };
 
 function getGoods(callbackHadler, callbackFilter) {
@@ -135,6 +124,7 @@ function getGoods(callbackHadler, callbackFilter) {
     .then(data => callbackHadler(data))
     .catch(error => console.log(error));
 }
+getGoods(renderCard, randomSort);
 
 function randomSort(arr) {
   return arr
@@ -144,63 +134,67 @@ function randomSort(arr) {
   //.sort((a, b) => a.id - b.id);
   //return arr.sort((a, b) => b.id - a.id);
 }
-function createCart(title, name, photo, price) {
+// функция создаем карты динамически  и добавляем из в дом
+function createCart(title, name, photo, price, id) {
   const div = document.createElement('div');
-  div.className = 'goods-wrap';
+   div.className = 'goods-wrap';
   div.innerHTML = `<div class="goods">
       <h2> ${title} </h2 >
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span> ${price} грн</span></p>
         <div>
-        <i class="fa fa-shopping-cart cart-fa-icon" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart cart-fa-icon" aria-hidden="true" data-id = "${id}";></i>
         <i class="fa fa-plus-circle cart-fa-icon" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>
       </div>`;
   return div;
 }
-
+// функция добавление  карт на странице
 function renderCard(arr) {
-  wrap.textContent = '';
+  wrapGoods.textContent = '';
   if (arr.length) {
-    arr.forEach(({ title, name, photo, price }) => {
-      wrap.append(createCart(title, name, photo, price));
+    arr.forEach(({ title, name, photo, price, id }) => {
+      wrapGoods.append(createCart(title, name, photo, price, id));
     });
   } else {
-    wrap.textContent = '❌ такого товара нет';
+    wrapGoods.textContent = '❌ такого товара нет';
   }
 }
-
+// обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
-  wrap.classList.toggle('show-cart');
+  wrapGoods.classList.toggle('show-cart');
   getGoods(renderCard, randomSort);
 });
 
+// обрабатываем событие на кнопке поиска  инпута товаров находим совпадение и отрисовываем
+let input = document.querySelector('.new-form_input');
+let searchGoods = document.querySelector('.fa-search');
 formSearch.addEventListener('click', function(e) {
-  let input = e.target.tagName == 'INPUT';
+  searchGoods.addEventListener('click', function(e) {
+    let inputvalue = input.value.trim().toLowerCase();
+    console.log(inputvalue);
+    if (inputvalue != '') {
+      const searchReg = new RegExp(inputvalue, 'i');
+      getGoods(renderCard, goods =>
+        goods.filter(item => searchReg.test(item.name)),
+      );
+      wrapGoods.classList.add('show-cart');//show goods after sort return true
+    }
+    input.value = '';
+  });
+});
 
-  if (input) {
-    e.target.addEventListener('click', function(e) {
-      let inputvalue = e.target.value.trim().toLowerCase();
-      console.log(inputvalue);
-      if (inputvalue != '') {
-        const searchReg = new RegExp(inputvalue, 'i');
-        getGoods(renderCard, goods =>
-          goods.filter(item => searchReg.test(item.name)),
-        );
-        wrap.classList.toggle('show-cart');
+const arrGoods = [];
 
-        // for (let i = 0; i < goods.length; i++) {
-        //   if (goods[i].innerText.indexOf(inputvalue) > -1) {
-        //     console.log('block');
-        //     goods[i].style.display = 'block';
-        //   } else {
-        //     goods[i].style.display = 'none';
-        //   }
-        // }
-      }
-      this.value = '';
-    });
+const addToCart = id => {
+  arrGoods.push(id);
+  console.log(arrGoods);
+};
+wrapGoods.addEventListener('click', function(e) {
+  if (e.target.classList.contains('fa-shopping-cart')) {
+    console.log(e.target.dataset.id);
+    addToCart(e.target.dataset.id);
   }
 });
