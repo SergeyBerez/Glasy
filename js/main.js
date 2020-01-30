@@ -86,8 +86,8 @@ function addtoCart() {
     //cart[id] = cart[id] + 1;
     //cart[id]++;
     cart[id] += 1;
-    showCart();
   }
+  showCart();
 }
 
 function showCart() {
@@ -97,12 +97,12 @@ function showCart() {
   }
 
   let div = document.createElement('div');
-  div.innerHTML += out;
+cartDiv.innerHTML = out;
   // div.style.position = 'fixed';
   // div.style.left = 0;
   // div.style.top = '50%';
 
-  cartDiv.insertAdjacentElement('afterbegin', div);
+  //cartDiv.insertAdjacentElement('afterbegin', div);
   // console.log(div);
 }
 

@@ -108,6 +108,10 @@ function deleteModalForm(node) {
 let wrapGoods = document.querySelector('.wrap-goods');
 let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
+const counterCart = document.querySelector('.counter');
+const innerGoodsCart = document.querySelector('.innerGoods');
+const objGoods = {};
+const arrGoods = [];
 
 const loading = () => {
   wrapGoods.innerHTML = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
@@ -118,7 +122,9 @@ function getGoods(callbackHadler, callbackFilter) {
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
     .then(({ data }) => {
+      console.log(arrGoods);
       console.log(data);
+
       return callbackFilter(data);
     })
     .then(data => callbackHadler(data))
@@ -127,15 +133,15 @@ function getGoods(callbackHadler, callbackFilter) {
 getGoods(renderCard, randomSort);
 
 function randomSort(arr) {
-  return arr
-    .sort((obja, objb) => obja.price - objb.price)
-    .filter(obj => obj.price > 20);
+  return arr.sort(() => Math.random() - 0.5);
+  // .sort((obja, objb) => obja.price - objb.price);
+  //.filter(obj => obj.price > 20);
 
   //.sort((a, b) => a.id - b.id);
   //return arr.sort((a, b) => b.id - a.id);
 }
 // функция создаем карты динамически  и добавляем из в дом
-function createCart(title, name, photo, price, id) {
+function createCard(title, name, photo, price, id) {
   const div = document.createElement('div');
   div.className = 'goods';
   div.innerHTML = `
@@ -143,19 +149,21 @@ function createCart(title, name, photo, price, id) {
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
-        <div> <span class ="show-res"></span>
-        <i class="fa fa-shopping-cart cart-fa-icon fa-lg" aria-hidden="true"  data-id ="${id}";></i>
+        <div class ="goods-price"> <span class ="show-res"></span>
+        <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
+          arrGoods.indexOf(id) + 1 ? 'acive-fa-plus--js' : ''
+        }" aria-hidden="true"  data-id ="${id}" ></i>
         <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
   return div;
 }
-// функция добавление  карт на странице
+// функция добавление  карт goods на странице
 function renderCard(arr) {
   wrapGoods.textContent = '';
   if (arr.length) {
     arr.forEach(({ title, name, photo, price, id }) => {
-      wrapGoods.append(createCart(title, name, photo, price, id));
+      wrapGoods.append(createCard(title, name, photo, price, id));
     });
   } else {
     wrapGoods.textContent = '❌ такого товара нет';
@@ -164,7 +172,7 @@ function renderCard(arr) {
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
   wrapGoods.classList.toggle('show-cart');
-  getGoods(renderCard, randomSort);
+   getGoods(renderCard, randomSort);
 });
 
 // обрабатываем событие на кнопке поиска  инпута товаров находим совпадение и отрисовываем
@@ -184,37 +192,53 @@ formSearch.addEventListener('click', function(e) {
     input.value = '';
   });
 });
-const counterCart = document.querySelector('.counter');
-const objGoods = {};
-const arrGoods = [];
-console.log(counterCart);
+
+//  tag span with counter in cart
 const chekCount = () => {
   if (arrGoods.length > 0) {
     counterCart.innerText = arrGoods.length;
     counterCart.style.paddingLeft = '5px';
+    counterCart.style.color = 'red';
   } else {
     counterCart.innerText = 'пусто';
+    counterCart.style.color = '';
   }
 
   //console.log(Object.keys(objGoods).length);
 };
-const wishList = e => {
+const addGoodsToObj = e => {
   let id = e.target.dataset.price;
-
-  const spanRes = e.target.parentNode.querySelector('.show-res');
+  const innerGoodsCart = document.querySelector('.innerGoods');
+  // const spanRes = e.target.parentNode.querySelector('.show-res');
   if (objGoods[id] == undefined) {
     objGoods[id] = 1;
-    spanRes.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[id] *
-      id}грн `;
+    innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
+      id
+    ] * id}грн `;
   } else {
     objGoods[id]++;
-    spanRes.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[id] *
-      id}грн `;
+    innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
+      id
+    ] * id}грн `;
   }
+  // console.log(objGoods);
+  // showGoodsinCart();
   // chekCount();
 };
+const storageQuery = get => {
+  if (get) {
+    if (localStorage.getItem('goods')) {
+      
+      arrGoods.push(...JSON.parse(localStorage.getItem('goods')));
+      // console.log(arrGoods);
+      chekCount();
+    }
+  } else {
+    localStorage.setItem('goods', JSON.stringify(arrGoods));
+  }
+};
 
-const addToCart = e => {
+const addGoodsToArr = e => {
   let id = e.target.dataset.id;
   // console.log(e.target.previousElementSibling);
   if (arrGoods.includes(id)) {
@@ -224,15 +248,32 @@ const addToCart = e => {
     arrGoods.push(id);
     e.target.classList.add('acive-fa-plus--js');
   }
+
   chekCount();
-  console.log(arrGoods);
+  storageQuery();
+  //console.log(arrGoods);
 };
+
+// const showGoodsinCart = e => {
+//   let out = '';
+//   for (const key in objGoods) {
+//     out += `<p>${key}:${objGoods[key]}</p>
+//    <br>`;
+//   }
+//   innerGoodsCart.innerHTML = out;
+//   console.log(objGoods);
+//   console.log(out);
+// };
+
 //======= наша общая функция добавления товара пара обработчиков
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
-    addToCart(e);
+    addGoodsToArr(e);
   }
   if (e.target.classList.contains('fa-plus-circle')) {
-    wishList(e);
+    addGoodsToObj(e);
   }
 });
+// вызываем один раз фунцию для того что бы пролучить в массив товары из storage
+storageQuery(true);
+
