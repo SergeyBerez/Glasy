@@ -172,7 +172,7 @@ function renderCard(arr) {
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
   wrapGoods.classList.toggle('show-cart');
-   getGoods(renderCard, randomSort);
+  getGoods(renderCard, randomSort);
 });
 
 // обрабатываем событие на кнопке поиска  инпута товаров находим совпадение и отрисовываем
@@ -187,7 +187,7 @@ formSearch.addEventListener('click', function(e) {
       getGoods(renderCard, goods =>
         goods.filter(item => searchReg.test(item.name)),
       );
-      wrapGoods.classList.add('show-cart'); //show goods after sort return true
+      wrapGoods.classList.toggle('show-cart'); //show goods after sort return true
     }
     input.value = '';
   });
@@ -228,7 +228,6 @@ const addGoodsToObj = e => {
 const storageQuery = get => {
   if (get) {
     if (localStorage.getItem('goods')) {
-      
       arrGoods.push(...JSON.parse(localStorage.getItem('goods')));
       // console.log(arrGoods);
       chekCount();
@@ -276,4 +275,3 @@ wrapGoods.addEventListener('click', function(e) {
 });
 // вызываем один раз фунцию для того что бы пролучить в массив товары из storage
 storageQuery(true);
-
