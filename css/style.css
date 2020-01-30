@@ -422,7 +422,7 @@ body {
   .cart-div {
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+    width: 350px;
     background: rgba(230, 227, 227, 0.835);
     border-radius: 5px;
     padding: 5px;

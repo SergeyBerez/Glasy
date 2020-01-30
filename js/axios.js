@@ -136,12 +136,13 @@ function randomSort(arr) {
   return arr.sort(() => Math.random() - 0.5);
   // .sort((obja, objb) => obja.price - objb.price);
   //.filter(obj => obj.price > 20);
-
   //.sort((a, b) => a.id - b.id);
   //return arr.sort((a, b) => b.id - a.id);
 }
 // функция создаем карты динамически  и добавляем из в дом
 function createCard(title, name, photo, price, id) {
+  //console.log(arrGoods.indexOf(id));
+  // console.log(id);
   const div = document.createElement('div');
   div.className = 'goods';
   div.innerHTML = `
@@ -151,13 +152,14 @@ function createCard(title, name, photo, price, id) {
         <p><span > ${price} грн</span></p>
         <div class ="goods-price"> <span class ="show-res"></span>
         <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
-          arrGoods.indexOf(id) + 1 ? 'acive-fa-plus--js' : ''
+          arrGoods.includes(id) ? 'acive-fa-plus--js' : ''
         }" aria-hidden="true"  data-id ="${id}" ></i>
         <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
   return div;
 }
+
 // функция добавление  карт goods на странице
 function renderCard(arr) {
   wrapGoods.textContent = '';
@@ -229,17 +231,17 @@ const storageQuery = get => {
   if (get) {
     if (localStorage.getItem('goods')) {
       arrGoods.push(...JSON.parse(localStorage.getItem('goods')));
-      // console.log(arrGoods);
-      chekCount();
     }
   } else {
     localStorage.setItem('goods', JSON.stringify(arrGoods));
+    console.log(arrGoods);
   }
+  chekCount();
 };
 
 const addGoodsToArr = e => {
-  let id = e.target.dataset.id;
-  // console.log(e.target.previousElementSibling);
+  let id = +e.target.dataset.id;
+  //  console.log(+id);
   if (arrGoods.includes(id)) {
     e.target.classList.remove('acive-fa-plus--js');
     arrGoods.splice(arrGoods.indexOf(id), 1);
@@ -250,7 +252,6 @@ const addGoodsToArr = e => {
 
   chekCount();
   storageQuery();
-  //console.log(arrGoods);
 };
 
 // const showGoodsinCart = e => {
