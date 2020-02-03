@@ -1,12 +1,16 @@
 'use strict';
 let slider = document.querySelector('.slides');
-
+let nav = document.querySelector('.fixed');
+let inputs = document.querySelectorAll('.indication-input');
+let logo = document.querySelector('.main-logo');
+// let shrink = document.querySelector('.navbar-shrink');
+// console.log(shrink);
 // -----------меняем при нажатии цвет и картинки на радио кнопки
 let radio = document.querySelectorAll('[type="radio"]');
 for (let i = 0; i < radio.length; i++) {
   radio[i].addEventListener('click', function(e) {
     clearTimeout(autoPlay);
-    console.log(e.target.dataset.color);
+    // console.log(radio[i].checked);
     if (e.target.dataset.type) {
       slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
       // slider.style.backgroundColor = e.target.dataset.color;
@@ -24,6 +28,7 @@ function autoChangebackground() {
   ];
   // let arrColor = ['#849d8f', '#8996a6', '#9d8b84'];
   slider.style.backgroundImage = arrImg[j];
+
   // slider.style.backgroundColor = arrColor[j];
   radio[j].checked = true;
   j++;
@@ -79,7 +84,6 @@ for (let i = 0; i < bntcarts.length; i++) {
 let cart = {}; //корзина
 //добавляем товар в обьект корзина
 function addtoCart() {
- 
   let id = this.closest('div').dataset.id;
   if (cart[id] == undefined) {
     cart[id] = 1; //если нет товара то ставим один
@@ -99,7 +103,6 @@ function showCart() {
   }
 
   innetGoods.innerHTML = out;
- 
 }
 
 //перебираем ноде лист как массив
@@ -152,4 +155,33 @@ faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
 
-let btnSearch = document.querySelector('.fa-search');
+// let btnSearch = document.querySelector('.fa-search');
+
+document.addEventListener('scroll', function(e) {
+  if (window.pageYOffset > 70) {
+    nav.classList.add('navbar-shrink');
+  } else {
+    nav.classList.remove('navbar-shrink');
+  }
+});
+document.querySelectorAll('a').forEach(element => {
+  element.onclick = function(e) {
+    e.preventDefault();
+  };
+});
+
+function changeColorMenu() {
+  for (let i = 0; i < inputs.length; i++) {
+    const element = inputs[0].dataset.color;
+    nav.style.backgroundColor = element;
+    console.log(element);
+  }
+}
+function delchangeColorMenu() {
+  nav.style.backgroundColor = '';
+}
+
+$('.main-logo-svg').click(function(e) {
+  let offset = $('.header').offset().top;
+  $('html, body').animate({ scrollTop: offset }, 2000);
+});

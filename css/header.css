@@ -11,14 +11,48 @@
   justify-content: space-around;
   align-items: center;
 }
+.fixed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px 10px;
 
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  border: none;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-shrink {
+  padding: 0px 10px;
+  background-color: #849d8f;
+}
 .main-logo {
   animation: fade-in 1s ease-in;
   flex-basis: 100%;
   max-width: 300px;
+
   /* display: block;
  flex-basis: 100%;
   max-width: 160px; */
+}
+.main-logo-svg {
+  margin-top: 20px;
+  transition: 0.8s;
+  /* border: 1px solid #000; */
+  fill: #ffff;
+  width: 300px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.main-logo-svg:hover {
+  fill: rgb(83, 79, 79);
 }
 
 @keyframes fade-in {

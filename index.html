@@ -8,12 +8,12 @@
       href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap"
       rel="stylesheet"
     />
-<link rel="stylesheet" href="css/normalize.css" />
-   <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main_block.css" />
     <link rel="stylesheet" href="css/buttons.css" />
     <link rel="stylesheet" href="css/style.css" />
- <script src="https://use.fontawesome.com/b5f68561f1.js"></script>
+    <script src="https://use.fontawesome.com/b5f68561f1.js"></script>
     <title>glacy</title>
   </head>
 
@@ -24,141 +24,151 @@
       <div class="slides"></div>
       <div class="wrap">
         <header class="header">
-
           <div class="header-flex outline--flex">
-            <div class="main-logo " href="#">
-              <img src="./img/Logo.svg" alt="logo" />
-            </div>
-            <!-- иконка скрытого меню -->
-            <div class="header_menu-icon">
-              <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-            </div>
+            <div class="fixed fixed-top ">
+              <div class="main-logo">
+                <svg
+                  class="main-logo-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <use xlink:href="./img/Logo.svg#logo"></use>
+                </svg>
+                <!-- <img src="./img/Logo.svg" alt="logo" /> -->
+              </div>
+              <!-- иконка скрытого меню -->
+              <div class="header_menu-icon">
+                <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+              </div>
 
-            <ul class="header-nav  fade-in fade-in_left">
-              <i
-                class="fa fa-times fa-lg close-menu-button--js"
-                aria-hidden="true"
-              ></i>
+              <ul class="header-nav  fade-in fade-in_left">
+                <i
+                  class="fa fa-times fa-lg close-menu-button--js"
+                  aria-hidden="true"
+                ></i>
 
-              <li>
-                <a href="#">каталог</a>
-                <ul class="drop ">
-                  <li>Новинки</li>
-                  <li><a href="#">cливочное</a></li>
-                  <li><a href="#">щербеты</a></li>
-                  <li><a href="#">Фруктоый лед</a></li>
-                  <li><a href="#">Мелони</a></li>
-                </ul>
-              </li>
-              <li><a href="#">доставка и оплата</a></li>
-              <li><a href="#">о Компании</a></li>
-            </ul>
-            <ul class="nav-user fade-in fade-in_right">
-              <!-- два модальных окна скрытых две формы открываются при наведении тега  ли -->
-              <div class="modal-find">
-                <div class="form-header-search">
-                   <i
-                class="fa fa-times fa-lg close-modalLogin--js"
-                aria-hidden="true"
-                title="close"
-              ></i>
-                  <span>find</span> <br>
-                  <input
-                    class="new-form_input"
-                    name="find"
-                    type="text"
-                    placeholder="что ищем"
-                  />
-                  <div class="box-search-icon"> <i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
-                 
+                <li>
+                  <a href="#">каталог</a>
+                  <ul class="drop ">
+                    <li>Новинки</li>
+                    <li><a href="#">cливочное</a></li>
+                    <li><a href="#">щербеты</a></li>
+                    <li><a href="#">Фруктоый лед</a></li>
+                    <li><a href="#">Мелони</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">доставка и оплата</a></li>
+                <li><a href="#">о Компании</a></li>
+              </ul>
+              <ul class="nav-user fade-in fade-in_right">
+                <!-- два модальных окна скрытых две формы открываются при наведении тега  ли -->
+                <div class="modal-find">
+                  <div class="form-header-search">
+                    <i
+                      class="fa fa-times fa-lg close-modalLogin--js"
+                      aria-hidden="true"
+                      title="close"
+                    ></i>
+                    <span>find</span> <br />
+                    <input
+                      class="new-form_input"
+                      name="find"
+                      type="text"
+                      placeholder="что ищем"
+                    />
+                    <div class="box-search-icon">
+                      <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="modal-login ">
-                <form class="new-form-header">
+                <div class="modal-login ">
+                  <form class="new-form-header">
+                    <i
+                      class="fa fa-times fa-lg close-modalLogin--js"
+                      aria-hidden="true"
+                      title="close"
+                    ></i>
+                    <span>Name</span>
+                    <input
+                      class="new-form_input"
+                      type="text"
+                      name="user_name"
+                      placeholder="name"
+                    />
+                    <span>phone</span>
+                    <input
+                      class=" new-form_input"
+                      type="tel"
+                      name="user_phone"
+                      placeholder="tel"
+                    />
+
+                    <span>email</span>
+                    <input
+                      class="new-form_input"
+                      type="email"
+                      name="email"
+                      placeholder="электронная почта"
+                    />
+                    <button class="button banner-ads--button" value="sign in">
+                      sign in
+                    </button>
+                  </form>
+                </div>
+                <!-- наша корзина скрытая -->
+                <div class="cart-div">
+                  <span>cart</span>
                   <i
-                class="fa fa-times fa-lg close-modalLogin--js"
-                aria-hidden="true"
-                title="close"
-              ></i>
-                  <span>Name</span>
-                  <input
-                    class="new-form_input"
-                    type="text"
-                    name="user_name"
-                    placeholder="name"
-                  />
-                  <span>phone</span>
-                  <input
-                    class=" new-form_input"
-                    type="tel"
-                    name="user_phone"
-                    placeholder="tel"
-                  />
+                    class="fa fa-times fa-lg close-modalLogin--js"
+                    aria-hidden="true"
+                    title="close"
+                  ></i>
+                  <p class="innerGoods"></p>
+                  <p><span class="cart-sum">total</span></p>
+                </div>
+                <!-- наше меню юзера  -->
+                <li class="nav-user_find">
+                  <a class="nav-user_a" href="#">
+                    <svg
+                      class="nav-user_img nav-user_find--js"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <use xlink:href="./img/lupa.svg#Layer_2"></use>
+                    </svg>
+                  </a>
+                </li>
 
-                  <span>email</span>
-                  <input
-                    class="new-form_input"
-                    type="email"
-                    name="email"
-                    placeholder="электронная почта"
-                  />
-                  <button class="button banner-ads--button" value="sign in">
-                    sign in
-                  </button>
-                </form>
-              </div>
-              <!-- наша корзина скрытая -->
-              <div class="cart-div">
-                <span>cart</span>
-                 <i
-                class="fa fa-times fa-lg close-modalLogin--js"
-                aria-hidden="true"
-                title="close"
-              ></i>
-               <p class="innerGoods"></p>
-                <p><span class="cart-sum">total</span></p>
-              </div>
-              <!-- наше меню юзера  -->
-              <li class="nav-user_find">
-                <a class="nav-user_a" href="#">
-                  <svg
-                    class="nav-user_img nav-user_find--js"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                <li class="nav-user_enter">
+                  <a href="#" class="nav-user_enter--js">
+                    <svg
+                      class="nav-user_img nav-user_enter--js"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <use xlink:href="./img/enter.svg#enter"></use>
+                    </svg>
+                    вход</a
                   >
-                    <use xlink:href="./img/lupa.svg#Layer_2"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li class="nav-user_enter">
-                <a href="#" class="nav-user_enter--js">
-                  <svg
-                    class="nav-user_img nav-user_enter--js"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  >
-                    <use xlink:href="./img/enter.svg#enter"></use>
-                  </svg>
-                  вход</a
-                >
-              </li>
-              <li>
-                <a href="#" class="nav-user_cart">
-                  <svg
-                    class="nav-user_img "
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  >
-                    <use xlink:href="./img/curt.svg#curt"></use></svg
-                  ><span class ="counter">пусто</span> </a
-                >
-              </li>
-            </ul>
+                </li>
+                <li>
+                  <a href="#" class="nav-user_cart">
+                    <svg
+                      class="nav-user_img "
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <use xlink:href="./img/curt.svg#curt"></use></svg
+                    ><span class="counter">пусто</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
             <div class="work-info">
               с 10 до 22 ежедневно <br />
               <span>8 812 450-25-25</span>
             </div>
+
             <h1 class="header-title fade-in fade-in_right">
               Крем-брюле и пломбир с малиновым джемом
             </h1>
@@ -196,15 +206,13 @@
                 <label class="indication-label" for="slide3"></label>
               </div>
               <button class="button button--header fade-in fade-in_right">
-             show&nbsp;goods
+                show&nbsp;goods
               </button>
             </div>
           </div>
-        
-            
         </header>
         <main class="main">
-            <div class="wrap-goods"></div>
+          <div class="wrap-goods"></div>
           <!-- секция 1  два баннера -->
           <section class="banner-ads outline--flex">
             <div class="banner-ads_item fade-in fade-in_left">
@@ -234,7 +242,9 @@
           <!-- секция  2  =======4 мороженого-->
 
           <section class="banner-foto outline--flex">
-            <div class="banner-foto_item banner-foto_vanil fade-in fade-in_left">
+            <div
+              class="banner-foto_item banner-foto_vanil fade-in fade-in_left"
+            >
               <img src="img/1ice.png" alt="" />
 
               <p class="banner-foto_p">
@@ -243,7 +253,9 @@
               <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
-            <div class="banner-foto_item banner-foto_choco fade-in fade-in_left">
+            <div
+              class="banner-foto_item banner-foto_choco fade-in fade-in_left"
+            >
               <img src="img/icechoco.png" alt="" />
 
               <p class="banner-foto_p">
@@ -252,7 +264,9 @@
               <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
-            <div class="banner-foto_item banner-foto_strawberry fade-in fade-in_right">
+            <div
+              class="banner-foto_item banner-foto_strawberry fade-in fade-in_right"
+            >
               <img src="img/3ice.png" alt="" />
 
               <p class="banner-foto_p">
@@ -261,7 +275,9 @@
               <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
             </div>
 
-            <div class="banner-foto_item banner-foto_caramel fade-in fade-in_right">
+            <div
+              class="banner-foto_item banner-foto_caramel fade-in fade-in_right"
+            >
               <img src="img/4ice.png" alt="" />
 
               <p class="banner-foto_p">
@@ -368,24 +384,27 @@
                 </button>
               </form>
             </div>
-
-
-
           </section>
         </main>
         <footer class="footer">
           <ul class="nav-cotial-icon">
             <li class="footer-img-icon">
-              <a href="https://twitter.com/?lang=uk"><img src="img/twitter_icon.png" alt=""/></a>
+              <a href="https://twitter.com/?lang=uk"
+                ><img src="img/twitter_icon.png" alt=""
+              /></a>
             </li>
             <li class="footer-img-icon">
-              <a href="https://www.instagram.com/"> <img src="img/insta_icon.png" alt=""/></a>
+              <a href="https://www.instagram.com/">
+                <img src="img/insta_icon.png" alt=""
+              /></a>
             </li>
             <li class="footer-img-icon">
               <a href=""><img src="img/vc_icon.png" alt=""/></a>
             </li>
             <li class="footer-img-icon">
-              <a href="https://www.facebook.com/"> <img src="img/fb_icon.png" alt=""/></a>
+              <a href="https://www.facebook.com/">
+                <img src="img/fb_icon.png" alt=""
+              /></a>
             </li>
           </ul>
 
