@@ -110,7 +110,7 @@ let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
 const counterCart = document.querySelector('.counter');
 const innerGoodsCart = document.querySelector('.innerGoods');
-const objGoods = {};
+let objGoods = {};
 const arrGoods = [];
 
 const loading = () => {
@@ -121,12 +121,7 @@ function getGoods(callbackHadler, callbackFilter) {
   loading();
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
-    .then(({ data }) => {
-      console.log(arrGoods);
-      console.log(data);
-
-      return callbackFilter(data);
-    })
+    .then(({ data }) => callbackFilter(data))
     .then(data => callbackHadler(data))
     .catch(error => console.log(error));
 }
@@ -141,8 +136,7 @@ function randomSort(arr) {
 }
 // функция создаем карты динамически  и добавляем из в дом
 function createCard(title, name, photo, price, id) {
-  //console.log(arrGoods.indexOf(id));
-  // console.log(id);
+ 
   const div = document.createElement('div');
   div.className = 'goods';
   div.innerHTML = `
@@ -152,7 +146,7 @@ function createCard(title, name, photo, price, id) {
         <p><span > ${price} грн</span></p>
         <div class ="goods-price"> <span class ="show-res"></span>
         <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
-          arrGoods.includes(id) ? 'acive-fa-plus--js' : ''
+          objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
         }" aria-hidden="true"  data-id ="${id}" ></i>
         <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
@@ -171,6 +165,42 @@ function renderCard(arr) {
     wrapGoods.textContent = '❌ такого товара нет';
   }
 }
+// создаем товары в корзине
+
+function createCardBasket(title, name, photo, price, id) {
+  // console.log(id);
+  // console.log(arrGoods.indexOf(id));
+  // console.log(id);
+  const div = document.createElement('div');
+  div.className = 'goods';
+  div.innerHTML = `
+      <h2> ${title} </h2 >
+      <p class="name"> ${name}</p>
+      <img  class="goods-img" src="${photo}"  alt="">
+        <p><span > ${price} грн</span></p>
+        <div class ="goods-price"> <span class ="show-res"></span>
+        <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
+          objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
+        }" aria-hidden="true"  data-id ="${id}" ></i>
+        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
+        <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
+        <div>`;
+  return div;
+}
+
+function renderCardBasket(arr) {
+  cartDiv.textContent = '';
+  if (arr.length) {
+    arr.forEach(({ title, name, photo, price, id }) => {
+      cartDiv.append(createCardBasket(title, name, photo, price, id));
+    });
+  } else {
+    cartDiv.textContent = '❌ ваша корзина пуста';
+  }
+}
+
+const addCartBasket = () => {};
+
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
   wrapGoods.classList.toggle('show-cart');
@@ -206,24 +236,41 @@ const chekCount = () => {
     counterCart.style.color = '';
   }
 
-  //console.log(Object.keys(objGoods).length);
-};
-const addGoodsToObj = e => {
-  let id = e.target.dataset.price;
-  const innerGoodsCart = document.querySelector('.innerGoods');
-  // const spanRes = e.target.parentNode.querySelector('.show-res');
-  if (objGoods[id] == undefined) {
-    objGoods[id] = 1;
-    innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
-      id
-    ] * id}грн `;
+  if (Object.keys(objGoods).length > 0) {
+    counterCart.innerText = Object.keys(objGoods).length;
+    counterCart.style.paddingLeft = '5px';
+    counterCart.style.color = 'red';
   } else {
-    objGoods[id]++;
-    innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
-      id
-    ] * id}грн `;
+    counterCart.innerText = 'пусто';
+    counterCart.style.color = '';
   }
-  // console.log(objGoods);
+};
+const addGoodsToBasket = e => {
+  let id = e.target.dataset.id;
+  const innerGoodsCart = document.querySelector('.innerGoods');
+  if (objGoods[id]) {
+    objGoods[id] += 1;
+  } else {
+    objGoods[id] = 1;
+    e.target.classList.add('acive-fa-plus--js');
+  }
+  chekCount();
+  storageQuery();
+
+  // if (objGoods[id] == undefined) {
+  //   objGoods[id] = 1;
+  //    e.target.classList.add('acive-fa-plus--js');
+  //   innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
+  //     id
+  //   ] * id}грн `;
+  // } else {
+
+  //   objGoods[id]++;
+  //   innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
+  //     id
+  //   ] * id}грн `;
+  // }
+
   // showGoodsinCart();
   // chekCount();
 };
@@ -234,25 +281,33 @@ const storageQuery = get => {
     }
   } else {
     localStorage.setItem('goods', JSON.stringify(arrGoods));
-    console.log(arrGoods);
   }
-  chekCount();
-};
-
-const addGoodsToArr = e => {
-  let id = +e.target.dataset.id;
-  //  console.log(+id);
-  if (arrGoods.includes(id)) {
-    e.target.classList.remove('acive-fa-plus--js');
-    arrGoods.splice(arrGoods.indexOf(id), 1);
+  if (get) {
+    if (localStorage.getItem('goods-obj')) {
+      let obj = JSON.parse(localStorage.getItem('goods-obj'));
+      objGoods = Object.assign(objGoods, obj);
+      // console.log(objGoods);
+    }
   } else {
-    arrGoods.push(id);
-    e.target.classList.add('acive-fa-plus--js');
+    localStorage.setItem('goods-obj', JSON.stringify(objGoods));
   }
-
   chekCount();
-  storageQuery();
 };
+
+// const addGoodsToArr = e => {
+//   let id = +e.target.dataset.id;
+
+//   if (arrGoods.includes(id)) {
+//     // e.target.classList.remove('acive-fa-plus--js');
+//     arrGoods.splice(arrGoods.indexOf(id), 1);
+//   } else {
+//     arrGoods.push(id);
+//     e.target.classList.add('acive-fa-plus--js');
+//   }
+
+//   chekCount();
+//   storageQuery();
+// };
 
 // const showGoodsinCart = e => {
 //   let out = '';
@@ -268,11 +323,12 @@ const addGoodsToArr = e => {
 //======= наша общая функция добавления товара пара обработчиков
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
-    addGoodsToArr(e);
+    // addGoodsToArr(e);
+    addGoodsToBasket(e);
   }
-  if (e.target.classList.contains('fa-plus-circle')) {
-    addGoodsToObj(e);
-  }
+  // if (e.target.classList.contains('fa-plus-circle')) {
+  //   addGoodsToBasket(e);
+  // }
 });
 // вызываем один раз фунцию для того что бы пролучить в массив товары из storage
 storageQuery(true);

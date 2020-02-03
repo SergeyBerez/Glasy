@@ -58,6 +58,8 @@ window.addEventListener('resize', function(e) {
 
 // -------------корзина показываем и скрываем ее
 let btnUserCart = document.querySelector('.nav-user_cart');
+let innetGoods = document.querySelector('.innerGoods');
+
 let cartDiv = document.querySelector('.cart-div');
 btnUserCart.addEventListener('click', function(e) {
   e.preventDefault();
@@ -77,8 +79,7 @@ for (let i = 0; i < bntcarts.length; i++) {
 let cart = {}; //корзина
 //добавляем товар в обьект корзина
 function addtoCart() {
-  // console.log(cart);
-  console.log(this);
+ 
   let id = this.closest('div').dataset.id;
   if (cart[id] == undefined) {
     cart[id] = 1; //если нет товара то ставим один
@@ -91,19 +92,14 @@ function addtoCart() {
 }
 
 function showCart() {
+  console.log(1);
   let out = '';
   for (const key in cart) {
     out += `<p>${key}-${cart[key]}</p> `;
   }
 
-  let div = document.createElement('div');
-cartDiv.innerHTML = out;
-  // div.style.position = 'fixed';
-  // div.style.left = 0;
-  // div.style.top = '50%';
-
-  //cartDiv.insertAdjacentElement('afterbegin', div);
-  // console.log(div);
+  innetGoods.innerHTML = out;
+ 
 }
 
 //перебираем ноде лист как массив
@@ -123,21 +119,10 @@ window.addEventListener('scroll', function(e) {
   if (window.pageYOffset > 2600) {
     footer.classList.add('animaton-footer');
   }
-  // if (window.pageYOffset > 20) {
-  //   h1.classList.add('animaton-h1');
-  // } else if (window.pageYOffset < 10) {
-  //   h1.classList.remove('animaton-h1');
-  // }
-  // if (window.pageYOffset > 20) {
-  //   indicationButton.classList.add('animaton-h1');
-  // } else if (window.pageYOffset < 10) {
-  //   indicationButton.classList.remove('animaton-h1');
-  // }
 });
 
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
-
   return {
     top: box.top + window.pageYOffset,
     left: box.left + window.pageXOffset,

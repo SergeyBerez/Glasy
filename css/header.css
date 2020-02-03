@@ -332,11 +332,11 @@ span {
   flex-wrap: wrap;
   justify-content: center;
   padding: 10px;
-
+  height: 0px;
   /* display: none; */
-  opacity: 1;
+  opacity: 0;
   transition: 1.5s;
-  transform: scale(1);
+  transform: scale(0);
 }
 
 .show-cart {
@@ -367,16 +367,20 @@ span {
   max-width: 70px;
   margin-top: auto;
 }
+
 .goods-price {
 }
+
 .cart-fa-icon {
   margin-left: 5px;
   margin-bottom: 5px;
   transition: color 0.5s;
 }
+
 .cart-fa-icon:hover {
   color: rgb(14, 14, 41);
 }
+
 /* .show-res {
   font-size: 18px;
   top: 85%;
