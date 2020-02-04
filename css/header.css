@@ -291,9 +291,9 @@ span {
 }
 
 .cart-div {
-  display: flex;
-  flex-direction: column;
+  overflow-y: scroll;
   width: 500px;
+  height: 300px;
   background: rgba(230, 227, 227, 0.835);
   border-radius: 5px;
   padding: 5px;
@@ -308,7 +308,23 @@ span {
   transition: 0.9s;
   opacity: 0;
 }
-
+.inner-goods {
+  border-radius: 5px;
+  background: rgb(206, 200, 200);
+  padding: 5px;
+  /* width: 100%;
+ 
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center; */
+}
+.inner-goods-cart {
+  background: rgba(230, 227, 227, 0.835);
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .animate-modal-search {
   transform: translateX(0);
   opacity: 1;

@@ -61,20 +61,7 @@ window.addEventListener('resize', function(e) {
   headerMenuIcon.style.display = '';
 });
 
-// -------------корзина показываем и скрываем ее
-let btnUserCart = document.querySelector('.nav-user_cart');
-let innetGoods = document.querySelector('.innerGoods');
 
-let cartDiv = document.querySelector('.cart-div');
-btnUserCart.addEventListener('click', function(e) {
-  e.preventDefault();
-  cartDiv.classList.toggle('animate-modal-search');
-});
-cartDiv.addEventListener('click', function(e) {
-  if (e.target.classList.contains('close-modalLogin--js')) {
-    cartDiv.classList.toggle('animate-modal-search');
-  }
-});
 
 //----------работаем с товаром добавляем , кнокапи добавляем товар в козину
 let bntcarts = document.querySelectorAll('.fa-cart-plus');

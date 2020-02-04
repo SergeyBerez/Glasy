@@ -340,7 +340,9 @@ body {
     z-index: 2;
     padding: 10px;
   }
-
+  .fixed-top {
+    height: 400px;
+  }
   /* заголовок  */
   .header-title {
     padding-top: 0%;

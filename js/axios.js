@@ -103,13 +103,26 @@ function deleteModalForm(node) {
     modalLogin.classList.toggle('animate-modal-search');
   }, 3000);
 }
-
+// -------------корзина показываем и скрываем ее
+const btnUserCart = document.querySelector('.nav-user_cart');
+const innerGoodsCart = document.querySelector('.inner-goods');
+const cartDiv = document.querySelector('.cart-div');
+btnUserCart.addEventListener('click', function (e) {
+  getGoods(renderCardBasket);
+  e.preventDefault();
+  cartDiv.classList.toggle('animate-modal-search');
+});
+cartDiv.addEventListener('click', function(e) {
+  if (e.target.classList.contains('close-modalLogin--js')) {
+    cartDiv.classList.toggle('animate-modal-search');
+  }
+});
 //====================работаем с товаром  рисуем карты=============
 let wrapGoods = document.querySelector('.wrap-goods');
 let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
 const counterCart = document.querySelector('.counter');
-const innerGoodsCart = document.querySelector('.innerGoods');
+
 let objGoods = {};
 const arrGoods = [];
 
@@ -121,8 +134,9 @@ function getGoods(callbackHadler, callbackFilter) {
   loading();
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
-    .then(({ data }) => callbackFilter(data))
-    .then(data => callbackHadler(data))
+    .then(response => response.data)
+    .then(callbackFilter)
+    .then(callbackHadler)
     .catch(error => console.log(error));
 }
 getGoods(renderCard, randomSort);
@@ -136,7 +150,6 @@ function randomSort(arr) {
 }
 // функция создаем карты динамически  и добавляем из в дом
 function createCard(title, name, photo, price, id) {
- 
   const div = document.createElement('div');
   div.className = 'goods';
   div.innerHTML = `
@@ -148,7 +161,7 @@ function createCard(title, name, photo, price, id) {
         <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
           objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
         }" aria-hidden="true"  data-id ="${id}" ></i>
-        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
+        <i class="fa fa-plus-circle cart-fa-icon" data-id = "${id}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
   return div;
@@ -165,41 +178,39 @@ function renderCard(arr) {
     wrapGoods.textContent = '❌ такого товара нет';
   }
 }
-// создаем товары в корзине
+//================ создаем товары в корзине
 
 function createCardBasket(title, name, photo, price, id) {
-  // console.log(id);
-  // console.log(arrGoods.indexOf(id));
-  // console.log(id);
+  console.log(id);
+ 
+ 
   const div = document.createElement('div');
-  div.className = 'goods';
+  div.className = 'inner-goods-cart';
   div.innerHTML = `
-      <h2> ${title} </h2 >
+      <p> ${id} </p >
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
         <div class ="goods-price"> <span class ="show-res"></span>
-        <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
-          objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
-        }" aria-hidden="true"  data-id ="${id}" ></i>
-        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${price}" aria-hidden="true"></i>
+       
+        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${id}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
         <div>`;
   return div;
 }
 
 function renderCardBasket(arr) {
-  cartDiv.textContent = '';
+ innerGoodsCart.textContent = '';
   if (arr.length) {
     arr.forEach(({ title, name, photo, price, id }) => {
-      cartDiv.append(createCardBasket(title, name, photo, price, id));
+ innerGoodsCart.append(createCardBasket(title, name, photo, price, id));
     });
   } else {
-    cartDiv.textContent = '❌ ваша корзина пуста';
+   innerGoodsCart.textContent = '❌ ваша корзина пуста';
   }
 }
 
-const addCartBasket = () => {};
+// const addGoodsToBasket = () => {};
 
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
@@ -219,13 +230,13 @@ formSearch.addEventListener('click', function(e) {
       getGoods(renderCard, goods =>
         goods.filter(item => searchReg.test(item.name)),
       );
-      wrapGoods.classList.toggle('show-cart'); //show goods after sort return true
+      wrapGoods.classList.add('show-cart'); //show goods after sort return true 
     }
     input.value = '';
   });
 });
 
-//  tag span with counter in cart
+//  add count to cart
 const chekCount = () => {
   if (arrGoods.length > 0) {
     counterCart.innerText = arrGoods.length;
@@ -245,9 +256,9 @@ const chekCount = () => {
     counterCart.style.color = '';
   }
 };
-const addGoodsToBasket = e => {
+const addBasket = e => {
   let id = e.target.dataset.id;
-  const innerGoodsCart = document.querySelector('.innerGoods');
+ 
   if (objGoods[id]) {
     objGoods[id] += 1;
   } else {
@@ -256,24 +267,8 @@ const addGoodsToBasket = e => {
   }
   chekCount();
   storageQuery();
-
-  // if (objGoods[id] == undefined) {
-  //   objGoods[id] = 1;
-  //    e.target.classList.add('acive-fa-plus--js');
-  //   innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
-  //     id
-  //   ] * id}грн `;
-  // } else {
-
-  //   objGoods[id]++;
-  //   innerGoodsCart.innerText = `итого: ${objGoods[id]}*${id}грн = ${objGoods[
-  //     id
-  //   ] * id}грн `;
-  // }
-
-  // showGoodsinCart();
-  // chekCount();
 };
+// add goods to storage with arr and object
 const storageQuery = get => {
   if (get) {
     if (localStorage.getItem('goods')) {
@@ -294,20 +289,22 @@ const storageQuery = get => {
   chekCount();
 };
 
-// const addGoodsToArr = e => {
-//   let id = +e.target.dataset.id;
 
-//   if (arrGoods.includes(id)) {
-//     // e.target.classList.remove('acive-fa-plus--js');
-//     arrGoods.splice(arrGoods.indexOf(id), 1);
-//   } else {
-//     arrGoods.push(id);
-//     e.target.classList.add('acive-fa-plus--js');
-//   }
 
-//   chekCount();
-//   storageQuery();
-// };
+const addGoodsToArr = e => {
+  let id = +e.target.dataset.id;
+  
+  if (arrGoods.includes(id)) {
+    // e.target.classList.remove('acive-fa-plus--js');
+    arrGoods.splice(arrGoods.indexOf(id), 1);
+  } else {
+    arrGoods.push(id);
+    e.target.classList.add('acive-fa-plus--js');
+  }
+  
+  chekCount();
+  storageQuery();
+};
 
 // const showGoodsinCart = e => {
 //   let out = '';
@@ -323,11 +320,10 @@ const storageQuery = get => {
 //======= наша общая функция добавления товара пара обработчиков
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
-    // addGoodsToArr(e);
-    addGoodsToBasket(e);
+    addBasket(e);
   }
   // if (e.target.classList.contains('fa-plus-circle')) {
-  //   addGoodsToBasket(e);
+  //   addGoodsToArr(e);
   // }
 });
 // вызываем один раз фунцию для того что бы пролучить в массив товары из storage
