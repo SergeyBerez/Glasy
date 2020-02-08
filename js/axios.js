@@ -83,7 +83,7 @@ for (let i = 0; i < document.forms.length; i++) {
             document.forms[i].reset();
           })
           .catch(error => {
-            //console.log(error);
+            console.log(error);
 
             document.forms[
               i
@@ -103,12 +103,15 @@ function deleteModalForm(node) {
     modalLogin.classList.toggle('animate-modal-search');
   }, 3000);
 }
+// =====================axios reuqest
+
 // -------------корзина показываем и скрываем ее
 const btnUserCart = document.querySelector('.nav-user_cart');
 const innerGoodsCart = document.querySelector('.inner-goods');
 const cartDiv = document.querySelector('.cart-div');
-btnUserCart.addEventListener('click', function (e) {
-  getGoods(renderCardBasket);
+btnUserCart.addEventListener('click', function(e) {
+  getGoods(renderCardBasket, sortCardBacket);
+
   e.preventDefault();
   cartDiv.classList.toggle('animate-modal-search');
 });
@@ -132,6 +135,7 @@ const loading = () => {
 
 function getGoods(callbackHadler, callbackFilter) {
   loading();
+
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
     .then(response => response.data)
@@ -157,12 +161,12 @@ function createCard(title, name, photo, price, id) {
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
-        <div class ="goods-price"> <span class ="show-res"></span>
+        <div class ="goods-price"> <span class ="show-res">
+       </span>
         <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
           objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
         }" aria-hidden="true"  data-id ="${id}" ></i>
-        <i class="fa fa-plus-circle cart-fa-icon" data-id = "${id}" aria-hidden="true"></i>
-        <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
+       
         <div>`;
   return div;
 }
@@ -179,11 +183,11 @@ function renderCard(arr) {
   }
 }
 //================ создаем товары в корзине
+function sortCardBacket(goods) {
+  return goods.filter(item => objGoods.hasOwnProperty(item.id));
+}
 
 function createCardBasket(title, name, photo, price, id) {
-  console.log(id);
- 
- 
   const div = document.createElement('div');
   div.className = 'inner-goods-cart';
   div.innerHTML = `
@@ -191,22 +195,22 @@ function createCardBasket(title, name, photo, price, id) {
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
-        <div class ="goods-price"> <span class ="show-res"></span>
-       
+     
         <i class="fa fa-plus-circle cart-fa-icon" data-price = "${id}" aria-hidden="true"></i>
         <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
-        <div>`;
+         <span class ="show-res"></span>`;
   return div;
 }
 
-function renderCardBasket(arr) {
- innerGoodsCart.textContent = '';
-  if (arr.length) {
-    arr.forEach(({ title, name, photo, price, id }) => {
- innerGoodsCart.append(createCardBasket(title, name, photo, price, id));
+function renderCardBasket(goods) {
+  innerGoodsCart.textContent = '';
+
+  if (goods.length) {
+    goods.forEach(({ title, name, photo, price, id }) => {
+      innerGoodsCart.append(createCardBasket(title, name, photo, price, id));
     });
   } else {
-   innerGoodsCart.textContent = '❌ ваша корзина пуста';
+    innerGoodsCart.textContent = '❌ ваша корзина пуста';
   }
 }
 
@@ -230,7 +234,7 @@ formSearch.addEventListener('click', function(e) {
       getGoods(renderCard, goods =>
         goods.filter(item => searchReg.test(item.name)),
       );
-      wrapGoods.classList.add('show-cart'); //show goods after sort return true 
+      wrapGoods.classList.add('show-cart'); //show goods after sort return true
     }
     input.value = '';
   });
@@ -258,9 +262,11 @@ const chekCount = () => {
 };
 const addBasket = e => {
   let id = e.target.dataset.id;
- 
+
   if (objGoods[id]) {
-    objGoods[id] += 1;
+    objGoods[id] -= 1;
+    e.target.classList.remove('acive-fa-plus--js');
+    delete objGoods[id];
   } else {
     objGoods[id] = 1;
     e.target.classList.add('acive-fa-plus--js');
@@ -281,7 +287,7 @@ const storageQuery = get => {
     if (localStorage.getItem('goods-obj')) {
       let obj = JSON.parse(localStorage.getItem('goods-obj'));
       objGoods = Object.assign(objGoods, obj);
-      // console.log(objGoods);
+      console.log(objGoods);
     }
   } else {
     localStorage.setItem('goods-obj', JSON.stringify(objGoods));
@@ -289,11 +295,9 @@ const storageQuery = get => {
   chekCount();
 };
 
-
-
 const addGoodsToArr = e => {
   let id = +e.target.dataset.id;
-  
+
   if (arrGoods.includes(id)) {
     // e.target.classList.remove('acive-fa-plus--js');
     arrGoods.splice(arrGoods.indexOf(id), 1);
@@ -301,7 +305,7 @@ const addGoodsToArr = e => {
     arrGoods.push(id);
     e.target.classList.add('acive-fa-plus--js');
   }
-  
+
   chekCount();
   storageQuery();
 };
