@@ -109,10 +109,11 @@ function deleteModalForm(node) {
 const btnUserCart = document.querySelector('.nav-user_cart');
 const innerGoodsCart = document.querySelector('.inner-goods');
 const cartDiv = document.querySelector('.cart-div');
-btnUserCart.addEventListener('click', function(e) {
-  getGoods(renderCardBasket, sortCardBacket);
+const cartSum = document.querySelector('.cart-sum');
 
+btnUserCart.addEventListener('click', function(e) {
   e.preventDefault();
+  getGoods(renderCardBasket, sortCardBacket);
   cartDiv.classList.toggle('animate-modal-search');
 });
 cartDiv.addEventListener('click', function(e) {
@@ -126,15 +127,22 @@ let getGoodsbtn = document.querySelector('.button--header');
 let goodsWrap = document.getElementsByClassName('goods-wrap');
 const counterCart = document.querySelector('.counter');
 
-let objGoods = {};
+const objGoods = {};
 const arrGoods = [];
 
-const loading = () => {
-  wrapGoods.innerHTML = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+const loading = namefunction => {
+  const spinner = `<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+
+  if (namefunction == 'renderCard') {
+    wrapGoods.innerHTML = spinner;
+  }
+  if (namefunction == 'renderCardBasket') {
+    innerGoodsCart.innerHTML = spinner;
+  }
 };
 
 function getGoods(callbackHadler, callbackFilter) {
-  loading();
+  loading(callbackHadler.name);
 
   axios
     .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
@@ -183,8 +191,22 @@ function renderCard(arr) {
   }
 }
 //================ создаем товары в корзине
+
+const calcTotalPrice = goods => {
+  let sum = 0;
+  for (const item of goods) {
+    sum += item.price * objGoods[item.id];
+    // console.log(sum);
+    //   console.log(item.id);
+  }
+
+  // cartDiv.querySelector('.cart-sum').textContent = sum;
+};
 function sortCardBacket(goods) {
-  return goods.filter(item => objGoods.hasOwnProperty(item.id));
+  const basketGoods = goods.filter(item => objGoods.hasOwnProperty(item.id));
+
+  calcTotalPrice(basketGoods);
+  return basketGoods;
 }
 
 function createCardBasket(title, name, photo, price, id) {
@@ -194,11 +216,11 @@ function createCardBasket(title, name, photo, price, id) {
       <p> ${id} </p >
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
-        <p><span > ${price} грн</span></p>
-     
-        <i class="fa fa-plus-circle cart-fa-icon" data-price = "${id}" aria-hidden="true"></i>
-        <i class="fa fa-minus-circle cart-fa-icon" aria-hidden="true"></i>
-         <span class ="show-res"></span>`;
+       <i class="fa fa-plus-circle cart-fa-icon"  data-id ="${id}"  data-price = "${price}" aria-hidden="true"></i>
+        <i class="fa fa-minus-circle  data-id ="${id}"  cart-fa-icon" aria-hidden="true"></i>
+         <p><span > ${price} грн</span></p>*
+             <span class ="show-count">${objGoods[id]}</span>=
+         <span class ="show-res">${objGoods[id] * price} </span>`;
   return div;
 }
 
@@ -213,8 +235,6 @@ function renderCardBasket(goods) {
     innerGoodsCart.textContent = '❌ ваша корзина пуста';
   }
 }
-
-// const addGoodsToBasket = () => {};
 
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
@@ -271,9 +291,30 @@ const addBasket = e => {
     objGoods[id] = 1;
     e.target.classList.add('acive-fa-plus--js');
   }
+  getGoods(renderCardBasket, sortCardBacket);
   chekCount();
   storageQuery();
 };
+let sum = 0;
+function addGoodsToBascket(e) {
+  let showRes = e.target.parentNode.querySelector('.show-res');
+  let showCount = e.target.parentNode.querySelector('.show-count');
+  let price = e.target.dataset.price;
+  let id = e.target.dataset.id;
+
+  if (objGoods[id]) {
+    objGoods[id] += 1;
+  } else {
+    objGoods[id] = 1;
+  }
+  showCount.textContent = objGoods[id];
+  showRes.textContent = objGoods[id] * price;
+  sum += price * objGoods[id];
+  storageQuery();
+
+  cartDiv.querySelector('.cart-sum').textContent = sum;
+}
+
 // add goods to storage with arr and object
 const storageQuery = get => {
   if (get) {
@@ -286,8 +327,7 @@ const storageQuery = get => {
   if (get) {
     if (localStorage.getItem('goods-obj')) {
       let obj = JSON.parse(localStorage.getItem('goods-obj'));
-      objGoods = Object.assign(objGoods, obj);
-      console.log(objGoods);
+      Object.assign(objGoods, obj);
     }
   } else {
     localStorage.setItem('goods-obj', JSON.stringify(objGoods));
@@ -326,9 +366,12 @@ wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
     addBasket(e);
   }
-  // if (e.target.classList.contains('fa-plus-circle')) {
-  //   addGoodsToArr(e);
-  // }
 });
+cartDiv.addEventListener('click', function(e) {
+  if (e.target.classList.contains('fa-plus-circle')) {
+    addGoodsToBascket(e);
+  }
+});
+
 // вызываем один раз фунцию для того что бы пролучить в массив товары из storage
 storageQuery(true);
