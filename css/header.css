@@ -3,6 +3,7 @@
   /* top: 0;
   left: 0; */
   /* z-index: 1; */
+  background-color: #849d8f;
 }
 
 .header-flex {
@@ -18,7 +19,6 @@
   align-items: center;
   padding: 45px 10px;
   margin: 0 auto;
-
   transition: padding-top 0.3s, padding-bottom 0.3s;
   border: none;
   background-color: transparent;
@@ -27,7 +27,8 @@
   right: 0;
   left: 0;
   z-index: 1000;
-  width: 100%;
+  /* max-width: 1200px;
+  width: 100%; */
   position: fixed;
 }
 

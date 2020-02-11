@@ -46,6 +46,7 @@ for (let i = 0; i < document.forms.length; i++) {
     e.preventDefault();
 
     let form = new FormData(this);
+
     let obj = {};
     for (let [name, value] of form) {
       obj[name] = value;
@@ -113,6 +114,7 @@ const cartSum = document.querySelector('.cart-sum');
 
 btnUserCart.addEventListener('click', function(e) {
   e.preventDefault();
+  sum = 0;
   getGoods(renderCardBasket, sortCardBacket);
   cartDiv.classList.toggle('animate-modal-search');
 });
@@ -140,27 +142,30 @@ const loading = namefunction => {
     innerGoodsCart.innerHTML = spinner;
   }
 };
-
+//https://my-json-server.typicode.com/SergeyBerez/server/getGoods
 function getGoods(callbackHadler, callbackFilter) {
   loading(callbackHadler.name);
 
   axios
-    .get('https://my-json-server.typicode.com/SergeyBerez/server/getGoods')
-    .then(response => response.data)
+    .get(
+      'https://spreadsheets.google.com/feeds/list/1gbWOOoMzRCE3XwK7OM6HtOXFEnfv-Vq8hbQlpMnf1h4/od6/public/values?alt=json',
+    )
+    .then(response => response.data.feed.entry)
     .then(callbackFilter)
     .then(callbackHadler)
     .catch(error => console.log(error));
 }
 getGoods(renderCard, randomSort);
-
+//  -------функция создаем карты динамически  и добавляем из в дом
 function randomSort(arr) {
-  return arr.sort(() => Math.random() - 0.5);
+  return arr.sort((a, b) => a.gsx$id.$t - b.gsx$id.$t);
+  //arr.sort(() => Math.random() - 0.5);
   // .sort((obja, objb) => obja.price - objb.price);
   //.filter(obj => obj.price > 20);
-  //.sort((a, b) => a.id - b.id);
+
   //return arr.sort((a, b) => b.id - a.id);
 }
-// функция создаем карты динамически  и добавляем из в дом
+
 function createCard(title, name, photo, price, id) {
   const div = document.createElement('div');
   div.className = 'goods';
@@ -169,8 +174,6 @@ function createCard(title, name, photo, price, id) {
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
         <p><span > ${price} грн</span></p>
-        <div class ="goods-price"> <span class ="show-res">
-       </span>
         <i class="fa fa-shopping-cart cart-fa-icon fa-lg ${
           objGoods.hasOwnProperty(id) ? 'acive-fa-plus--js' : ''
         }" aria-hidden="true"  data-id ="${id}" ></i>
@@ -183,27 +186,45 @@ function createCard(title, name, photo, price, id) {
 function renderCard(arr) {
   wrapGoods.textContent = '';
   if (arr.length) {
-    arr.forEach(({ title, name, photo, price, id }) => {
-      wrapGoods.append(createCard(title, name, photo, price, id));
+    arr.forEach(({ title, gsx$name, gsx$photo, gsx$price, gsx$id }) => {
+      wrapGoods.append(
+        createCard(
+          title.$t,
+          gsx$name.$t,
+          gsx$photo.$t,
+          gsx$price.$t,
+          gsx$id.$t,
+        ),
+      );
     });
   } else {
     wrapGoods.textContent = '❌ такого товара нет';
   }
 }
 //================ создаем товары в корзине
-
+let sum = 0;
+let servergoods = {};
 const calcTotalPrice = goods => {
-  let sum = 0;
-  for (const item of goods) {
-    sum += item.price * objGoods[item.id];
-    // console.log(sum);
-    //   console.log(item.id);
+  for (let i = 0; i < goods.length; i++) {
+    // console.log(goods[i]);
+    // servergoods[i] = goods[i];
+    // servergoods[i]['count'] = objGoods[goods[i].gsx$id.$t];
+    let temp = {};
+    sum += goods[i].gsx$price.$t * objGoods[goods[i].gsx$id.$t];
+    temp.id = goods[i].gsx$id.$t;
+    temp.count = objGoods[goods[i].gsx$id.$t];
+    temp.price = goods[i].gsx$price.$t;
+    servergoods[goods[i].gsx$id.$t] = temp;
   }
 
-  // cartDiv.querySelector('.cart-sum').textContent = sum;
+  console.log(servergoods);
+
+  cartDiv.querySelector('.cart-sum').textContent = `:${sum} грн`;
 };
 function sortCardBacket(goods) {
-  const basketGoods = goods.filter(item => objGoods.hasOwnProperty(item.id));
+  const basketGoods = goods
+    .sort((a, b) => a.gsx$id.$t - b.gsx$id.$t)
+    .filter(item => objGoods.hasOwnProperty(item.gsx$id.$t));
 
   calcTotalPrice(basketGoods);
   return basketGoods;
@@ -217,10 +238,10 @@ function createCardBasket(title, name, photo, price, id) {
       <p class="name"> ${name}</p>
       <img  class="goods-img" src="${photo}"  alt="">
        <i class="fa fa-plus-circle cart-fa-icon"  data-id ="${id}"  data-price = "${price}" aria-hidden="true"></i>
-        <i class="fa fa-minus-circle  data-id ="${id}"  cart-fa-icon" aria-hidden="true"></i>
+       <i class="fa fa-minus-circle  cart-fa-icon"  data-id ="${id}" data-price = "${price}" aria-hidden="true"></i>
          <p><span > ${price} грн</span></p>*
-             <span class ="show-count">${objGoods[id]}</span>=
-         <span class ="show-res">${objGoods[id] * price} </span>`;
+             <span class ="show-count">${objGoods[id]}шт</span>=
+         <span class ="show-res">${objGoods[id] * price} грн</span> `;
   return div;
 }
 
@@ -228,10 +249,19 @@ function renderCardBasket(goods) {
   innerGoodsCart.textContent = '';
 
   if (goods.length) {
-    goods.forEach(({ title, name, photo, price, id }) => {
-      innerGoodsCart.append(createCardBasket(title, name, photo, price, id));
+    goods.forEach(({ title, gsx$name, gsx$photo, gsx$price, gsx$id }) => {
+      innerGoodsCart.append(
+        createCardBasket(
+          title.$t,
+          gsx$name.$t,
+          gsx$photo.$t,
+          gsx$price.$t,
+          gsx$id.$t,
+        ),
+      );
     });
   } else {
+    cartDiv.querySelector('.cart-sum').textContent = '';
     innerGoodsCart.textContent = '❌ ваша корзина пуста';
   }
 }
@@ -239,6 +269,7 @@ function renderCardBasket(goods) {
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
 getGoodsbtn.addEventListener('click', function(e) {
   wrapGoods.classList.toggle('show-cart');
+  sum = 0;
   getGoods(renderCard, randomSort);
 });
 
@@ -280,7 +311,8 @@ const chekCount = () => {
     counterCart.style.color = '';
   }
 };
-const addBasket = e => {
+
+const addGoodsToBasket = e => {
   let id = e.target.dataset.id;
 
   if (objGoods[id]) {
@@ -291,12 +323,20 @@ const addBasket = e => {
     objGoods[id] = 1;
     e.target.classList.add('acive-fa-plus--js');
   }
+  sum = 0;
   getGoods(renderCardBasket, sortCardBacket);
   chekCount();
   storageQuery();
 };
-let sum = 0;
-function addGoodsToBascket(e) {
+
+//  функции подсчета товаров в корзите
+function countSumInBacket(e) {
+  sum = 0;
+  getGoods(renderCardBasket, sortCardBacket);
+}
+
+function countPlusGoodsInBascket(e) {
+  // console.log(e.target.dataset);
   let showRes = e.target.parentNode.querySelector('.show-res');
   let showCount = e.target.parentNode.querySelector('.show-count');
   let price = e.target.dataset.price;
@@ -307,12 +347,33 @@ function addGoodsToBascket(e) {
   } else {
     objGoods[id] = 1;
   }
-  showCount.textContent = objGoods[id];
-  showRes.textContent = objGoods[id] * price;
-  sum += price * objGoods[id];
+
+  showCount.textContent = `${objGoods[id]}шт`;
+  showRes.textContent = `${objGoods[id] * price}грн`;
+
   storageQuery();
 
-  cartDiv.querySelector('.cart-sum').textContent = sum;
+  cartDiv.querySelector('.cart-sum').textContent = 'пересчитать';
+}
+function countMinusGoodsInBascket(e) {
+  let showCount = e.target.parentNode.querySelector('.show-count');
+  let showRes = e.target.parentNode.querySelector('.show-res');
+  let id = e.target.dataset.id;
+  let price = e.target.dataset.price;
+  console.log(objGoods[id]);
+  if (objGoods[id]) {
+    objGoods[id] -= 1;
+  }
+  if (objGoods[id] == 0) {
+    delete objGoods[id];
+    sum = 0;
+    getGoods(renderCard, randomSort);
+    getGoods(renderCardBasket, sortCardBacket);
+  }
+  storageQuery();
+  cartDiv.querySelector('.cart-sum').textContent = 'пересчитать';
+  showCount.textContent = `${objGoods[id]}шт`;
+  showRes.textContent = `${objGoods[id] * price}грн`;
 }
 
 // add goods to storage with arr and object
@@ -335,20 +396,20 @@ const storageQuery = get => {
   chekCount();
 };
 
-const addGoodsToArr = e => {
-  let id = +e.target.dataset.id;
+// const addGoodsToArr = e => {
+//   let id = +e.target.dataset.id;
 
-  if (arrGoods.includes(id)) {
-    // e.target.classList.remove('acive-fa-plus--js');
-    arrGoods.splice(arrGoods.indexOf(id), 1);
-  } else {
-    arrGoods.push(id);
-    e.target.classList.add('acive-fa-plus--js');
-  }
+//   if (arrGoods.includes(id)) {
+//     // e.target.classList.remove('acive-fa-plus--js');
+//     arrGoods.splice(arrGoods.indexOf(id), 1);
+//   } else {
+//     arrGoods.push(id);
+//     e.target.classList.add('acive-fa-plus--js');
+//   }
 
-  chekCount();
-  storageQuery();
-};
+//   chekCount();
+//   storageQuery();
+// };
 
 // const showGoodsinCart = e => {
 //   let out = '';
@@ -364,12 +425,20 @@ const addGoodsToArr = e => {
 //======= наша общая функция добавления товара пара обработчиков
 wrapGoods.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
-    addBasket(e);
+    addGoodsToBasket(e);
   }
 });
+
 cartDiv.addEventListener('click', function(e) {
   if (e.target.classList.contains('fa-plus-circle')) {
-    addGoodsToBascket(e);
+    countPlusGoodsInBascket(e);
+  }
+  if (e.target.classList.contains('fa-minus-circle')) {
+    countMinusGoodsInBascket(e);
+  }
+
+  if (e.target.classList.contains('cart-sum')) {
+    countSumInBacket(e);
   }
 });
 
