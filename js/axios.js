@@ -15,7 +15,7 @@ const closeModalFind = e => {
   }
 };
 
-btnFind.addEventListener('click', function(e) {
+btnFind.addEventListener('click', function (e) {
   e.preventDefault();
   document.addEventListener('keyup', closeModalFind);
   modalFind.classList.toggle('animate-modal-search');
@@ -42,9 +42,9 @@ modalLogin.addEventListener('click', closeMofalLogin);
 //===================== работаем с формамами общая форма отправки данных
 
 for (let i = 0; i < document.forms.length; i++) {
-  document.forms[i].addEventListener('submit', function(e) {
+  document.forms[i].addEventListener('submit', function (e) {
     e.preventDefault();
-
+    console.log(document.forms);
     let form = new FormData(this);
 
     let obj = {};
@@ -53,6 +53,7 @@ for (let i = 0; i < document.forms.length; i++) {
     }
     let count = document.forms[i].elements.length;
     let counter = 0;
+
     const checkName = /^[a-zA-Z0-9_]+$/;
 
     for (let j = 0; j < document.forms[i].elements.length; j++) {
@@ -71,10 +72,7 @@ for (let i = 0; i < document.forms.length; i++) {
       if (counter == count) {
         // 'https://my-json-server.typicode.com/SergeyBerez/server/myPost'
         axios
-          .post(
-            'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
-            obj,
-          )
+          .post('telegram.php', obj)
           .then(response => {
             //let data = Object.values(response.data);
             console.log(response.data);
@@ -98,7 +96,7 @@ for (let i = 0; i < document.forms.length; i++) {
 }
 
 function deleteModalForm(node) {
-  setTimeout(function() {
+  setTimeout(function () {
     node.reset();
     node.lastElementChild.remove();
     modalLogin.classList.toggle('animate-modal-search');
@@ -111,18 +109,32 @@ const btnUserCart = document.querySelector('.nav-user_cart');
 const innerGoodsCart = document.querySelector('.inner-goods');
 const cartDiv = document.querySelector('.cart-div');
 const cartSum = document.querySelector('.cart-sum');
+const btnOrder = document.querySelector('.button-order');
 
-btnUserCart.addEventListener('click', function(e) {
+btnUserCart.addEventListener('click', function (e) {
   e.preventDefault();
   sum = 0;
   getGoods(renderCardBasket, sortCardBacket);
   cartDiv.classList.toggle('animate-modal-search');
 });
-cartDiv.addEventListener('click', function(e) {
+cartDiv.addEventListener('click', function (e) {
   if (e.target.classList.contains('close-modalLogin--js')) {
     cartDiv.classList.toggle('animate-modal-search');
   }
+  // document.addEventListener('keypress', function (e) {
+  //   console.log(e.keyCode ===27);
+  // });
+
+  
 });
+let divform = document.querySelector('.new-form-header');
+let copyDivForm = divform.cloneNode(true);
+console.log(copyDivForm);
+
+btnOrder.addEventListener('click', function (e) {
+  btnOrder.insertAdjacentElement('beforebegin', copyDivForm);
+});
+
 //====================работаем с товаром  рисуем карты=============
 let wrapGoods = document.querySelector('.wrap-goods');
 let getGoodsbtn = document.querySelector('.button--header');
@@ -267,24 +279,27 @@ function renderCardBasket(goods) {
 }
 
 // обрабатываем событие нажатие кнопки показа товаров поиска товаров отрисовываем заново
-getGoodsbtn.addEventListener('click', function(e) {
+getGoodsbtn.addEventListener('click', function (e) {
+  console.log(1);
   wrapGoods.classList.toggle('show-cart');
   sum = 0;
-  getGoods(renderCard, randomSort);
+  // getGoods(renderCard, randomSort);
 });
 
 // обрабатываем событие на кнопке поиска  инпута товаров находим совпадение и отрисовываем
 let input = document.querySelector('.new-form_input');
 let searchGoods = document.querySelector('.fa-search');
-formSearch.addEventListener('click', function(e) {
-  searchGoods.addEventListener('click', function(e) {
+formSearch.addEventListener('click', function (e) {
+  searchGoods.addEventListener('click', function (e) {
     let inputvalue = input.value.trim().toLowerCase();
     console.log(inputvalue);
     if (inputvalue != '') {
       const searchReg = new RegExp(inputvalue, 'i');
-      getGoods(renderCard, goods =>
-        goods.filter(item => searchReg.test(item.name)),
-      );
+      console.log(searchReg);
+      getGoods(renderCard, goods => {
+        console.log(goods);
+        return goods.filter(item => searchReg.test(item.gsx$name.$t));
+      });
       wrapGoods.classList.add('show-cart'); //show goods after sort return true
     }
     input.value = '';
@@ -423,13 +438,13 @@ const storageQuery = get => {
 // };
 
 //======= наша общая функция добавления товара пара обработчиков
-wrapGoods.addEventListener('click', function(e) {
+wrapGoods.addEventListener('click', function (e) {
   if (e.target.classList.contains('fa-shopping-cart')) {
     addGoodsToBasket(e);
   }
 });
 
-cartDiv.addEventListener('click', function(e) {
+cartDiv.addEventListener('click', function (e) {
   if (e.target.classList.contains('fa-plus-circle')) {
     countPlusGoodsInBascket(e);
   }

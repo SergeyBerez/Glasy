@@ -1,6 +1,6 @@
 'use strict';
 let slider = document.querySelector('.slides');
-let nav = document.querySelector('.fixed');
+let nav = document.querySelector('.header-flex-fixed');
 let inputs = document.querySelectorAll('.indication-input');
 let logo = document.querySelector('.main-logo');
 // let shrink = document.querySelector('.navbar-shrink');
@@ -8,11 +8,11 @@ let logo = document.querySelector('.main-logo');
 // -----------меняем при нажатии цвет и картинки на радио кнопки
 let radio = document.querySelectorAll('[type="radio"]');
 for (let i = 0; i < radio.length; i++) {
-  radio[i].addEventListener('click', function(e) {
-    clearTimeout(autoPlay);
+  radio[i].addEventListener('click', function (e) {
+    // clearTimeout(autoPlay);
     // console.log(radio[i].checked);
-    if (e.target.dataset.type) {
-      slider.style.backgroundImage = `url(./img/${e.target.dataset.type})`;
+    if (e.target.dataset.foto) {
+      slider.style.backgroundImage = `url(./img/${e.target.dataset.foto})`;
       // slider.style.backgroundColor = e.target.dataset.color;
     }
   });
@@ -47,77 +47,79 @@ let headerMenuIcon = document.querySelector('.header_menu-icon');
 let headerNav = document.querySelector('.header-nav');
 let closemenu = document.querySelector('.close-menu-button--js');
 
-headerMenuIcon.addEventListener('click', function(e) {
+headerMenuIcon.addEventListener('click', function (e) {
   this.style.opacity = '0';
   headerNav.style.display = 'flex';
   headerNav.style.left = '0px';
 });
-closemenu.addEventListener('click', function(e) {
+closemenu.addEventListener('click', function (e) {
   headerNav.style.left = '-580px';
   headerMenuIcon.style.opacity = '1';
 });
-window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function (e) {
   headerNav.style.display = '';
   headerMenuIcon.style.display = '';
 });
-
-
 
 //----------работаем с товаром добавляем , кнокапи добавляем товар в козину
 let bntcarts = document.querySelectorAll('.fa-cart-plus');
 for (let i = 0; i < bntcarts.length; i++) {
   bntcarts[i].addEventListener('click', addtoCart);
 }
-let cart = {}; //корзина
+let cartObj = {}; //корзина
 //добавляем товар в обьект корзина
 function addtoCart() {
+  
   let id = this.closest('div').dataset.id;
-  if (cart[id] == undefined) {
-    cart[id] = 1; //если нет товара то ставим один
+  if (cartObj[id] == undefined) {
+   cartObj[id] = 1; //если нет товара то ставим один
   } else {
-    //cart[id] = cart[id] + 1;
+    //cart[id] =cartObj[id] + 1;
     //cart[id]++;
-    cart[id] += 1;
+   cartObj[id] += 1;
   }
   showCart();
 }
 
 function showCart() {
-  console.log(1);
+ 
   let out = '';
-  for (const key in cart) {
-    out += `<p>${key}-${cart[key]}</p> `;
+  for (const key in cartObj) {
+    out += `<p>${key}-${cartObj[key]}</p> `;
   }
 
-  innetGoods.innerHTML = out;
+  // innetGoods.innerHTML = out;
 }
 
 //перебираем ноде лист как массив
-let [...products] = document.querySelectorAll('.banner-foto_item');
+let products = document.querySelectorAll('.banner-foto_item');
 //let arrProducts = [...products];
 
 for (let i = 0; i < products.length; i++) {
   products[i].dataset.id = i + 100;
   //добавляем айди дивам-товарам
 }
+console.log(products);
 
 // -----------подвешиваем событие на прокрутку окна анимацию на h1
 // const h1 = document.querySelector('.header-title');
 // const indicationButton = document.querySelector('.indication-button');
 const footer = document.querySelector('.footer');
-window.addEventListener('scroll', function(e) {
-  if (window.pageYOffset > 2600) {
-    footer.classList.add('animaton-footer');
-  }
-});
+// window.addEventListener('scroll', function (e) {
+//   if (window.pageYOffset > 2600) {
+//     footer.classList.add('animaton-footer');
+    
+//   }
+//   console.log(this);
+// });
 
-function getCoords(elem) {
-  let box = elem.getBoundingClientRect();
-  return {
-    top: box.top + window.pageYOffset,
-    left: box.left + window.pageXOffset,
-  };
-}
+// function getCoords(elem) {
+//   let box = elem.getBoundingClientRect();
+//   return {
+//     top: box.top + window.pageYOffset,
+//     left: box.left + window.pageXOffset,
+//   };
+// }
 //console.log(getCoords(indicationButton));
 
 const faders = document.querySelectorAll('.fade-in');
@@ -144,7 +146,7 @@ faders.forEach(fader => {
 
 // let btnSearch = document.querySelector('.fa-search');
 
-document.addEventListener('scroll', function(e) {
+document.addEventListener('scroll', function (e) {
   if (window.pageYOffset > 70) {
     nav.classList.add('navbar-shrink');
   } else {
@@ -152,23 +154,23 @@ document.addEventListener('scroll', function(e) {
   }
 });
 document.querySelectorAll('a').forEach(element => {
-  element.onclick = function(e) {
+  element.onclick = function (e) {
     e.preventDefault();
   };
 });
 
-function changeColorMenu() {
-  for (let i = 0; i < inputs.length; i++) {
-    const element = inputs[0].dataset.color;
-    nav.style.backgroundColor = element;
-    console.log(element);
-  }
-}
-function delchangeColorMenu() {
-  nav.style.backgroundColor = '';
-}
+// function changeColorMenu() {
+//   for (let i = 0; i < inputs.length; i++) {
+//     const element = inputs[0].dataset.color;
+//     nav.style.backgroundColor = element;
+//     console.log(element);
+//   }
+// }
+// function delchangeColorMenu() {
+//   nav.style.backgroundColor = '';
+// }
 
-$('.main-logo-svg').click(function(e) {
+$('.main-logo-svg').click(function (e) {
   let offset = $('.header').offset().top;
   $('html, body').animate({ scrollTop: offset }, 2000);
 });

@@ -11,8 +11,7 @@
 .banner-foto,
 .description,
 .news,
-.map,
-.footer {
+.map {
   /* max-width: 1200px; */
   margin-top: 40px;
   /* padding: 5px; */
@@ -20,7 +19,7 @@
   flex-wrap: wrap;
   /* flex-direction: row; */
   justify-content: space-around;
-  transition: 0.9s;
+  /* transition: 0.9s; */
 }
 
 /* секция 1 два фона малина и шоко */
@@ -65,24 +64,30 @@
   font-weight: bold;
 }
 
-/* секция 2  мороженное */
+/* секция ---------------------2  мороженное */
 .banner-foto_item {
+  display: flex;
+  flex-wrap: wrap;
   min-width: 160px;
   width: 20%;
   padding: 10px;
   margin: 30px 10px 10px 10px;
   text-align: center;
   position: relative;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
   /* transition: all 0.9s; */
-  transition: 0.5s;
 
+  background: #9bafa383;
   /* word-break: break-all; */
 }
 
-.fa-3x {
-  display: none;
+.fa-cart-plus {
+  margin: 0 auto;
+  align-self: flex-end;
+  /* margin-top: auto; */
+  /* display: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: absolute;
@@ -92,17 +97,16 @@
   right: auto;
   left: 0px;
   bottom: auto;
-  transition: 0.5s;
+
+  background: #9bafa383; */
 }
 
 .banner-foto_item:hover {
-  background: #9bafa383;
+  background: #9bafa3ce;
 }
 
-.banner-foto_item:hover .fa-3x {
-  display: block;
-  background: #9bafa383;
-  /* transition: background 0.5s ease-in; */
+.banner-foto_item:hover .fa-cart-plus {
+ 
   cursor: pointer;
 }
 
@@ -184,7 +188,7 @@ img {
   line-height: 22px;
 }
 
-/* секция 3 */
+/* ---------------------секция 3 */
 .description {
   padding: 10px;
 }
@@ -264,7 +268,7 @@ img {
   background-repeat: no-repeat;
 }
 
-/* секция4 */
+/*-------------------------------- секция4 */
 .mews-item {
   display: flex;
   flex-wrap: wrap;
@@ -372,7 +376,7 @@ img {
   color: #999999;
 }
 
-/* секция 5  картка*/
+/* секция -------------------------------5  картка*/
 
 .map {
   padding: 10px;
@@ -426,14 +430,19 @@ img {
   color: rgb(83, 79, 79);
   font-weight: bold;
 }
-
+/* ====================================footer */
 .footer {
+   background-color: #849d8f;
+ 
   min-height: 100px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  z-index: 1000;
 }
-
+/* .footer.animaton-footer {
+  animation: show-from-bottom 0.9s linear;
+}
 @keyframes show-from-bottom {
   0% {
     transform: translateY(100%);
@@ -444,11 +453,10 @@ img {
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */
 
 .nav-cotial-icon {
   display: flex;
-
   /* flex-basis: 30%; */
 }
 

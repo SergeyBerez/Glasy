@@ -13,416 +13,419 @@
     <link rel="stylesheet" href="css/main_block.css" />
     <link rel="stylesheet" href="css/buttons.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
     <script src="https://use.fontawesome.com/b5f68561f1.js"></script>
     <title>glacy</title>
   </head>
 
   <body>
-   <div class="slides"></div>
+    <div class="slides"></div>
     <!-- <div class="conteiner"></div> -->
-      <!-- див со слайдером -->
-      
-      <div class="wrap">
-        <header class="header">
-          <div class="header-flex outline--flex">
-            <div class="fixed fixed-top ">
-              <div class="main-logo">
-                <svg
-                  class="main-logo-svg"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-                  <use xlink:href="./img/Logo.svg#logo"></use>
-                </svg>
-                <!-- <img src="./img/Logo.svg" alt="logo" /> -->
-              </div>
-              <!-- иконка скрытого меню -->
-              <div class="header_menu-icon">
-                <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-              </div>
+    <!-- див со слайдером -->
 
-              <ul class="header-nav  fade-in fade-in_left">
-                <i
-                  class="fa fa-times fa-lg close-menu-button--js"
-                  aria-hidden="true"
-                ></i>
-
-                <li>
-                  <a href="#">каталог</a>
-                  <ul class="drop ">
-                    <li>Новинки</li>
-                    <li><a href="#">cливочное</a></li>
-                    <li><a href="#">щербеты</a></li>
-                    <li><a href="#">Фруктоый лед</a></li>
-                    <li><a href="#">Мелони</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">доставка и оплата</a></li>
-                <li><a href="#">о Компании</a></li>
-              </ul>
-              <ul class="nav-user fade-in fade-in_right">
-                <!-- два модальных окна скрытых две формы открываются при наведении тега  ли -->
-                <div class="modal-find">
-                  <div class="form-header-search">
-                    <i
-                      class="fa fa-times fa-lg close-modalLogin--js"
-                      aria-hidden="true"
-                      title="close"
-                    ></i>
-                    <span>find</span> <br />
-                    <input
-                      class="new-form_input"
-                      name="find"
-                      type="text"
-                      placeholder="что ищем"
-                    />
-                    <div class="box-search-icon">
-                      <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-login ">
-                  <form class="new-form-header">
-                    <i
-                      class="fa fa-times fa-lg close-modalLogin--js"
-                      aria-hidden="true"
-                      title="close"
-                    ></i>
-                    <span>Name</span>
-                    <input
-                      class="new-form_input"
-                      type="text"
-                      name="user_name"
-                      placeholder="name"
-                    />
-                    <span>phone</span>
-                    <input
-                      class=" new-form_input"
-                      type="tel"
-                      name="user_phone"
-                      placeholder="tel"
-                    />
-
-                    <span>email</span>
-                    <input
-                      class="new-form_input"
-                      type="email"
-                      name="email"
-                      placeholder="электронная почта"
-                    />
-                    <button class="button banner-ads--button" value="sign in">
-                      sign in
-                    </button>
-                  </form>
-                </div>
-                <!-- наша корзина скрытая -->
-                <div class="cart-div">
-                  <span>cart</span>
-                  <i
-                    class="fa fa-times fa-lg close-modalLogin--js"
-                    aria-hidden="true"
-                    title="close"
-                  ></i>
-                  <div class="inner-goods"></div>
-                  <p>total<span class="cart-sum"></span></p>
-                  <button class="button banner-ads--button ">
-                    заказать
-                  </button>
-                </div>
-                <!-- наше меню юзера  -->
-                <li class="nav-user_find">
-                  <a class="nav-user_a" href="#">
-                    <svg
-                      class="nav-user_img nav-user_find--js"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                    >
-                      <use xlink:href="./img/lupa.svg#Layer_2"></use>
-                    </svg>
-                  </a>
-                </li>
-
-                <li class="nav-user_enter">
-                  <a href="#" class="nav-user_enter--js">
-                    <svg
-                      class="nav-user_img nav-user_enter--js"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                    >
-                      <use xlink:href="./img/enter.svg#enter"></use>
-                    </svg>
-                    вход</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="nav-user_cart">
-                    <svg
-                      class="nav-user_img "
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                    >
-                      <use xlink:href="./img/curt.svg#curt"></use></svg
-                    ><span class="counter">пусто</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="work-info">
-              с 10 до 22 ежедневно <br />
-              <span>8 812 450-25-25</span>
-            </div>
-
-            <h1 class="header-title fade-in fade-in_right">
-              Крем-брюле и пломбир с малиновым джемом
-            </h1>
-
-            <!-- кнопки для слайдера -->
-            <div class="indication-button">
-              <input
-                class="indication-input"
-                type="radio"
-                name="point"
-                id="slide1"
-                checked
-                data-type="Group1aaa.png"
-                data-color="#849d8f"
-              />
-              <input
-                class="indication-input"
-                type="radio"
-                name="point"
-                id="slide2"
-                data-type="Group2bbb.png"
-                data-color="#8996a6"
-              />
-              <input
-                class="indication-input"
-                type="radio"
-                name="point"
-                id="slide3"
-                data-type="Group3ddd.png"
-                data-color="#9d8b84"
-              />
-              <div class="controls fade-in fade-in_left">
-                <label class="indication-label" for="slide1"></label>
-                <label class="indication-label" for="slide2"></label>
-                <label class="indication-label" for="slide3"></label>
-              </div>
-              <button class="button button--header fade-in fade-in_right">
-                show&nbsp;goods
-              </button>
-            </div>
+    <div class="wrap">
+      <header class="header">
+        <!-- <div class="header-flex outline--flex "> -->
+        <div class="header-flex-fixed">
+          <div class="main-logo">
+            <svg
+              class="main-logo-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <use xlink:href="./img/Logo.svg#logo"></use>
+            </svg>
+            <!-- <img src="./img/Logo.svg" alt="logo" /> -->
           </div>
-        </header>
-        <main class="main">
-          <div class="wrap-goods"></div>
-          <!-- секция 1  два баннера -->
-          <section class="banner-ads outline--flex">
-            <div class="banner-ads_item fade-in fade-in_left">
-              <h2 class="banner-ads_h2 ">малинка даром!</h2>
-              <p class="banner-ads_p">
-                При покупке 2 кг любого мороженного .добавим в ваш зазак банку
-                малиновго варенья бесплатно
-              </p>
+          <!-- иконка скрытого меню -->
+          <div class="header_menu-icon">
+            <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+          </div>
 
-              <button class="button banner-ads--button ">
-                хочу варенье!
-              </button>
-            </div>
-            <div class="banner-ads_item fade-in fade-in_right">
-              <h2 class="banner-ads_h2 ">
-                Шоколадки даром!
-              </h2>
-              <p class="banner-ads_p">
-                При покупке 2 кг пломбира, добавим в ваш заказ упаковку
-                вкуснейшей шоколадной присыпки совершенно бесплатно.
-              </p>
-              <button class="button banner-ads--button">
-                хочу шоколадки!
-              </button>
-            </div>
-          </section>
-          <!-- секция  2  =======4 мороженого-->
+          <ul class="header-nav fade-in fade-in_left">
+            <i
+              class="fa fa-times fa-lg close-menu-button--js"
+              aria-hidden="true"
+            ></i>
 
-          <section class="banner-foto outline--flex">
-            <div
-              class="banner-foto_item banner-foto_vanil fade-in fade-in_left"
-            >
-              <img src="img/1ice.png" alt="" />
-
-              <p class="banner-foto_p">
-                Сливочное с апельсиновым джемом и цитрусовой стружкой
-              </p>
-              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-            </div>
-
-            <div
-              class="banner-foto_item banner-foto_choco fade-in fade-in_left"
-            >
-              <img src="img/icechoco.png" alt="" />
-
-              <p class="banner-foto_p">
-                Сливочно-кофейное с кусочками шоколада
-              </p>
-              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-            </div>
-
-            <div
-              class="banner-foto_item banner-foto_strawberry fade-in fade-in_right"
-            >
-              <img src="img/3ice.png" alt="" />
-
-              <p class="banner-foto_p">
-                Сливочно-клубничное с присыпкой из белого шоколада
-              </p>
-              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-            </div>
-
-            <div
-              class="banner-foto_item banner-foto_caramel fade-in fade-in_right"
-            >
-              <img src="img/4ice.png" alt="" />
-
-              <p class="banner-foto_p">
-                Сливочное крем-брюле с карамельной подливкой
-              </p>
-              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-            </div>
-          </section>
-          <!-- секция  3 вафля-->
-          <section class="description outline--flex  fade-in fade-in_left">
-            <div class="description-bg">
-              <h2 class="description_h2">
-                Магазин Глэйси — это онлайн- и офлайн-магазин по продаже
-                мороженого собственного производства на развес
-              </h2>
-              <div class="description_item  fade-in fade-in_left">
-                <p class="description_p description_p--1">
-                  Все наше мороженое изготавливается на собственном
-                  производстве, с использованием современного оборудования и
-                  проверенных временем технологий.
-                </p>
-
-                <p class="description_p description_p--2">
-                  Для приготовления мороженого используются настоящие сливки и
-                  молоко высочайшего качества. Все дополнительные ингредиенты и
-                  добавки произведены из натурального, экологически чистого
-                  сырья.
-                </p>
-              </div>
-              <div class="description_item fade-in fade-in_right">
-                <p class="description_p description_p--3">
-                  Закупка ингредиентов производится только у проверенных
-                  фермерских хозяйств и компаний, с которыми нас связывает
-                  долговременное сотрудничество.
-                </p>
-
-                <p class="description_p  description_p--4">
-                  Доставка нашего мороженого до заказчиков осуществляется в
-                  специальном термопаке, который не дает мороженому растаять в
-                  пути и позволяет сохранить превосходный вкус.
-                </p>
-              </div>
-            </div>
-          </section>
-          <!-- секция4 новости  -->
-          <section class="news outline--flex">
-            <div class="mews-item fade-in fade-in_left">
-              <h3 class="mews-item_h3 description_p">
-                новое в нашем блоке
-              </h3>
-              <a class="mews-item-a" href=""
-                >10 способов сервировки фруктовых щербетов к столу</a
-              >
-            </div>
-            <div class="new-posaman fade-in fade-in_right">
-              <div class="new-posaman-bg">
-                <p class="description_p">
-                  Подпишитесь на нашу сладкую рассылку и будете всегда в курсе
-                  всего самого вкусного, что у нас происходит. Обещаем не
-                  спамить и не слать всякой ненужной ерунды. lorem40
-                </p>
-                <form class="new-form">
-                  <input
-                    class="new-form_input"
-                    type="email"
-                    name="email"
-                    placeholder="электронная почта"
-                  />
-                  <button class="button banner-ads--button">
-                    отправить
-                  </button>
-                </form>
-              </div>
-            </div>
-          </section>
-          <!-- секция карта 5 -->
-          <section>
-            <div class="map outline--flex">
-              <iframe
-                class="map_iframe"
-                frameborder="0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d511638.1407822065!2d29.528910839122116!3d59.939003525846935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46916b9a84027d6d%3A0x7a38a94dd6393e9e!2z0KTQuNC90YHQutC40Lkg0LfQsNC7Lg!5e0!3m2!1sru!2sua!4v1577524227963!5m2!1sru!2sua"
-              ></iframe>
-              <form class="map_form">
-                <div class="map_info">
-                  <adress
-                    >Адрес главного офиса и офлайн-магазина:
-                    <span
-                      >ул. Большая Конюшенная 19/8, Санкт-Петербург</span
-                    ></adress
-                  >
-                  <p>с 10 до 22 ежедневно</p>
-
-                  <span>8 812 450-25-25</span>
+            <li>
+              <a href="#">каталог</a>
+              <ul class="drop">
+                <li>Новинки</li>
+                <li><a href="#">cливочное</a></li>
+                <li><a href="#">щербеты</a></li>
+                <li><a href="#">Фруктоый лед</a></li>
+                <li><a href="#">Мелони</a></li>
+              </ul>
+            </li>
+            <li><a href="#">доставка и оплата</a></li>
+            <li><a href="#">о Компании</a></li>
+          </ul>
+          <ul class="nav-user fade-in fade-in_right">
+            <!-- два модальных окна скрытых две формы открываются при наведении тега  ли -->
+            <div class="modal-find">
+              <div class="form-header-search">
+                <i
+                  class="fa fa-times fa-lg close-modalLogin--js"
+                  aria-hidden="true"
+                  title="close"
+                ></i>
+                <span>find</span> <br />
+                <input
+                  class="new-form_input"
+                  name="find"
+                  type="text"
+                  placeholder="что ищем"
+                />
+                <div class="box-search-icon">
+                  <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                 </div>
+              </div>
+            </div>
+            <div class="modal-login">
+              <form class="new-form-header">
+                <i
+                  class="fa fa-times fa-lg close-modalLogin--js"
+                  aria-hidden="true"
+                  title="close"
+                ></i>
+                <span>Name</span>
+                <input
+                  class="new-form_input"
+                  type="text"
+                  name="user_name"
+                  placeholder="name"
+                />
+                <span>phone</span>
                 <input
                   class="new-form_input"
                   type="tel"
-                  name="tel"
-                  placeholder="phone"
+                  name="user_phone"
+                  placeholder="tel"
                 />
-                <button class="button banner-ads--button">
-                  форма&nbsp;обратной&nbsp;связи
+
+                <span>email</span>
+                <input
+                  class="new-form_input"
+                  type="email"
+                  name="email"
+                  placeholder="электронная почта"
+                />
+                <button class="button banner-ads--button" value="sign in">
+                  sign in
                 </button>
               </form>
             </div>
-          </section>
-        </main>
-        <footer class="footer">
-          <ul class="nav-cotial-icon">
-            <li class="footer-img-icon">
-              <a href="https://twitter.com/?lang=uk"
-                ><img src="img/twitter_icon.png" alt=""
-              /></a>
+            <!-- наша корзина скрытая -->
+            <div class="cart-div">
+              <span>cart</span>
+              <i
+                class="fa fa-times fa-lg close-modalLogin--js"
+                aria-hidden="true"
+                title="close"
+              ></i>
+              <div class="inner-goods"></div>
+              <p>total<span class="cart-sum"></span></p>
+              <button
+                data-href="thank-you.html"
+                class="button banner-ads--button button-order"
+              >
+                заказать</button
+              ><br />
+            </div>
+            <!-- наше меню юзера  -->
+            <li class="nav-user_find">
+              <a class="nav-user_a" href="#">
+                <svg
+                  class="nav-user_img nav-user_find--js"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <use xlink:href="./img/lupa.svg#Layer_2"></use>
+                </svg>
+              </a>
             </li>
-            <li class="footer-img-icon">
-              <a href="https://www.instagram.com/">
-                <img src="img/insta_icon.png" alt=""
-              /></a>
-            </li>
-            <li class="footer-img-icon">
-              <a href=""><img src="img/vc_icon.png" alt=""/></a>
-            </li>
-            <li class="footer-img-icon">
-              <a href="https://www.facebook.com/">
-                <img src="img/fb_icon.png" alt=""
-              /></a>
-            </li>
-          </ul>
 
-          <ul class="nav-footer">
-            <li class="footer-img-icon"><a href="">для поставщиков</a></li>
-            <li class="footer-img-icon"><a href="">наши документы</a></li>
-            <li class="footer-img-icon"><a href="">о производстве</a></li>
-            <li class="footer-img-icon">
-              <a href="">экологические стандарты</a>
+            <li class="nav-user_enter">
+              <a href="#" class="nav-user_enter--js">
+                <svg
+                  class="nav-user_img nav-user_enter--js"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <use xlink:href="./img/enter.svg#enter"></use>
+                </svg>
+                вход</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-user_cart">
+                <svg
+                  class="nav-user_img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <use xlink:href="./img/curt.svg#curt"></use></svg
+                ><span class="counter">пусто</span>
+              </a>
             </li>
           </ul>
-        </footer>
-      </div>
-    
-  
+          <div class="work-info">
+            с 10 до 22 daily <br />
+            <span>8 812 450-25-25</span>
+          </div>
+        </div>
+        <!-- <div class="work-info"> -->
+        <!-- с 10 до 22 daily <br />
+            <span>8 812 450-25-25</span> -->
+        <!-- </div> -->
+
+        <h1 class="header-title fade-in fade-in_right">
+          Creme brulee and ice cream with raspberry jam
+        </h1>
+
+        <!-- кнопки для слайдера -->
+        <div class="indication-button">
+          <input
+            class="indication-input"
+            type="radio"
+            name="point"
+            id="slide1"
+            checked
+            data-foto="Group1aaa.png"
+            data-color="#849d8f"
+          />
+          <input
+            class="indication-input"
+            type="radio"
+            name="point"
+            id="slide2"
+            data-foto="Group2bbb.png"
+            data-color="#8996a6"
+          />
+          <input
+            class="indication-input"
+            type="radio"
+            name="point"
+            id="slide3"
+            data-foto="Group3ddd.png"
+            data-color="#9d8b84"
+          />
+          <div class="controls fade-in fade-in_left">
+            <label class="indication-label" for="slide1"></label>
+            <label class="indication-label" for="slide2"></label>
+            <label class="indication-label" for="slide3"></label>
+          </div>
+          <button class="button button--header fade-in fade-in_right">
+            show&nbsp;goods
+          </button>
+        </div>
+        <!-- </div> -->
+      </header>
+
+      <main class="main">
+        <div class="wrap-goods"></div>
+        <!-- секция 1  два баннера -->
+        <section class="banner-ads outline--flex">
+          <div class="banner-ads_item fade-in fade-in_left">
+            <h2 class="banner-ads_h2">малинка даром!</h2>
+            <p class="banner-ads_p">
+              При покупке 2 кг любого мороженного .добавим в ваш зазак банку
+              малиновго варенья бесплатно
+            </p>
+
+            <button class="button banner-ads--button">
+              хочу варенье!
+            </button>
+          </div>
+          <div class="banner-ads_item fade-in fade-in_right">
+            <h2 class="banner-ads_h2">
+              Шоколадки даром!
+            </h2>
+            <p class="banner-ads_p">
+              При покупке 2 кг пломбира, добавим в ваш заказ упаковку вкуснейшей
+              шоколадной присыпки совершенно бесплатно.
+            </p>
+            <button class="button banner-ads--button">
+              хочу шоколадки!
+            </button>
+          </div>
+        </section>
+        <!-- секция  2  =======4 мороженого-->
+
+        <section class="banner-foto outline--flex">
+          <div class="banner-foto_item banner-foto_vanil fade-in fade-in_left">
+            <img src="img/1ice.png" alt="" />
+
+            <p class="banner-foto_p">
+              Сливочное с апельсиновым джемом и цитрусовой стружкой
+            </p>
+            <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+          </div>
+
+          <div class="banner-foto_item banner-foto_choco fade-in fade-in_left">
+            <img src="img/icechoco.png" alt="" />
+
+            <p class="banner-foto_p">
+              Сливочно-кофейное с кусочками шоколада
+            </p>
+            <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+          </div>
+
+          <div
+            class="banner-foto_item banner-foto_strawberry fade-in fade-in_right"
+          >
+            <img src="img/3ice.png" alt="" />
+
+            <p class="banner-foto_p">
+              Сливочно-клубничное с присыпкой из белого шоколада
+            </p>
+            <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+          </div>
+
+          <div
+            class="banner-foto_item banner-foto_caramel fade-in fade-in_right"
+          >
+            <img src="img/4ice.png" alt="" />
+
+            <p class="banner-foto_p">
+              Сливочное крем-брюле с карамельной подливкой
+            </p>
+            <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+          </div>
+        </section>
+        <!-- секция  3 вафля-->
+        <section class="description outline--flex fade-in fade-in_left">
+          <div class="description-bg">
+            <h2 class="description_h2">
+              Магазин Глэйси — это онлайн- и офлайн-магазин по продаже
+              мороженого собственного производства на развес
+            </h2>
+            <div class="description_item fade-in fade-in_left">
+              <p class="description_p description_p--1">
+                Все наше мороженое изготавливается на собственном производстве,
+                с использованием современного оборудования и проверенных
+                временем технологий.
+              </p>
+
+              <p class="description_p description_p--2">
+                Для приготовления мороженого используются настоящие сливки и
+                молоко высочайшего качества. Все дополнительные ингредиенты и
+                добавки произведены из натурального, экологически чистого сырья.
+              </p>
+            </div>
+            <div class="description_item fade-in fade-in_right">
+              <p class="description_p description_p--3">
+                Закупка ингредиентов производится только у проверенных
+                фермерских хозяйств и компаний, с которыми нас связывает
+                долговременное сотрудничество.
+              </p>
+
+              <p class="description_p description_p--4">
+                Доставка нашего мороженого до заказчиков осуществляется в
+                специальном термопаке, который не дает мороженому растаять в
+                пути и позволяет сохранить превосходный вкус.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- секция4 новости  -->
+        <section class="news outline--flex">
+          <div class="mews-item fade-in fade-in_left">
+            <h3 class="mews-item_h3 description_p">
+              новое в нашем блоке
+            </h3>
+            <a class="mews-item-a" href=""
+              >10 способов сервировки фруктовых щербетов к столу</a
+            >
+          </div>
+          <div class="new-posaman fade-in fade-in_right">
+            <div class="new-posaman-bg">
+              <p class="description_p">
+                Подпишитесь на нашу сладкую рассылку и будете всегда в курсе
+                всего самого вкусного, что у нас происходит. Обещаем не спамить
+                и не слать всякой ненужной ерунды. lorem40
+              </p>
+              <form class="new-form">
+                <input
+                  class="new-form_input"
+                  type="email"
+                  name="email"
+                  placeholder="электронная почта"
+                />
+                <button class="button banner-ads--button">
+                  отправить
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- секция карта 5 -->
+        <section>
+          <div class="map outline--flex">
+            <iframe
+              class="map_iframe"
+              frameborder="0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d511638.1407822065!2d29.528910839122116!3d59.939003525846935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46916b9a84027d6d%3A0x7a38a94dd6393e9e!2z0KTQuNC90YHQutC40Lkg0LfQsNC7Lg!5e0!3m2!1sru!2sua!4v1577524227963!5m2!1sru!2sua"
+            ></iframe>
+            <form class="map_form">
+              <div class="map_info">
+                <adress
+                  >Адрес главного офиса и офлайн-магазина:
+                  <span
+                    >ул. Большая Конюшенная 19/8, Санкт-Петербург</span
+                  ></adress
+                >
+                <p>с 10 до 22 ежедневно</p>
+
+                <span>8 812 450-25-25</span>
+              </div>
+              <input
+                class="new-form_input"
+                type="tel"
+                name="tel"
+                placeholder="phone"
+              />
+              <button class="button banner-ads--button">
+                форма&nbsp;обратной&nbsp;связи
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <ul class="nav-cotial-icon">
+          <li class="footer-img-icon">
+            <a href="https://twitter.com/?lang=uk"
+              ><img src="img/twitter_icon.png" alt=""
+            /></a>
+          </li>
+          <li class="footer-img-icon">
+            <a href="https://www.instagram.com/">
+              <img src="img/insta_icon.png" alt=""
+            /></a>
+          </li>
+          <li class="footer-img-icon">
+            <a href=""><img src="img/vc_icon.png" alt="" /></a>
+          </li>
+          <li class="footer-img-icon">
+            <a href="https://www.facebook.com/">
+              <img src="img/fb_icon.png" alt=""
+            /></a>
+          </li>
+        </ul>
+
+        <ul class="nav-footer">
+          <li class="footer-img-icon"><a href="">для поставщиков</a></li>
+          <li class="footer-img-icon"><a href="">наши документы</a></li>
+          <li class="footer-img-icon"><a href="">о производстве</a></li>
+          <li class="footer-img-icon">
+            <a href="">экологические стандарты</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"

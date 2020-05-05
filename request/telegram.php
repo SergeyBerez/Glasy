@@ -10,7 +10,6 @@ $email = trim($_POST['email']);
 $date = date('Y-m-d H:i:s');
 file_put_contents('app.txt', "||-name :$name  tel :$phone  email : $email  time :$date-||\n ", FILE_APPEND);
 
-
 $token = "815701197:AAFe0hRURtUFU2uRyZCcBvySA0XfQZ9Lndg";
 $chat_id = "-1001226162907";
 $arr = array(
@@ -27,8 +26,8 @@ foreach ($arr as $key => $value) {;
 $sendToTelegram =
     fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
 
-if ($sendToTelegram) {;
-    echo  "<b>" . $_POST['user_name'] . "</b><br> " . 'ваша заявка принята';
-} else {
-    echo "Error";
-}
+// if ($sendToTelegram) {;
+//     echo "<b>" . $_POST['user_name'] . "</b><br> " . 'ваша заявка принята';
+// } else {
+//     echo "Error";
+// }
