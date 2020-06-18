@@ -106,7 +106,6 @@
 }
 
 .banner-foto_item:hover .fa-cart-plus {
- 
   cursor: pointer;
 }
 
@@ -432,30 +431,17 @@ img {
 }
 /* ====================================footer */
 .footer {
-   background-color: #849d8f;
- 
-  min-height: 100px;
+  min-height: 200px;
   display: flex;
+  position: relative;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   z-index: 1000;
 }
-/* .footer.animaton-footer {
-  animation: show-from-bottom 0.9s linear;
-}
-@keyframes show-from-bottom {
-  0% {
-    transform: translateY(100%);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-} */
 
 .nav-cotial-icon {
+  color: red;
   display: flex;
   /* flex-basis: 30%; */
 }

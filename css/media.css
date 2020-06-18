@@ -167,7 +167,9 @@
     flex-basis: 100%;
     margin: 20px;
   }
-
+  .nav-footer {
+    justify-content: center;
+  }
   /*-------мобайл версия   стили для правого меню  навигаци модальных окон */
   .nav-user {
     align-items: center;
